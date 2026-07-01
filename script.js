@@ -162,6 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const servicesDuckWrap = document.querySelector('.services-duck');
   const servicesDuck = document.querySelector('.services-duck-inner');
+
   const servicesArmLeft = document.querySelector('.services-arm-left');
   const servicesArmRight = document.querySelector('.services-arm-right');
   const servicesLegLeft = document.querySelector('.services-leg-left');
@@ -169,14 +170,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (servicesDuckWrap && servicesSection) {
     const clampDuckEntry = (value, min, max) => Math.min(Math.max(value, min), max);
-    const moveServicesDuck = gsap.quickTo(servicesDuckWrap, 'y', {duration: 1, ease: 'power3.out'});
+    const moveServicesDuck = gsap.quickTo(servicesDuckWrap, 'y', {duration: 2, ease: 'power3.out'});
 
     const updateServicesDuckEntry = () => {
       const rect = servicesSection.getBoundingClientRect();
       const entryDistance = window.innerHeight * 0.7;
       const progress = clampDuckEntry((window.innerHeight - rect.top) / entryDistance, 0, 1);
       const easedProgress = 1 - Math.pow(1 - progress, 3);
-      moveServicesDuck(-300 * (1 - easedProgress));
+      moveServicesDuck(-1500 * (1 - easedProgress));
     };
 
     gsap.set(servicesDuckWrap, {y: 300});
@@ -196,6 +197,8 @@ document.addEventListener('DOMContentLoaded', () => {
       repeat: -1
     });
   }
+
+
 
   if (servicesArmLeft) {
     gsap.set(servicesArmLeft, {transformOrigin: '35% 58%', rotation: -5});
@@ -239,6 +242,139 @@ document.addEventListener('DOMContentLoaded', () => {
       yoyo: true,
       repeat: -1
     });
+  }
+
+  const skillsViewport = document.querySelector('[data-skill-viewport]');
+  const skillsRail = document.querySelector('[data-skill-rail]');
+  const skillsSegmentLayer = document.querySelector('[data-skill-segment-layer]');
+  const skillTags = skillsRail ? Array.from(skillsRail.querySelectorAll('.skill-tag')) : [];
+
+  if (skillsViewport && skillsRail && skillTags.length) {
+    const skillSegments = skillsSegmentLayer
+      ? skillTags.map(() => {
+        const segment = document.createElement('span');
+        segment.className = 'skill-rope-segment';
+        skillsSegmentLayer.appendChild(segment);
+        return segment;
+      })
+      : [];
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let minX = 0;
+    let maxX = 0;
+    let currentX = 0;
+    let targetX = 0;
+    let velocity = 0;
+    let isDragging = false;
+    let lastPointerX = 0;
+    let lastPointerTime = 0;
+
+    const clampSkillRail = (value, min, max) => Math.min(Math.max(value, min), max);
+
+    const measureSkillsRail = () => {
+      const viewportWidth = skillsViewport.clientWidth;
+      const railWidth = skillsRail.scrollWidth;
+      maxX = 0;
+      minX = Math.min(viewportWidth - railWidth, 0);
+      targetX = clampSkillRail(targetX, minX, maxX);
+      currentX = clampSkillRail(currentX, minX, maxX);
+      gsap.set(skillsRail, {x: currentX});
+    };
+
+    const updateSkillSegments = () => {
+      if (!skillSegments.length) return;
+
+      const gap = parseFloat(getComputedStyle(skillsRail).columnGap || getComputedStyle(skillsRail).gap) || 0;
+      skillTags.forEach((tag, index) => {
+        const holeRadius = 15;
+        const segmentStart = tag.offsetLeft + currentX + tag.offsetWidth / 2 + holeRadius;
+        const segmentWidth = tag.offsetWidth / 2 + gap / 2 - holeRadius;
+
+        gsap.set(skillSegments[index], {
+          x: segmentStart,
+          width: segmentWidth
+        });
+      });
+    };
+
+    const applySkillResistance = (value) => {
+      if (value > maxX) return maxX + (value - maxX) * 0.28;
+      if (value < minX) return minX + (value - minX) * 0.28;
+      return value;
+    };
+
+    const settleSkillRail = () => {
+      if (targetX > maxX) {
+        velocity += (maxX - targetX) * 0.12;
+      } else if (targetX < minX) {
+        velocity += (minX - targetX) * 0.12;
+      }
+    };
+
+    const renderSkillsRail = () => {
+      if (!isDragging) {
+        targetX += velocity;
+        velocity *= 0.94;
+        settleSkillRail();
+      }
+
+      currentX += (targetX - currentX) * (isDragging ? 0.22 : 0.16);
+      gsap.set(skillsRail, {x: currentX});
+
+      const sway = prefersReducedMotion ? 0 : clampSkillRail((targetX - currentX) * 0.055 + velocity * 0.28, -10, 10);
+      skillTags.forEach((tag, index) => {
+        const offset = (index - (skillTags.length - 1) / 2) * 0.22;
+        gsap.set(tag, {
+          rotation: sway + offset,
+          y: 0
+        });
+      });
+      updateSkillSegments();
+
+      requestAnimationFrame(renderSkillsRail);
+    };
+
+    const onSkillsPointerDown = (event) => {
+      isDragging = true;
+      velocity = 0;
+      targetX = currentX;
+      lastPointerX = event.clientX;
+      lastPointerTime = performance.now();
+      skillsViewport.classList.add('is-dragging');
+      skillsViewport.setPointerCapture(event.pointerId);
+    };
+
+    const onSkillsPointerMove = (event) => {
+      if (!isDragging) return;
+
+      const now = performance.now();
+      const deltaX = event.clientX - lastPointerX;
+      const deltaTime = Math.max(now - lastPointerTime, 16);
+      const normalizedDelta = deltaX * (16 / deltaTime);
+
+      velocity = velocity * 0.72 + normalizedDelta * 0.28;
+      targetX = applySkillResistance(targetX + deltaX);
+      lastPointerX = event.clientX;
+      lastPointerTime = now;
+    };
+
+    const onSkillsPointerUp = (event) => {
+      if (!isDragging) return;
+
+      isDragging = false;
+      velocity = clampSkillRail(velocity, -42, 42);
+      skillsViewport.classList.remove('is-dragging');
+      if (skillsViewport.hasPointerCapture(event.pointerId)) {
+        skillsViewport.releasePointerCapture(event.pointerId);
+      }
+    };
+
+    measureSkillsRail();
+    window.addEventListener('resize', measureSkillsRail);
+    skillsViewport.addEventListener('pointerdown', onSkillsPointerDown);
+    skillsViewport.addEventListener('pointermove', onSkillsPointerMove);
+    skillsViewport.addEventListener('pointerup', onSkillsPointerUp);
+    skillsViewport.addEventListener('pointercancel', onSkillsPointerUp);
+    requestAnimationFrame(renderSkillsRail);
   }
 
   const duckHop = document.querySelector('.duck-hop');
