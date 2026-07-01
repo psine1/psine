@@ -267,6 +267,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let isDragging = false;
     let lastPointerX = 0;
     let lastPointerTime = 0;
+    const cardPhysics = skillTags.map((_, index) => ({
+      angle: (index - (skillTags.length - 1) / 2) * 0.22,
+      angularVelocity: 0,
+      offset: (index - (skillTags.length - 1) / 2) * 0.22
+    }));
 
     const clampSkillRail = (value, min, max) => Math.min(Math.max(value, min), max);
 
@@ -322,9 +327,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const sway = prefersReducedMotion ? 0 : clampSkillRail((targetX - currentX) * 0.055 + velocity * 0.28, -10, 10);
       skillTags.forEach((tag, index) => {
-        const offset = (index - (skillTags.length - 1) / 2) * 0.22;
+        const physics = cardPhysics[index];
+        const targetAngle = prefersReducedMotion ? 0 : sway + physics.offset;
+        const spring = isDragging ? 0.18 : 0.065;
+        const damping = isDragging ? 0.7 : 0.9;
+
+        physics.angularVelocity += (targetAngle - physics.angle) * spring;
+        physics.angularVelocity *= damping;
+        physics.angle += physics.angularVelocity;
+
         gsap.set(tag, {
-          rotation: sway + offset,
+          rotation: physics.angle,
           y: 0
         });
       });
@@ -362,6 +375,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       isDragging = false;
       velocity = clampSkillRail(velocity, -42, 42);
+      if (!prefersReducedMotion) {
+        cardPhysics.forEach((physics, index) => {
+          const directionOffset = (index - (cardPhysics.length - 1) / 2) * 0.015;
+          physics.angularVelocity += velocity * 0.045 + directionOffset;
+        });
+      }
       skillsViewport.classList.remove('is-dragging');
       if (skillsViewport.hasPointerCapture(event.pointerId)) {
         skillsViewport.releasePointerCapture(event.pointerId);
