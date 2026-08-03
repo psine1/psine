@@ -3,9 +3,158 @@ document.addEventListener('DOMContentLoaded', () => {
   const loader = document.getElementById('loader');
   if (loader) loader.remove();
 
+  const workSection = document.querySelector('[data-work-section]');
+  const workViewport = document.querySelector('[data-work-viewport]');
+  const workRail = document.querySelector('[data-work-rail]');
+  const workProgress = document.querySelector('[data-work-progress]');
+
+  if (workSection && workViewport && workRail) {
+    const workCards = Array.from(workRail.querySelectorAll('.work-card'));
+    const workCardInners = workCards.map((card) => card.querySelector('.work-card-inner'));
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const clampWork = (value, min, max) => Math.min(Math.max(value, min), max);
+    const easeOutWork = (value) => 1 - Math.pow(1 - value, 3);
+    let minX = 0;
+    let targetX = 0;
+    let currentX = 0;
+    let velocity = 0;
+    let pointerDown = false;
+    let isDragging = false;
+    let didDrag = false;
+    let startX = 0;
+    let startY = 0;
+    let lastX = 0;
+    let lastTime = 0;
+
+    const measureWork = () => {
+      minX = Math.min(workViewport.clientWidth - workRail.scrollWidth, 0);
+      targetX = clampWork(targetX, minX, 0);
+      currentX = clampWork(currentX, minX, 0);
+      const horizontalTravel = Math.abs(minX);
+      const scrollTravel = Math.max(window.innerHeight * 1.7, horizontalTravel * 1.18);
+      workSection.style.height = `${window.innerHeight + scrollTravel}px`;
+      readWorkScroll();
+    };
+
+    const readWorkScroll = () => {
+      if (isDragging || pointerDown) return;
+      const rect = workSection.getBoundingClientRect();
+      const travel = Math.max(1, rect.height - window.innerHeight);
+      const progress = clampWork(-rect.top / travel, 0, 1);
+      targetX = minX * progress;
+      velocity = 0;
+    };
+
+    const renderWork = () => {
+      if (!isDragging && Math.abs(velocity) > 0.02) {
+        targetX = clampWork(targetX + velocity, minX, 0);
+        velocity *= 0.9;
+      }
+
+      currentX += (targetX - currentX) * (isDragging ? 0.24 : 0.12);
+      workRail.style.transform = `translate3d(${currentX}px, 0, 0)`;
+
+      const viewportWidth = workViewport.clientWidth;
+      workCards.forEach((card, index) => {
+        const cardLeft = card.offsetLeft + currentX;
+        const enterProgress = clampWork((viewportWidth - cardLeft) / (viewportWidth * 0.62), 0, 1);
+        const settled = prefersReducedMotion ? 1 : easeOutWork(enterProgress);
+        const direction = index % 2 === 0 ? 1 : -1;
+        const y = (1 - settled) * (44 + index * 9);
+        const rotation = (1 - settled) * direction * 2.8;
+        const scale = 0.965 + settled * 0.035;
+        const inner = workCardInners[index];
+
+        if (inner) {
+          inner.style.transform = `translate3d(0, ${y}px, 0) rotate(${rotation}deg) scale(${scale})`;
+          inner.style.opacity = `${0.72 + settled * 0.28}`;
+        }
+      });
+
+      if (workProgress) {
+        const progress = minX === 0 ? 1 : clampWork(currentX / minX, 0, 1);
+        workProgress.style.transform = `scaleX(${progress})`;
+      }
+
+      requestAnimationFrame(renderWork);
+    };
+
+    const onWorkPointerDown = (event) => {
+      pointerDown = true;
+      isDragging = false;
+      didDrag = false;
+      startX = event.clientX;
+      startY = event.clientY;
+      lastX = event.clientX;
+      lastTime = performance.now();
+      velocity = 0;
+    };
+
+    const onWorkPointerMove = (event) => {
+      if (!pointerDown) return;
+      const totalX = event.clientX - startX;
+      const totalY = event.clientY - startY;
+
+      if (!isDragging && Math.abs(totalX) > 6 && Math.abs(totalX) > Math.abs(totalY)) {
+        isDragging = true;
+        didDrag = true;
+        targetX = currentX;
+        workViewport.classList.add('is-dragging');
+        workViewport.setPointerCapture(event.pointerId);
+      }
+
+      if (!isDragging) return;
+      event.preventDefault();
+      const now = performance.now();
+      const delta = event.clientX - lastX;
+      const elapsed = Math.max(now - lastTime, 16);
+      targetX = clampWork(targetX + delta, minX, 0);
+      velocity = velocity * 0.65 + delta * (16 / elapsed) * 0.35;
+      lastX = event.clientX;
+      lastTime = now;
+    };
+
+    const onWorkPointerUp = (event) => {
+      if (!pointerDown) return;
+      pointerDown = false;
+      if (isDragging) {
+        isDragging = false;
+        velocity = clampWork(velocity * 1.8, -36, 36);
+        workViewport.classList.remove('is-dragging');
+        if (workViewport.hasPointerCapture(event.pointerId)) {
+          workViewport.releasePointerCapture(event.pointerId);
+        }
+      }
+    };
+
+    workViewport.addEventListener('pointerdown', onWorkPointerDown);
+    workViewport.addEventListener('pointermove', onWorkPointerMove, {passive: false});
+    workViewport.addEventListener('pointerup', onWorkPointerUp);
+    workViewport.addEventListener('pointercancel', onWorkPointerUp);
+    workViewport.addEventListener('click', (event) => {
+      if (!didDrag) return;
+      event.preventDefault();
+      event.stopPropagation();
+      didDrag = false;
+    }, true);
+    workViewport.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      const direction = event.key === 'ArrowRight' ? -1 : 1;
+      targetX = clampWork(targetX + direction * workViewport.clientWidth * 0.55, minX, 0);
+      velocity = 0;
+    });
+
+    window.addEventListener('scroll', readWorkScroll, {passive: true});
+    window.addEventListener('resize', measureWork);
+    measureWork();
+    requestAnimationFrame(renderWork);
+  }
+
   const serviceCards = Array.from(document.querySelectorAll('[data-service-card]'));
   const serviceClouds = Array.from(document.querySelectorAll('[data-cloud-speed]'));
   const servicesSection = document.querySelector('.services-section');
+  const skillsSection = document.querySelector('.skills-section');
 
   if (serviceCards.length && servicesSection) {
     const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
@@ -15,68 +164,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let targetProgress = 0;
     let smoothProgress = 0;
     let ticking = false;
-    let cloudsActive = false;
-    let cloudsTicking = false;
-    let cloudsLastTime = 0;
     const cloudScrollY = serviceClouds.map(() => 0);
-    const cloudDriftY = serviceClouds.map(() => 0);
 
     const renderServiceClouds = () => {
       serviceClouds.forEach((cloud, index) => {
-        cloud.style.setProperty('--cloud-y', `${cloudScrollY[index] + cloudDriftY[index]}px`);
+        cloud.style.setProperty('--cloud-y', `${cloudScrollY[index]}px`);
       });
-    };
-
-    const wrapServiceClouds = () => {
-      const rect = servicesSection.getBoundingClientRect();
-      const viewportTop = -rect.top;
-      const viewportBottom = viewportTop + window.innerHeight;
-      const loopDistance = window.innerHeight * 1.45;
-
-      serviceClouds.forEach((cloud, index) => {
-        const cloudY = cloudScrollY[index] + cloudDriftY[index];
-        const cloudTop = cloud.offsetTop + cloudY;
-        const cloudBottom = cloudTop + cloud.offsetHeight;
-
-        if (cloudBottom < viewportTop - 160) {
-          cloudDriftY[index] += loopDistance + index * 18;
-        } else if (cloudTop > viewportBottom + loopDistance) {
-          cloudDriftY[index] -= loopDistance;
-        }
-      });
-    };
-
-    const animateServiceClouds = (time) => {
-      if (!cloudsActive) {
-        cloudsTicking = false;
-        cloudsLastTime = 0;
-        return;
-      }
-
-      if (!cloudsLastTime) cloudsLastTime = time;
-      const delta = Math.min((time - cloudsLastTime) / 1000, 0.05);
-      cloudsLastTime = time;
-
-      serviceClouds.forEach((cloud, index) => {
-        const speed = Number(cloud.dataset.cloudSpeed) || 0.25;
-        cloudDriftY[index] -= (18 + speed * 58) * delta;
-      });
-
-      wrapServiceClouds();
-      renderServiceClouds();
-      requestAnimationFrame(animateServiceClouds);
-    };
-
-    const startServiceClouds = () => {
-      cloudsActive = true;
-      if (!cloudsTicking) {
-        cloudsTicking = true;
-        requestAnimationFrame(animateServiceClouds);
-      }
-    };
-
-    const stopServiceClouds = () => {
-      cloudsActive = false;
     };
 
     const readServiceProgress = () => {
@@ -96,11 +189,17 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const step = smoothProgress * (serviceCards.length - 1);
+      const skillsRect = skillsSection ? skillsSection.getBoundingClientRect() : null;
+      const skillsExit = skillsRect
+        ? clamp((window.innerHeight * 0.5 - skillsRect.top) / (window.innerHeight * 0.25), 0, 1)
+        : 0;
       const vw = window.innerWidth / 100;
       const vh = window.innerHeight / 100;
 
       serviceCards.forEach((card, index) => {
-        const exit = clamp(step - index, 0, 1);
+        const exit = index === serviceCards.length - 1
+          ? skillsExit
+          : clamp(step - index, 0, 1);
         const easedExit = easeInOut(exit);
         let x = 0;
         let y = 0;
@@ -129,7 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const speed = Number(cloud.dataset.cloudSpeed) || 0.25;
         cloudScrollY[index] = smoothProgress * -window.innerHeight * speed * 2.8;
       });
-      wrapServiceClouds();
       renderServiceClouds();
 
       if (smoothProgress !== targetProgress) {
@@ -142,20 +240,6 @@ document.addEventListener('DOMContentLoaded', () => {
     readServiceProgress();
     window.addEventListener('scroll', readServiceProgress, {passive: true});
     window.addEventListener('resize', readServiceProgress);
-
-    if ('IntersectionObserver' in window && serviceClouds.length) {
-      const cloudObserver = new IntersectionObserver((entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          startServiceClouds();
-        } else {
-          stopServiceClouds();
-        }
-      }, {threshold: 0.05});
-
-      cloudObserver.observe(servicesSection);
-    } else if (serviceClouds.length) {
-      startServiceClouds();
-    }
   }
 
   if (typeof gsap === 'undefined') return;
@@ -170,14 +254,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (servicesDuckWrap && servicesSection) {
     const clampDuckEntry = (value, min, max) => Math.min(Math.max(value, min), max);
-    const moveServicesDuck = gsap.quickTo(servicesDuckWrap, 'y', {duration: 2, ease: 'power3.out'});
+    const moveServicesDuck = gsap.quickTo(servicesDuckWrap, 'y', {duration: 0.8, ease: 'power3.out'});
 
     const updateServicesDuckEntry = () => {
       const rect = servicesSection.getBoundingClientRect();
       const entryDistance = window.innerHeight * 0.7;
       const progress = clampDuckEntry((window.innerHeight - rect.top) / entryDistance, 0, 1);
       const easedProgress = 1 - Math.pow(1 - progress, 3);
-      moveServicesDuck(-1500 * (1 - easedProgress));
+      const skillsRect = skillsSection ? skillsSection.getBoundingClientRect() : null;
+      const exitProgress = skillsRect
+        ? clampDuckEntry((window.innerHeight * 0.5 - skillsRect.top) / (window.innerHeight * 0.25), 0, 1)
+        : 0;
+      const easedExit = exitProgress * exitProgress * (3 - 2 * exitProgress);
+      const entryY = -1500 * (1 - easedProgress);
+      const exitY = -window.innerHeight * 0.95 * easedExit;
+
+      moveServicesDuck(entryY + exitY);
     };
 
     gsap.set(servicesDuckWrap, {y: 300});
@@ -244,12 +336,120 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const skillCards = [
+
+    {
+      id: 'front-end-development',
+      label: 'DEV',
+      title: 'FRONT-END DEVELOPMENT',
+      color: 'yellow',
+      capabilities: ['Responsive UI', 'Component Systems', 'Performance', 'Accessibility'],
+      tools: ['React', 'Next.js', 'Astro', 'TypeScript', 'JavaScript', 'Tailwind', 'Material UI', 'SCSS', 'CSS Modules', 'Framer Motion', 'Vite', 'Git', 'Vercel', 'Firebase', 'Supabase']
+    },
+    {
+      id: 'display-ads',
+      label: 'ADS',
+      title: 'DIGITAL ADVERTISING',
+      color: 'blue',
+      capabilities: ['Animated Banners', 'Display Campaigns', 'Responsive Creatives', 'Ad Optimization'],
+      tools: ['HTML5', 'CSS3', 'JavaScript', 'GSAP', 'SVG', 'Canvas', 'ClickTag', 'Polite Load', 'Google Ads', 'CM360', 'DV360', 'Yahoo', 'Sizmek', 'Media Specs', 'QA', 'File Weight']
+    },    
+    {
+      id: 'playable-ads',
+      label: 'ADS',
+      title: 'PLAYABLE ADS',
+      color: 'purple',
+      capabilities: ['Mini Games', 'Game Logic', 'Rich Media', 'Interactive Ads'],
+      tools: ['HTML5', 'JavaScript', 'Canvas', 'GSAP', 'Physics', 'Responsive', 'MRAID', 'ClickTag', 'Google Ads', 'DV360', 'Sizmek', 'Polite Load', 'Optimization', 'QA', 'Analytics', 'A/B Testing']
+    },
+
+    {
+      id: 'email-development',
+      label: 'EMAIL',
+      title: 'EMAIL DEVELOPMENT',
+      color: 'green',
+      capabilities: ['Responsive Email', 'Cross-client', 'Dark Mode', 'Accessibility'],
+      tools: ['HTML Email', 'CSS Inline', 'MJML', 'Litmus', 'Mailchimp', 'Brevo', 'Campaign Monitor', 'Outlook', 'Gmail', 'Apple Mail', 'Yahoo', 'Dark Mode', 'Preheader', 'QA', 'Testing']
+    },    
+    {
+      id: 'creative-development',
+      label: 'DEV',
+      title: 'CREATIVE DEVELOPMENT',
+      color: 'cyan',
+      capabilities: ['Interactive Websites', 'Creative Coding', 'Motion Systems', 'AI Experiences'],
+      tools: ['React', 'Next.js', 'GSAP', 'Three.js', 'Tailwind', 'TypeScript', 'Astro', 'Vite', 'HTML5', 'CSS3', 'SVG', 'WebGL', 'Git', 'Vercel', 'Cursor']
+    },    
+    {
+      id: 'motion-systems',
+      label: 'MOTION',
+      title: 'MOTION SYSTEMS',
+      color: 'red',
+      capabilities: ['Scroll Animation', 'Microinteractions', 'UI Animation', 'Page Transitions'],
+      tools: ['GSAP', 'ScrollTrigger', 'Lenis', 'Lottie', 'SVG', 'Canvas', 'Timeline', 'Easing', 'Parallax', 'Rive', 'Three.js', 'Splitting.js', 'EasePack', 'Motion Path', 'Observer', 'Flip']
+    },
+    {
+      id: 'creative-suite',
+      label: 'TOOLS',
+      title: 'CREATIVE SUITE',
+      color: 'violet',
+      capabilities: ['Graphic Design', 'Motion Design', 'Video Editing', 'Brand Assets'],
+      tools: ['Photoshop', 'Illustrator', 'After Effects', 'Premiere Pro', 'Adobe Animate', 'Lightroom', 'Figma', 'Rive', 'LottieFiles', 'Blender']
+    },
+    {
+      id: 'ai-automation',
+      label: 'AI',
+      title: 'AI',
+      color: 'pink',
+      capabilities: ['AI Assistants', 'Workflow Automation', 'Internal Tools', 'AI Prototypes'],
+      tools: ['OpenAI', 'Claude', 'MCP', 'Agents', 'Prompt Engineering', 'RAG', 'Make', 'n8n', 'Zapier', 'Webhooks', 'REST APIs', 'JSON', 'Cursor', 'Codex', 'GitHub Copilot', 'Notion']
+    },    
+    {
+      id: 'languages',
+      label: 'LANG',
+      title: 'LANGUAGES',
+      color: 'orange',
+      capabilities: ['Spanish Native', 'English B2', 'Technical English', 'Client Communication'],
+      tools: ['Spanish', 'English', 'Documentation', 'Technical Briefs', 'Client Emails', 'Presentations']
+    }
+  ];
+
   const skillsViewport = document.querySelector('[data-skill-viewport]');
   const skillsRail = document.querySelector('[data-skill-rail]');
+  if (skillsRail) {
+    const formatSkillTitle = (title) => {
+      if (title === 'UI / UX DESIGN') return 'UI / UX<br>DESIGN';
+      if (title.includes(' & ')) return title.replace(' & ', '<br>& ');
+      const words = title.split(' ');
+      if (words.length <= 2) return words.join('<br>');
+      return `${words.slice(0, -1).join(' ')}<br>${words[words.length - 1]}`;
+    };
+
+    const cardsMarkup = skillCards.map((card, index) => {
+      const number = String(index + 1).padStart(2, '0');
+      const title = formatSkillTitle(card.title);
+      const capabilities = card.capabilities.map((item) => `<li>${item}</li>`).join('');
+      const tools = card.tools.map((tool) => `<li>${tool}</li>`).join('');
+
+      return `
+        <article class="skill-tag skill-tag-${card.color}" data-skill-id="${card.id}">
+          <div class="skill-pin"><span></span></div>
+          <p class="skill-label">${card.label}<span>${number}</span></p>
+          <div class="skill-card-symbol" aria-hidden="true">${card.label.slice(0, 2)}</div>
+          <h3>${title}</h3>
+          <ul class="skill-capabilities">${capabilities}</ul>
+          <ul class="skill-tools">${tools}</ul>
+          <small>EST. 2020</small>
+        </article>
+      `;
+    }).join('');
+
+    skillsRail.innerHTML = cardsMarkup;
+  }
   const skillsSegmentLayer = document.querySelector('[data-skill-segment-layer]');
   const skillTags = skillsRail ? Array.from(skillsRail.querySelectorAll('.skill-tag')) : [];
 
   if (skillsViewport && skillsRail && skillTags.length) {
+    const skillsSticky = skillsViewport.closest('.skills-sticky');
     const skillSegments = skillsSegmentLayer
       ? skillTags.map(() => {
         const segment = document.createElement('span');
@@ -267,6 +467,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let isDragging = false;
     let lastPointerX = 0;
     let lastPointerTime = 0;
+    let scrollPreviewX = 0;
+    let scrollHandoffActive = false;
+    let scrollHandoffPending = false;
+    let scrollHandoffProgress = 0;
+    let scrollHandoffX = 0;
     const cardPhysics = skillTags.map((_, index) => ({
       angle: (index - (skillTags.length - 1) / 2) * 0.22,
       angularVelocity: 0,
@@ -280,9 +485,51 @@ document.addEventListener('DOMContentLoaded', () => {
       const railWidth = skillsRail.scrollWidth;
       maxX = 0;
       minX = Math.min(viewportWidth - railWidth, 0);
+      const railStyles = getComputedStyle(skillsRail);
+      const cardGap = parseFloat(railStyles.columnGap || railStyles.gap) || 0;
+      const cardStride = skillTags[0].offsetWidth + cardGap;
+      scrollPreviewX = Math.max(minX, -cardStride * 1.25);
       targetX = clampSkillRail(targetX, minX, maxX);
       currentX = clampSkillRail(currentX, minX, maxX);
       gsap.set(skillsRail, {x: currentX});
+      readSkillsScroll();
+    };
+
+    const readSkillsScroll = () => {
+      if (isDragging || prefersReducedMotion) return;
+
+      const section = skillsSection || skillsViewport;
+      const rect = section.getBoundingClientRect();
+      const pinnedHeight = skillsSticky?.offsetHeight || window.innerHeight;
+      const travel = Math.max(1, rect.height - pinnedHeight);
+      const progress = clampSkillRail(-rect.top / travel, 0, 1);
+      const easedProgress = progress * progress * (3 - 2 * progress);
+
+      if (easedProgress <= 0.001) {
+        scrollHandoffActive = false;
+        scrollHandoffPending = false;
+      } else if (scrollHandoffPending) {
+        scrollHandoffProgress = easedProgress;
+        scrollHandoffX = currentX;
+        scrollHandoffActive = true;
+        scrollHandoffPending = false;
+      }
+
+      if (scrollHandoffActive) {
+        if (easedProgress <= scrollHandoffProgress) {
+          const returnProgress = scrollHandoffProgress > 0.001
+            ? easedProgress / scrollHandoffProgress
+            : 0;
+          targetX = scrollHandoffX * returnProgress;
+        } else {
+          const forwardProgress = (easedProgress - scrollHandoffProgress)
+            / Math.max(0.001, 1 - scrollHandoffProgress);
+          targetX = scrollHandoffX + (scrollPreviewX - scrollHandoffX) * forwardProgress;
+        }
+      } else {
+        targetX = scrollPreviewX * easedProgress;
+      }
+      velocity = 0;
     };
 
     const updateSkillSegments = () => {
@@ -318,7 +565,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderSkillsRail = () => {
       if (!isDragging) {
         targetX += velocity;
-        velocity *= 0.94;
+        velocity *= 0.3;
         settleSkillRail();
       }
 
@@ -347,6 +594,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const onSkillsPointerDown = (event) => {
+      scrollHandoffActive = false;
+      scrollHandoffPending = false;
       isDragging = true;
       velocity = 0;
       targetX = currentX;
@@ -374,6 +623,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!isDragging) return;
 
       isDragging = false;
+      scrollHandoffPending = true;
       velocity = clampSkillRail(velocity, -42, 42);
       if (!prefersReducedMotion) {
         cardPhysics.forEach((physics, index) => {
@@ -388,6 +638,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     measureSkillsRail();
+    window.addEventListener('scroll', readSkillsScroll, {passive: true});
     window.addEventListener('resize', measureSkillsRail);
     skillsViewport.addEventListener('pointerdown', onSkillsPointerDown);
     skillsViewport.addEventListener('pointermove', onSkillsPointerMove);

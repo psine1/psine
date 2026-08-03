@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>HTML5 Campaigns — PSINE</title>
+		<meta name="description" content="Interactive HTML5 advertising campaigns by PSINE.">
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<body class="banners-page">
+		<header class="site-header standalone-header">
+			<a class="brand" href="index.html" aria-label="PSINE home"><img src="LOGO.svg" alt="PSINE"></a>
+			<a class="standalone-back" href="index.html#work"><span aria-hidden="true">←</span> Back to portfolio</a>
+		</header>
+
+		<main>
+			<section id="campaigns" class="campaigns-section" aria-labelledby="campaigns-title">
+				<header class="campaigns-heading">
+					<div>
+						<p class="section-eyebrow section-eyebrow-dark"><span>01</span> Campaigns</p>
+						<h1 id="campaigns-title">HTML5<br>Ads, live.</h1>
+					</div>
+					<p>Not screenshots. Real campaign builds running in the page, ready to replay, resize and explore.</p>
+				</header>
+
+				<div class="campaign-lab">
+					<div class="campaign-toolbar">
+						<div class="campaign-live"><span aria-hidden="true"></span><strong data-campaign-name>Launch Mode</strong> / Live preview</div>
+						<div class="campaign-sizes" aria-label="Banner size">
+							<button type="button" class="is-active" data-banner-size="300x250" aria-pressed="true">300×250</button>
+							<button type="button" data-banner-size="728x90" aria-pressed="false">728×90</button>
+							<button type="button" data-banner-size="320x100" aria-pressed="false">320×100</button>
+						</div>
+						<button class="campaign-replay" type="button" data-banner-replay>Replay <span aria-hidden="true">↻</span></button>
+					</div>
+
+					<div class="campaign-stage" data-banner-stage data-size="300x250">
+						<div class="campaign-frame-shell">
+							<iframe data-banner-frame src="banners/launch-mode.html" title="Launch Mode HTML5 campaign preview" loading="eager" sandbox="allow-scripts allow-popups" allow="autoplay"></iframe>
+						</div>
+					</div>
+
+					<div class="campaign-browser-footer"><p>Interactive HTML5 preview</p><p>Built with HTML / CSS / JavaScript</p></div>
+				</div>
+
+				<div class="campaign-index" aria-label="Campaign selection">
+					<button class="campaign-item is-active" type="button" data-campaign data-src="banners/launch-mode.html" data-name="Launch Mode" data-title="Launch Mode HTML5 campaign preview" aria-pressed="true">
+						<span class="campaign-item-number">01</span><span><strong>Launch Mode</strong><small>Animated display campaign</small></span><span class="campaign-item-arrow" aria-hidden="true">↗</span>
+					</button>
+					<button class="campaign-item" type="button" data-campaign data-src="banners/play-to-win.html" data-name="Play to Win" data-title="Play to Win interactive HTML5 campaign preview" aria-pressed="false">
+						<span class="campaign-item-number">02</span><span><strong>Play to Win</strong><small>Interactive rich media unit</small></span><span class="campaign-item-arrow" aria-hidden="true">↗</span>
+					</button>
+				</div>
+
+				<div class="portfolio-endnote">
+					<p>More campaigns can be added as hosted iframe sources.</p>
+					<a href="index.html#work">Selected work <span aria-hidden="true">→</span></a>
+				</div>
+			</section>
+		</main>
+
+		<script src="banners.js"></script>
+	</body>
+</html>
