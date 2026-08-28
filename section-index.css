@@ -1,0 +1,57 @@
+:root {
+	--section-index-height: 52px;
+}
+
+.section-index {
+	display: flex;
+	height: var(--section-index-height);
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	padding: 0 var(--page-gutter, 36px);
+	color: inherit;
+	font-family: "Courier New", monospace;
+	font-size: clamp(8px, 0.62vw, 10px);
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: 0.045em;
+	text-transform: uppercase;
+	pointer-events: none;
+}
+
+.section-index::before {
+	content: "";
+	position: absolute;
+	left: var(--page-gutter, 36px);
+	right: var(--page-gutter, 36px);
+	top: 0;
+	height: 1px;
+	background: currentColor;
+	opacity: 0.28;
+}
+
+.section-index span {
+	white-space: nowrap;
+}
+
+.section-index span:last-child {
+	text-align: right;
+}
+
+@media (max-width: 720px) {
+	:root {
+		--section-index-height: calc(46px + env(safe-area-inset-bottom));
+	}
+
+	.section-index {
+		gap: 12px;
+		padding: 0 var(--page-gutter, 18px) env(safe-area-inset-bottom);
+		font-size: 8px;
+		letter-spacing: 0.025em;
+	}
+
+	.section-index::before {
+		left: var(--page-gutter, 18px);
+		right: var(--page-gutter, 18px);
+	}
+}

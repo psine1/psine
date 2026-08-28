@@ -3,6 +3,64 @@ document.addEventListener('DOMContentLoaded', () => {
   const loader = document.getElementById('loader');
   if (loader) loader.remove();
 
+  const currentYear = document.querySelector('[data-current-year]');
+  if (currentYear) currentYear.textContent = String(new Date().getFullYear());
+
+  const contactSection = document.querySelector('[data-contact-section]');
+  const magneticButton = document.querySelector('[data-magnetic-button]');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (contactSection) {
+    contactSection.classList.add('is-ready');
+    const contactObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        contactSection.classList.add('is-visible');
+        observer.unobserve(contactSection);
+      });
+    }, {threshold: 0.22});
+    contactObserver.observe(contactSection);
+  }
+
+  if (magneticButton && !reducedMotion && window.matchMedia('(hover: hover)').matches) {
+    let magneticFrame = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    const renderMagneticButton = () => {
+      currentX += (targetX - currentX) * 0.14;
+      currentY += (targetY - currentY) * 0.14;
+      magneticButton.style.setProperty('--magnetic-x', `${currentX}px`);
+      magneticButton.style.setProperty('--magnetic-y', `${currentY}px`);
+      magneticButton.style.setProperty('--magnetic-rotate', `${currentX * 0.045}deg`);
+
+      if (Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05) {
+        magneticFrame = requestAnimationFrame(renderMagneticButton);
+      } else {
+        magneticFrame = 0;
+      }
+    };
+
+    const startMagneticRender = () => {
+      if (!magneticFrame) magneticFrame = requestAnimationFrame(renderMagneticButton);
+    };
+
+    magneticButton.addEventListener('pointermove', (event) => {
+      const rect = magneticButton.getBoundingClientRect();
+      targetX = (event.clientX - rect.left - rect.width / 2) * 0.18;
+      targetY = (event.clientY - rect.top - rect.height / 2) * 0.18;
+      startMagneticRender();
+    });
+
+    magneticButton.addEventListener('pointerleave', () => {
+      targetX = 0;
+      targetY = 0;
+      startMagneticRender();
+    });
+  }
+
   const workSection = document.querySelector('[data-work-section]');
   const workViewport = document.querySelector('[data-work-viewport]');
   const workRail = document.querySelector('[data-work-rail]');
