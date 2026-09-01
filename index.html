@@ -20,7 +20,13 @@
 				<img src="LOGO.svg" alt="PSINE">
 			</a>
 			<nav class="header-controls" aria-label="Primary">
-				<a class="btn-talk" href="#contact">LET'S TALK</a>
+				<a class="btn-talk" href="#contact" data-talk-label data-contact-open aria-label="Let's Talk!" aria-haspopup="dialog" aria-controls="contact-dialog">
+					<span class="talk-label-lead" data-talk-lead>LET'S</span>
+					<span class="talk-word-switch" data-talk-word-switch>
+						<span data-word-default>TALK!</span>
+						<span data-word-alternate>CUACK!</span>
+					</span>
+				</a>
 				<button class="btn-menu" type="button" aria-label="Open menu">
 					<span>MENU</span>
 					<span class="menu-icon" aria-hidden="true"></span>
@@ -80,7 +86,7 @@
 				</div>
 			</section>
 
-			<section id="services" class="services-section" aria-label="Core Services">
+			<section id="services" class="services-section scroll-snap-exempt" aria-label="Core Services">
 				<div class="services-cloud-field" aria-hidden="true">
 					<img src="duck1/cloud.png" alt="" class="services-cloud services-cloud-a" data-cloud-speed="0.28">
 					<img src="duck1/cloud.png" alt="" class="services-cloud services-cloud-b" data-cloud-speed="0.44">
@@ -175,7 +181,7 @@
 				</div>
 			</section>
 
-			<section class="skills-section" aria-label="Skills">
+			<section class="skills-section scroll-snap-exempt" aria-label="Skills">
 				<div class="skills-sticky">
 					<div class="skills-heading">
 						<h2>Skills</h2>
@@ -195,7 +201,7 @@
 				</div>
 			</section>
 
-			<section id="work" class="portfolio-section" aria-labelledby="portfolio-title" data-work-section>
+			<section id="work" class="portfolio-section scroll-snap-exempt" aria-labelledby="portfolio-title" data-work-section>
 				<div class="work-sticky">
 					<header class="portfolio-heading">
 						<h2 id="portfolio-title">Selected<br>Work.</h2>
@@ -254,39 +260,32 @@
 			</section>
 
 			<section id="contact" class="contact-section" aria-labelledby="contact-title" data-contact-section>
-				<div class="contact-marquee" aria-hidden="true">
-					<div class="contact-marquee-track">
-						<span>HAVE AN IDEA? LET'S MAKE IT MOVE <i>✦</i></span>
-						<span>HAVE AN IDEA? LET'S MAKE IT MOVE <i>✦</i></span>
-						<span>HAVE AN IDEA? LET'S MAKE IT MOVE <i>✦</i></span>
-						<span>HAVE AN IDEA? LET'S MAKE IT MOVE <i>✦</i></span>
-					</div>
-				</div>
-
-				<div class="contact-shape contact-shape-pink" aria-hidden="true"></div>
-				<div class="contact-shape contact-shape-blue" aria-hidden="true"></div>
-
 				<div class="contact-inner">
 					<div class="contact-copy">
 						<p class="contact-kicker"><span aria-hidden="true"></span> Available for selected projects</p>
-						<h2 id="contact-title">
-							<span class="contact-line"><span>Let's</span></span>
-							<span class="contact-line"><span>Cuack!</span></span>
+						<h2 id="contact-title" data-contact-title aria-label="Let's Talk!">
+							<span class="contact-line"><span data-contact-lead>Let's</span></span>
+							<span class="contact-line contact-word-switch" data-contact-word-switch>
+								<span data-word-default>Talk!</span>
+								<span data-word-alternate>Cuack!</span>
+							</span>
 						</h2>
 						<p class="contact-intro">Have a project, campaign or slightly impossible idea? Tell me about it and let's build something people remember.</p>
 					</div>
 
-					<a class="contact-cta" href="mailto:patricio.sine@gmail.com?subject=Project%20inquiry%20%E2%80%94%20PSINE" data-magnetic-button aria-label="Start a project by email">
-						<svg class="contact-cta-orbit" viewBox="0 0 200 200" aria-hidden="true">
-							<defs>
-								<path id="contact-orbit-path" d="M 100,100 m -72,0 a 72,72 0 1,1 144,0 a 72,72 0 1,1 -144,0"></path>
-							</defs>
-							<text>
-								<textPath href="#contact-orbit-path">START A PROJECT • START A PROJECT • </textPath>
-							</text>
-						</svg>
-						<span class="contact-cta-core" aria-hidden="true"><span>↗</span></span>
-					</a>
+					<svg class="contact-cue" viewBox="0 0 360 112" aria-hidden="true">
+						<path d="M8 11C13 68 83 105 166 99C239 94 301 75 344 50M318 42L344 50L337 79"></path>
+					</svg>
+
+					<div class="contact-cta-scene" data-contact-cta-scene>
+						<a class="contact-cta" href="mailto:patricio.sine@gmail.com?subject=Project%20inquiry%20%E2%80%94%20PSINE" data-magnetic-button data-contact-open aria-label="Start a project" aria-haspopup="dialog" aria-controls="contact-dialog">
+							<img class="contact-spark contact-spark-one" src="images/button-star-2.svg" alt="" aria-hidden="true">
+							<img class="contact-spark contact-spark-two" src="images/button-star-1.svg" alt="" aria-hidden="true">
+							<img class="contact-cta-top" src="images/button-top.svg" alt="" aria-hidden="true">
+
+							<img class="contact-cta-base" src="images/button-bottom.svg" alt="" aria-hidden="true">
+						</a>
+					</div>
 				</div>
 
 				<div class="section-index" aria-hidden="true">
@@ -295,6 +294,64 @@
 				</div>
 			</section>
 		</main>
+
+		<dialog class="contact-dialog" id="contact-dialog" data-contact-dialog aria-labelledby="contact-dialog-title" aria-describedby="contact-dialog-description">
+			<div class="contact-dialog-shell" data-contact-dialog-shell>
+				<div class="contact-dialog-topline">
+					<p><span aria-hidden="true"></span> Available for selected projects</p>
+					<button class="contact-dialog-close" type="button" data-contact-close aria-label="Close contact form">
+						<span>CLOSE</span><span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="contact-dialog-heading">
+					<p class="contact-dialog-index">05 / CONTACT</p>
+					<h2 id="contact-dialog-title">Tell me what<br><em>we're making.</em></h2>
+					<p id="contact-dialog-description">A rough idea is enough. Share the essentials and your email app will prepare the message.</p>
+				</div>
+
+				<form class="contact-dialog-form" action="mailto:patricio.sine@gmail.com" method="post" enctype="text/plain" data-contact-form>
+					<div class="contact-dialog-fields">
+						<label>
+							<span>Your name</span>
+							<input type="text" name="name" autocomplete="name" placeholder="Donald Duck" required>
+							<small class="contact-field-error">Please add your name.</small>
+						</label>
+						<label>
+							<span>Your email</span>
+							<input type="email" name="email" autocomplete="email" placeholder="hello@example.com" required>
+							<small class="contact-field-error">Please enter a valid email.</small>
+						</label>
+					</div>
+
+					<label class="contact-dialog-message">
+						<span>Tell me about the project</span>
+						<textarea name="message" rows="4" placeholder="The idea, timing, scope or whatever you already know..." required></textarea>
+						<small class="contact-field-error">A few details will help me understand the idea.</small>
+					</label>
+
+					<div class="contact-dialog-actions">
+						<button class="contact-dialog-submit" type="submit">
+							<span data-contact-submit-label>SEND THE IDEA</span>
+							<span class="contact-submit-arrow" aria-hidden="true">&nearr;</span>
+							<span class="contact-submit-spinner" aria-hidden="true"></span>
+						</button>
+						<a href="mailto:patricio.sine@gmail.com">Or email me directly <span aria-hidden="true">&nearr;</span></a>
+					</div>
+				</form>
+
+				<section class="contact-dialog-feedback" data-contact-feedback hidden tabindex="-1" aria-live="polite" aria-label="Email draft ready">
+					<div class="contact-feedback-icon" aria-hidden="true"><span>&check;</span></div>
+					<p class="contact-feedback-kicker">EMAIL DRAFT READY</p>
+					<h3>One last<br>little click.</h3>
+					<p>Your email app should be open with the project details filled in. Review the message and press <strong>Send</strong> there.</p>
+					<div class="contact-feedback-actions">
+						<a class="contact-feedback-primary" href="mailto:patricio.sine@gmail.com" data-contact-mail-link>OPEN EMAIL APP <span aria-hidden="true">&nearr;</span></a>
+						<button type="button" data-contact-reset>Write another message</button>
+					</div>
+				</section>
+			</div>
+		</dialog>
 
 		<footer class="site-footer">
 			<div class="site-footer-inner">
@@ -317,6 +374,8 @@
 		</footer>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+		<script src="horizontal-gallery.js"></script>
 		<script src="script.js"></script>
 	</body>
 </html>

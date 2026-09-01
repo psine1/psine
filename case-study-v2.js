@@ -9,12 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	const galleryProgress = document.querySelector('[data-cs2-gallery-progress]');
 	const productSection = document.querySelector('.cs2-product');
 	const productSticky = document.querySelector('.cs2-product-sticky');
-	const challengeSection = document.querySelector('.cs2-challenge');
-	const challengeCards = Array.from(document.querySelectorAll('.cs2-challenge-grid article'));
-	let galleryMaxScroll = () => 0;
-	let syncGalleryProgress = () => {};
-	let galleryScrollTrigger = null;
-	let syncPinnedScrollPosition = () => {};
 
 	if (year) year.textContent = String(new Date().getFullYear());
 
@@ -117,104 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
 		syncVideoButton();
 	}
 
-	if (gallery) {
-		let pointerDown = false;
-		let dragging = false;
-		let startX = 0;
-		let startY = 0;
-		let startScroll = 0;
-		let lastX = 0;
-		let lastTime = 0;
-		let velocity = 0;
-		let inertiaFrame = 0;
-
-		galleryMaxScroll = () => Math.max(gallery.scrollWidth - gallery.clientWidth, 0);
-
-		syncGalleryProgress = () => {
-			if (!galleryProgress) return;
-			const maximum = galleryMaxScroll();
-			galleryProgress.style.transform = `scaleX(${maximum ? gallery.scrollLeft / maximum : 1})`;
-		};
-
-		const runInertia = () => {
-			velocity *= 0.92;
-			gallery.scrollLeft -= velocity;
-			syncPinnedScrollPosition();
-			if (Math.abs(velocity) > 0.25 && gallery.scrollLeft > 0 && gallery.scrollLeft < galleryMaxScroll()) {
-				inertiaFrame = requestAnimationFrame(runInertia);
-			} else {
-				inertiaFrame = 0;
-			}
-		};
-
-		gallery.addEventListener('pointerdown', (event) => {
-			if (event.button !== 0) return;
-			if (inertiaFrame) cancelAnimationFrame(inertiaFrame);
-			pointerDown = true;
-			dragging = false;
-			startX = event.clientX;
-			startY = event.clientY;
-			startScroll = gallery.scrollLeft;
-			lastX = event.clientX;
-			lastTime = performance.now();
-			velocity = 0;
+	if (gallery && productSection && productSticky && typeof window.initPinnedHorizontalGallery === 'function') {
+		window.initPinnedHorizontalGallery({
+			section: productSection,
+			sticky: productSticky,
+			viewport: gallery,
+			progress: galleryProgress
 		});
-
-		gallery.addEventListener('pointermove', (event) => {
-			if (!pointerDown) return;
-			const deltaX = event.clientX - startX;
-			const deltaY = event.clientY - startY;
-
-			if (!dragging && Math.abs(deltaX) > 7 && Math.abs(deltaX) > Math.abs(deltaY)) {
-				dragging = true;
-				gallery.classList.add('is-dragging');
-				gallery.setPointerCapture(event.pointerId);
-			}
-
-			if (!dragging) return;
-			event.preventDefault();
-			gallery.scrollLeft = startScroll - deltaX;
-			syncPinnedScrollPosition();
-			const now = performance.now();
-			const elapsed = Math.max(now - lastTime, 16);
-			velocity = velocity * 0.65 + (event.clientX - lastX) * (16 / elapsed) * 0.35;
-			lastX = event.clientX;
-			lastTime = now;
-		}, {passive: false});
-
-		const finishGalleryDrag = (event) => {
-			if (!pointerDown) return;
-			pointerDown = false;
-			if (!dragging) return;
-			dragging = false;
-			gallery.classList.remove('is-dragging');
-			if (gallery.hasPointerCapture(event.pointerId)) gallery.releasePointerCapture(event.pointerId);
-			velocity *= 1.8;
-			inertiaFrame = requestAnimationFrame(runInertia);
-		};
-
-		gallery.addEventListener('pointerup', finishGalleryDrag);
-		gallery.addEventListener('pointercancel', finishGalleryDrag);
-		gallery.addEventListener('scroll', syncGalleryProgress, {passive: true});
-		gallery.addEventListener('keydown', (event) => {
-			if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
-			event.preventDefault();
-			const direction = event.key === 'ArrowRight' ? 1 : -1;
-			if (galleryScrollTrigger?.isActive) {
-				window.scrollBy({
-					top: direction * (galleryScrollTrigger.end - galleryScrollTrigger.start) * 0.24,
-					behavior: reducedMotion ? 'auto' : 'smooth'
-				});
-				return;
-			}
-			gallery.scrollBy({
-				left: direction * gallery.clientWidth * 0.72,
-				behavior: reducedMotion ? 'auto' : 'smooth'
-			});
-		});
-
-		window.addEventListener('resize', syncGalleryProgress);
-		syncGalleryProgress();
 	}
 
 	if (window.gsap && window.ScrollTrigger && !reducedMotion) {
@@ -268,81 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				once: true
 			}
 		});
-
-		if (gallery && productSection && productSticky) {
-			const galleryMedia = window.gsap.matchMedia();
-			galleryMedia.add('(min-width: 761px)', () => {
-				const horizontalTween = window.gsap.to(gallery, {
-					scrollLeft: () => galleryMaxScroll(),
-					ease: 'none',
-					scrollTrigger: {
-						trigger: productSection,
-						start: 'top top',
-						end: () => `+=${Math.max(galleryMaxScroll() * 1.12, window.innerHeight * 1.5)}`,
-						pin: productSticky,
-						scrub: 0.75,
-						anticipatePin: 1,
-						invalidateOnRefresh: true,
-						onUpdate: syncGalleryProgress,
-						onRefresh: syncGalleryProgress
-					}
-				});
-
-				galleryScrollTrigger = horizontalTween.scrollTrigger;
-				syncPinnedScrollPosition = () => {
-					if (!galleryScrollTrigger || galleryScrollTrigger.isActive === false) return;
-					const maximum = galleryMaxScroll();
-					if (!maximum) return;
-					const targetScroll = galleryScrollTrigger.start
-						+ (gallery.scrollLeft / maximum) * (galleryScrollTrigger.end - galleryScrollTrigger.start);
-					if (Math.abs(window.scrollY - targetScroll) > 1) window.scrollTo(0, targetScroll);
-				};
-
-				return () => {
-					galleryScrollTrigger = null;
-					syncPinnedScrollPosition = () => {};
-					gallery.scrollLeft = 0;
-				};
-			});
-		}
-
-		if (challengeSection && challengeCards.length > 1) {
-			const challengeMedia = window.gsap.matchMedia();
-			challengeMedia.add('(max-width: 760px)', () => {
-				challengeCards.forEach((card, index) => {
-					window.gsap.set(card, {zIndex: index + 1});
-				});
-
-				const stackTimeline = window.gsap.timeline({
-					scrollTrigger: {
-						trigger: challengeSection,
-						start: 'top top',
-						end: () => `+=${Math.max(window.innerHeight * 0.65, 480)}`,
-						pin: challengeSection,
-						pinSpacing: true,
-						scrub: 0.65,
-						anticipatePin: 1,
-						invalidateOnRefresh: true
-					}
-				});
-
-				challengeCards.slice(1).forEach((card, index) => {
-					stackTimeline.fromTo(card, {
-						y: () => card.offsetHeight + 24
-					}, {
-						y: (index + 1) * 8,
-						duration: 1,
-						ease: 'none'
-					}, index);
-				});
-
-				return () => {
-					stackTimeline.scrollTrigger?.kill();
-					stackTimeline.kill();
-					window.gsap.set(challengeCards, {clearProps: 'transform,zIndex'});
-				};
-			});
-		}
 
 	}
 });

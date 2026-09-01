@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        970x250-std-dcm
+    </title>
+    <!-- Digitaland Template Ver.1.2 -->
+    <meta name="ad.size" content="width=970,height=250">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" href="dl_reset.css">
+    <link rel="stylesheet" href="dl_style.css">
+
+</head>
+
+<body>
+    <div id="loader-container">
+        <div class="circle"></div>
+    </div>
+
+    <div class="banner positionAb" id="banner_content">
+        <div class="positionAb wrapAd">
+
+            <div id="fr1" class="positionAb fullSize">
+
+                <div id="bg" class="positionAb fullSize">
+                    <img src="images/bg1.jpg" alt="">
+                </div>
+                <canvas id="transitionCanvas" aria-hidden="true"></canvas>
+
+                <div id="txt-1-1" class="positionAb fullSize"> <img src="images/txt-1-1.png" alt=""> </div>
+
+                <div id="txt-2-1" class="positionAb fullSize"> <img src="images/txt-2-1.png" alt=""> </div>
+
+                <div id="txt-3-1" class="positionAb fullSize"> <img src="images/txt-3-1.png" alt=""> </div>
+        
+            </div>  
+            
+            <div id="fr2" class="positionAb fullSize">
+                <div id="bg2" class="positionAb fullSize"> <img src="images/bg2.jpg" alt=""> </div>          
+                
+
+                
+                <div id="character2" class="positionAb fullSize"> <img src="images/character2.png" alt=""> </div>          
+
+                <div id="wrapCharacter" class="positionAb fullSize">
+                    <div id="cape" class="positionAb fullSize">
+                        <img id="capeFallback" src="images/cape.png" alt="">
+                        <canvas id="capeCanvas" aria-hidden="true"></canvas>
+                    </div>                       
+                    <div id="character1" class="positionAb fullSize">
+                        <img id="characterFallback" src="images/character1.png" alt="">
+                        <canvas id="characterCanvas" aria-hidden="true"></canvas>
+                    </div>   
+                <div id="sword" class="positionAb fullSize"> <img src="images/sword.png" alt=""> </div>          
+                <div id="swordShine" class="positionAb fullSize"> <img src="images/sword-shine.png" alt=""> </div>          
+
+                </div>
+                
+                <div id="gradient" class="positionAb fullSize"> <img src="images/gradient.png" alt=""> </div>            
+
+
+                <canvas id="fireCanvas"></canvas>
+
+                <div id="logo" class="positionAb fullSize"> <img src="images/logo.png" alt=""> </div>            
+                <div id="cta" class="positionAb fullSize">
+                    <img src="images/cta.png" alt="">
+                    <img id="ctaGlow" src="images/cta.png" alt="" aria-hidden="true">
+                </div>      
+                <div id="light" class="positionAb fullSize"> <img src="images/light.jpg" alt=""> </div>            
+
+            </div>
+
+            <div id="legal" class="positionAb fullSize"> <img src="images/legal.png" alt=""> </div>            
+
+        </div>
+        <div id="clickTag" class="positionAb fullSize"></div>
+    </div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
+<script>
+var clickTag = "https://www.google.com/";
+var WATERCOLOR_SETTINGS = {
+    blur: 0.65 // 0 = nitido, 1 = mas difuso
+};
+var CAPE_WIND_SETTINGS = {
+    strength: 1.4,  // 0 = quieta, 1 = viento completo; admite hasta 1.5
+    speed: 1        // velocidad del viento
+};
+var HAIR_WIND_SETTINGS = {
+    strength: 0.65,
+    speed: 1.0,    // sincronizada con la capa
+    frontStrength: 2.2, // mechones que caen sobre la frente
+    backStrength: 2.1,  // volumen y colita de la parte trasera
+    topStrength: 1.65,  // solamente pelos sueltos del contorno superior
+    edgeStrength: 1.9   // borde exterior derecho
+};
+</script>
+
+<script src="dl_main.js"></script>
+
+</html>

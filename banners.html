@@ -2,64 +2,274 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<title>HTML5 Campaigns — PSINE</title>
-		<meta name="description" content="Interactive HTML5 advertising campaigns by PSINE.">
-		<link rel="stylesheet" href="section-index.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="HTML5 banner case study by PSINE: responsive display campaigns, motion and interactive rich media.">
+		<meta name="theme-color" content="#202020">
+		<title>HTML5 Banners — Case Study | PSINE</title>
+		<link rel="preload" href="NHaasGroteskDSPro-55Rg.otf" as="font" type="font/otf" crossorigin>
+		<link rel="preload" href="NHaasGroteskDSPro-95Blk.otf" as="font" type="font/otf" crossorigin>
 		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="case-study-v2.css">
+		<link rel="stylesheet" href="banners.css">
 	</head>
-	<body class="banners-page">
-		<header class="site-header standalone-header">
-			<a class="brand" href="index.html" aria-label="PSINE home"><img src="LOGO.svg" alt="PSINE"></a>
-			<a class="standalone-back" href="index.html#work"><span aria-hidden="true">←</span> Back to portfolio</a>
+	<body class="cs2-page banners-page">
+		<div class="cs2-progress" aria-hidden="true"><span data-cs2-progress></span></div>
+
+		<header class="site-header cs2-header">
+			<a class="brand" href="index.html" aria-label="Back to PSINE home">
+				<img src="LOGO.svg" alt="PSINE">
+			</a>
+			<nav class="header-controls" aria-label="Banner case study navigation">
+				<a class="btn-talk" href="mailto:patricio.sine@gmail.com?subject=Project%20inquiry%20%E2%80%94%20PSINE">LET'S TALK</a>
+				<a class="cs2-back" href="index.html#work"><span aria-hidden="true">←</span> SELECTED WORK</a>
+			</nav>
 		</header>
 
 		<main>
-			<section id="campaigns" class="campaigns-section" aria-labelledby="campaigns-title">
-				<header class="campaigns-heading">
-					<div>
-						<p class="section-eyebrow section-eyebrow-dark"><span>01</span> Campaigns</p>
-						<h1 id="campaigns-title">HTML5<br>Ads, live.</h1>
-					</div>
-					<p>Not screenshots. Real campaign builds running in the page, ready to replay, resize and explore.</p>
-				</header>
-
-				<div class="campaign-lab">
-					<div class="campaign-toolbar">
-						<div class="campaign-live"><span aria-hidden="true"></span><strong data-campaign-name>Launch Mode</strong> / Live preview</div>
-						<div class="campaign-sizes" aria-label="Banner size">
-							<button type="button" class="is-active" data-banner-size="300x250" aria-pressed="true">300×250</button>
-							<button type="button" data-banner-size="728x90" aria-pressed="false">728×90</button>
-							<button type="button" data-banner-size="320x100" aria-pressed="false">320×100</button>
-						</div>
-						<button class="campaign-replay" type="button" data-banner-replay>Replay <span aria-hidden="true">↻</span></button>
-					</div>
-
-					<div class="campaign-stage" data-banner-stage data-size="300x250">
-						<div class="campaign-frame-shell">
-							<iframe data-banner-frame src="banners/launch-mode.html" title="Launch Mode HTML5 campaign preview" loading="eager" sandbox="allow-scripts allow-popups" allow="autoplay"></iframe>
-						</div>
-					</div>
-
-					<div class="campaign-browser-footer"><p>Interactive HTML5 preview</p><p>Built with HTML / CSS / JavaScript</p></div>
+			<!-- HERO: misma estructura de case-study-v2; el media central se adapta a previews HTML5. -->
+			<section class="cs2-hero" aria-labelledby="cs2-title">
+				<div class="cs2-cloud-field" aria-hidden="true">
+					<img class="cs2-cloud cs2-cloud-a" src="duck1/cloud.png" alt="" data-cs2-cloud>
+					<img class="cs2-cloud cs2-cloud-b" src="duck1/cloud.png" alt="" data-cs2-cloud>
+					<img class="cs2-cloud cs2-cloud-c" src="duck1/cloud.png" alt="" data-cs2-cloud>
 				</div>
 
-				<div class="campaign-index" aria-label="Campaign selection">
-					<button class="campaign-item is-active" type="button" data-campaign data-src="banners/launch-mode.html" data-name="Launch Mode" data-title="Launch Mode HTML5 campaign preview" aria-pressed="true">
-						<span class="campaign-item-number">01</span><span><strong>Launch Mode</strong><small>Animated display campaign</small></span><span class="campaign-item-arrow" aria-hidden="true">↗</span>
-					</button>
-					<button class="campaign-item" type="button" data-campaign data-src="banners/play-to-win.html" data-name="Play to Win" data-title="Play to Win interactive HTML5 campaign preview" aria-pressed="false">
-						<span class="campaign-item-number">02</span><span><strong>Play to Win</strong><small>Interactive rich media unit</small></span><span class="campaign-item-arrow" aria-hidden="true">↗</span>
-					</button>
+				<div class="cs2-shell cs2-hero-grid">
+					<div class="cs2-hero-title" data-cs2-reveal>
+						<p class="cs2-kicker"><span>01</span> Campaign case study / 2026</p>
+						<h1 id="cs2-title">Built small.<br>Made to <em>move.</em></h1>
+					</div>
+
+					<aside class="cs2-project-summary" aria-label="Project summary" data-cs2-reveal>
+						<div class="cs2-summary-topline"><span>HTML5 BANNERS</span><span>2026</span></div>
+						<p>Responsive campaign creative where art direction, motion and front-end come together in one production-ready system.</p>
+
+						<ul class="cs2-tech-list" aria-label="Services and technologies">
+							<li>Art direction</li>
+							<li>Motion</li>
+							<li>HTML5</li>
+							<li>JavaScript</li>
+						</ul>
+
+						<div class="cs2-actions">
+							<a class="cs2-button cs2-button-primary" href="#campaigns">
+								<span>Explore live work</span>
+								<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-6-6 6 6 6-6"/></svg>
+							</a>
+							<a class="cs2-button cs2-button-ghost" href="index.html#work">
+								<span>Selected work</span>
+								<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+							</a>
+						</div>
+					</aside>
+
+					<div class="cs2-hero-media" data-cs2-media data-cs2-reveal>
+						<div class="bn-live-player">
+							<div class="bn-player-toolbar">
+								<p class="bn-player-status"><span aria-hidden="true"></span><strong data-campaign-name>Onimusha</strong> / Live preview</p>
+								<div class="bn-player-campaigns" aria-label="Campaign selection">
+									<button type="button" data-campaign="launch-mode" data-src="banners/launch-mode.html" data-name="Launch Mode" data-title="Launch Mode HTML5 campaign preview" aria-pressed="false">01</button>
+									<button type="button" data-campaign="play-to-win" data-src="banners/play-to-win.html" data-name="Play to Win" data-title="Play to Win interactive HTML5 campaign preview" aria-pressed="false">02</button>
+									<button class="is-active" type="button" data-campaign="onimusha" data-name="Onimusha" data-title="Onimusha HTML5 campaign preview" aria-pressed="true">03</button>
+								</div>
+								<button class="bn-player-replay" type="button" data-banner-replay>Replay <span aria-hidden="true">↻</span></button>
+							</div>
+
+							<div class="bn-player-stage" data-banner-stage data-size="300x250">
+								<div class="bn-banner-frame">
+									<iframe data-banner-frame src="banners/onimusha/300x250/index.html" title="Onimusha 300 by 250 HTML5 campaign preview" sandbox="allow-scripts" loading="eager" scrolling="no"></iframe>
+								</div>
+							</div>
+
+							<div class="bn-player-footer">
+								<div class="bn-size-controls" aria-label="Banner size">
+									<button class="is-active" type="button" data-banner-size="300x250" data-src="banners/onimusha/300x250/index.html" data-title="Onimusha 300 by 250 HTML5 campaign preview" aria-pressed="true">300 × 250</button>
+									<button type="button" data-banner-size="160x600" data-src="banners/onimusha/160x600/index.html" data-title="Onimusha 160 by 600 HTML5 campaign preview" aria-pressed="false">160 × 600</button>
+									<button type="button" data-banner-size="300x600" data-src="banners/onimusha/300x600/index.html" data-title="Onimusha 300 by 600 HTML5 campaign preview" aria-pressed="false">300 × 600</button>
+									<button type="button" data-banner-size="728x90" data-src="banners/onimusha/728x90/index.html" data-title="Onimusha 728 by 90 HTML5 campaign preview" aria-pressed="false">728 × 90</button>
+									<button type="button" data-banner-size="970x66" data-src="banners/onimusha/970x66/index.html" data-title="Onimusha 970 by 66 HTML5 campaign preview" aria-pressed="false">970 × 66</button>
+									<button type="button" data-banner-size="320x100" data-src="banners/onimusha/320x100/index.html" data-title="Onimusha 320 by 100 HTML5 campaign preview" aria-pressed="false">320 × 100</button>
+								</div>
+								<p>HTML / CSS / JavaScript</p>
+							</div>
+						</div>
+						<p class="cs2-media-caption"><span>HTML5 campaigns / Interactive preview</span><span>Select · resize · replay</span></p>
+					</div>
 				</div>
 
-				<div class="portfolio-endnote">
-					<p>More campaigns can be added as hosted iframe sources.</p>
-					<a href="index.html#work">Selected work <span aria-hidden="true">→</span></a>
+				<div class="cs2-section-index" aria-hidden="true"><span>01 / INTRO</span><span>HTML5 CAMPAIGN CASE</span></div>
+			</section>
+
+			<!-- OVERVIEW: misma composición editorial y facts de case-study-v2. -->
+			<section class="cs2-section cs2-overview" id="overview">
+				<div class="cs2-shell cs2-overview-grid">
+					<p class="cs2-section-label" data-cs2-reveal>Overview</p>
+					<div class="cs2-overview-story" data-cs2-reveal>
+						<h2>A few seconds.<br>Make them count.</h2>
+						<div class="cs2-overview-copy">
+							<p>A banner has very little space and even less time. The idea needs to read fast, move with purpose and land on one clear action.</p>
+							<p>The system combines creative direction and code from the first frame, keeping the campaign consistent across placements without simply shrinking the layout.</p>
+						</div>
+					</div>
+
+					<dl class="cs2-facts" data-cs2-reveal>
+						<div>
+							<dt>Role<svg class="cs2-fact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19 7-7 3 3-7 7-3-3Z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18"/><path d="m2 2 7.6 7.6"/><circle cx="11" cy="11" r="2"/></svg></dt>
+							<dd>Creative development</dd>
+						</div>
+						<div>
+							<dt>Scope<svg class="cs2-fact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 4.5-9 4.5-9-4.5L12 2Z"/><path d="m3 11.5 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/></svg></dt>
+							<dd>Concept to delivery</dd>
+						</div>
+						<div>
+							<dt>Output<svg class="cs2-fact-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg></dt>
+							<dd>Display &amp; rich media</dd>
+						</div>
+						<div>
+							<dt>Focus<svg class="cs2-fact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="8"/></svg></dt>
+							<dd>Responsive motion</dd>
+						</div>
+					</dl>
+				</div>
+				<div class="cs2-section-index" aria-hidden="true"><span>02 / OVERVIEW</span><span>MOTION WITH A JOB TO DO</span></div>
+			</section>
+
+			<!-- FORMAT PREVIEW: un solo banner activo para mantener la sección liviana. -->
+			<section class="cs2-section cs2-product" id="campaigns" aria-labelledby="cs2-product-title">
+				<div class="cs2-product-sticky">
+					<div class="cs2-shell cs2-product-heading" data-cs2-reveal>
+						<div>
+							<p class="cs2-section-label">Campaign formats</p>
+							<h2 id="cs2-product-title">The whole system,<br><em>in motion.</em></h2>
+						</div>
+						<p>Choose a format to see the campaign adapt to each placement. Only the selected ad stays active.</p>
+						<div class="bn-format-controls" aria-label="Banner format size">
+							<button class="is-active" type="button" data-bn-format-size="300x600" data-src="banners/onimusha/300x600/index.html" data-title="Onimusha 300 by 600 banner" aria-pressed="false"><small>07</small><strong>300 × 600</strong></button>
+							<button type="button" data-bn-format-size="300x250" data-src="banners/onimusha/300x250/index.html" data-title="Onimusha 300 by 250 banner" aria-pressed="true"><small>01</small><strong>300 × 250</strong></button>
+							<button type="button" data-bn-format-size="320x100" data-src="banners/onimusha/320x100/index.html" data-title="Onimusha 320 by 100 banner" aria-pressed="false"><small>02</small><strong>320 × 100</strong></button>
+							<button type="button" data-bn-format-size="728x90" data-src="banners/onimusha/728x90/index.html" data-title="Onimusha 728 by 90 banner" aria-pressed="false"><small>03</small><strong>728 × 90</strong></button>
+							<button type="button" data-bn-format-size="970x66" data-src="banners/onimusha/970x66/index.html" data-title="Onimusha 970 by 66 banner" aria-pressed="false"><small>04</small><strong>970 × 66</strong></button>
+							<button type="button" data-bn-format-size="970x250" data-src="banners/onimusha/970x250/index.html" data-title="Onimusha 970 by 250 banner" aria-pressed="false"><small>05</small><strong>970 × 250</strong></button>
+							<button type="button" data-bn-format-size="160x600" data-src="banners/onimusha/160x600/index.html" data-title="Onimusha 160 by 600 banner" aria-pressed="false"><small>06</small><strong>160 × 600</strong></button>
+						</div>
+					</div>
+
+					<div class="bn-format-browser" data-cs2-reveal>
+						<div class="bn-format-toolbar">
+							<p><span aria-hidden="true"></span><strong data-bn-format-name>300 × 250</strong> / Live format</p>
+							<button class="bn-format-replay" type="button" data-bn-format-replay>Replay <span aria-hidden="true">↻</span></button>
+						</div>
+
+						<div class="bn-single-stage" data-bn-format-stage data-size="300x600" aria-live="polite">
+							<div class="bn-single-frame">
+								<iframe data-bn-format-frame src="banners/onimusha/300x600/index.html" title="Onimusha 300 by 600 banner" sandbox="allow-scripts" loading="lazy" scrolling="no"></iframe>
+							</div>
+						</div>
+					</div>
+
+					<div class="cs2-section-index" aria-hidden="true"><span>04 / CAMPAIGNS</span><span>CHOOSE A FORMAT</span></div>
+				</div>
+			</section>
+
+			<!-- CHALLENGE: misma grilla de tres cards de case-study-v2. -->
+			<section class="cs2-section cs2-challenge">
+				<div class="cs2-shell">
+					<header class="cs2-section-heading" data-cs2-reveal>
+						<p class="cs2-section-label">The challenge</p>
+						<h2>One campaign.<br>Three constraints.</h2>
+					</header>
+
+					<div class="cs2-challenge-grid" role="region" aria-label="Challenge cards. Swipe or scroll horizontally on mobile." tabindex="0">
+						<article>
+							<span>01</span>
+							<div class="cs2-challenge-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/><path d="m10.8 12 1 1 2-2"/></svg></div>
+							<h3>Catch attention</h3>
+							<p>Make the message readable in seconds without turning every frame into noise.</p>
+						</article>
+						<article>
+							<span>02</span>
+							<div class="cs2-challenge-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="14" height="11" rx="2"/><path d="M7 19h4M9 15v4"/><rect x="18" y="8" width="4" height="11" rx="1"/></svg></div>
+							<h3>Adapt the idea</h3>
+							<p>Recompose hierarchy and motion for every ratio instead of simply shrinking.</p>
+						</article>
+						<article>
+							<span>03</span>
+							<div class="cs2-challenge-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="m8 9-2 3 2 3m8-6 2 3-2 3m-5-8-2 10"/></svg></div>
+							<h3>Ship it clean</h3>
+							<p>Balance animation, interaction and visual detail with strict delivery constraints.</p>
+						</article>
+					</div>
+				</div>
+				<div class="cs2-section-index" aria-hidden="true"><span>03 / CHALLENGE</span><span>ONE IDEA ACROSS EVERY FORMAT</span></div>
+			</section>
+
+			<!-- STACK: misma matriz de seis cards de case-study-v2. -->
+			<section class="cs2-section cs2-stack" aria-labelledby="cs2-stack-title">
+				<div class="cs2-shell">
+					<header class="cs2-section-heading cs2-stack-heading" data-cs2-reveal>
+						<div>
+							<p class="cs2-section-label">Creative stack</p>
+							<h2 id="cs2-stack-title">The tools behind<br><em>the movement.</em></h2>
+						</div>
+						<p>A compact production stack for expressive motion, responsive layouts and reliable delivery.</p>
+					</header>
+
+					<div class="cs2-stack-grid">
+						<article class="cs2-stack-card" data-cs2-reveal>
+							<div class="cs2-stack-card-top"><span>01 / STRUCTURE</span><div class="cs2-stack-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 8-4 4 4 4m6-8 4 4-4 4m-2.5-10-1 12"/></svg></div></div>
+							<div><h3>HTML5</h3><p>Accessible campaign structure</p></div>
+						</article>
+
+						<article class="cs2-stack-card" data-cs2-reveal>
+							<div class="cs2-stack-card-top"><span>02 / LAYOUT</span><div class="cs2-stack-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM4 9h16M9 9v11"/></svg></div></div>
+							<div><h3>CSS</h3><p>Responsive visual systems</p></div>
+						</article>
+
+						<article class="cs2-stack-card" data-cs2-reveal>
+							<div class="cs2-stack-card-top"><span>03 / LOGIC</span><div class="cs2-stack-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="3"/><path d="m9 8-4 4 4 4m6-8 4 4-4 4"/></svg></div></div>
+							<div><h3>JavaScript</h3><p>Interaction &amp; sequencing</p></div>
+						</article>
+
+						<article class="cs2-stack-card" data-cs2-reveal>
+							<div class="cs2-stack-card-top"><span>04 / MOTION</span><div class="cs2-stack-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7h12M3 12h18M3 17h11m3-2 4 2-4 2"/></svg></div></div>
+							<div><h3>GSAP</h3><p>Timeline-based animation</p></div>
+						</article>
+
+						<article class="cs2-stack-card" data-cs2-reveal>
+							<div class="cs2-stack-card-top"><span>05 / SYSTEM</span><div class="cs2-stack-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2 9 4.5-9 4.5-9-4.5L12 2Z"/><path d="m3 11.5 9 4.5 9-4.5M3 16.5l9 4.5 9-4.5"/></svg></div></div>
+							<div><h3>Reusable logic</h3><p>One build, multiple formats</p></div>
+						</article>
+
+						<article class="cs2-stack-card" data-cs2-reveal>
+							<div class="cs2-stack-card-top"><span>06 / DELIVERY</span><div class="cs2-stack-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12 9 17 20 6"/><circle cx="12" cy="12" r="10"/></svg></div></div>
+							<div><h3>QA</h3><p>Weight, timing &amp; fallbacks</p></div>
+						</article>
+					</div>
+				</div>
+				<div class="cs2-section-index" aria-hidden="true"><span>05 / STACK</span><span>TOOLS BEHIND THE CAMPAIGN</span></div>
+			</section>
+
+			<section class="cs2-next">
+				<div class="cs2-shell" data-cs2-reveal>
+					<p>Got a campaign that needs more than a static frame?</p>
+					<h2>Let's make it<br><em>move.</em></h2>
+					<div class="cs2-next-links">
+						<a href="mailto:patricio.sine@gmail.com?subject=HTML5%20campaign%20inquiry%20%E2%80%94%20PSINE">Start a project <span aria-hidden="true">↗</span></a>
+						<a href="index.html#work">Back to selected work <span aria-hidden="true">←</span></a>
+					</div>
 				</div>
 			</section>
 		</main>
 
+		<footer class="cs2-footer">
+			<a href="index.html" aria-label="PSINE home"><img src="LOGO.svg" alt="PSINE"></a>
+			<p>© <span data-cs2-year>2026</span> PSINE</p>
+			<p>Product design &amp; creative development.</p>
+		</footer>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+		<script src="case-study-v2.js"></script>
 		<script src="banners.js"></script>
 	</body>
 </html>

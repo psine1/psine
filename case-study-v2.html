@@ -126,14 +126,14 @@
 			</section>
 
 			<!-- GALLERY: agrega nuevos .cs2-gallery-card para extender el carrusel. -->
-			<section class="cs2-section cs2-product" aria-labelledby="cs2-product-title">
+			<section class="cs2-section cs2-product scroll-snap-exempt" aria-labelledby="cs2-product-title">
 				<div class="cs2-product-sticky">
 					<div class="cs2-shell cs2-product-heading" data-cs2-reveal>
 						<div>
 							<p class="cs2-section-label">Product screens</p>
 							<h2 id="cs2-product-title">The whole flow,<br><em>in context.</em></h2>
 						</div>
-						<p>Scroll, arrastrá, deslizá o usá las flechas para recorrer las pantallas.</p>
+						<p>Scroll, arrastrá o usá las flechas para recorrer las pantallas.</p>
 					</div>
 
 					<div class="cs2-gallery" data-cs2-gallery tabindex="0" aria-label="Galería de pantallas del producto. Usa las flechas o arrastra para navegar.">
@@ -162,7 +162,7 @@
 					</div>
 
 					<div class="cs2-gallery-footer cs2-shell">
-						<p><span aria-hidden="true">↔</span> Scroll / Drag / Swipe</p>
+						<p><span aria-hidden="true">↔</span> Scroll / Drag</p>
 						<div class="cs2-gallery-progress" aria-hidden="true"><span data-cs2-gallery-progress></span></div>
 					</div>
 					<div class="cs2-section-index" aria-hidden="true"><span>04 / PRODUCT</span><span>SCROLL OR DRAG TO EXPLORE</span></div>
@@ -178,7 +178,7 @@
 						<h2>One product.<br>Three jobs to solve.</h2>
 					</header>
 
-					<div class="cs2-challenge-grid">
+					<div class="cs2-challenge-grid" role="region" aria-label="Challenge cards. Swipe or scroll horizontally on mobile." tabindex="0">
 						<article>
 							<span>01</span>
 							<div class="cs2-challenge-symbol" aria-hidden="true">
@@ -322,6 +322,7 @@
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+		<script src="horizontal-gallery.js"></script>
 		<script src="case-study-v2.js"></script>
 	</body>
 </html>
