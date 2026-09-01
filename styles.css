@@ -60,6 +60,87 @@ body {
 	font-family: "Neue Haas", Arial, sans-serif;
 }
 
+html.custom-scrollbar-ready {
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+html.custom-scrollbar-ready::-webkit-scrollbar,
+html.custom-scrollbar-ready body::-webkit-scrollbar {
+	display: none;
+	width: 0;
+	height: 0;
+}
+
+.site-scrollbar {
+	position: fixed;
+	top: 7px;
+	right: 0;
+	bottom: 7px;
+	z-index: 90;
+	display: flex;
+	justify-content: center;
+	width: 16px;
+	opacity: 0.9;
+	pointer-events: none;
+	transition: opacity 180ms ease;
+}
+
+.site-scrollbar.is-hidden,
+body.is-contact-dialog-open .site-scrollbar {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.site-scrollbar-track {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	pointer-events: auto;
+	cursor: pointer;
+}
+
+.site-scrollbar-track::before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 0;
+	bottom: 0;
+	width: 5px;
+	border: 1px solid rgba(17, 17, 17, 0.55);
+	border-radius: 999px;
+	background: rgba(248, 248, 246, 0.24);
+	box-shadow: 0 0 0 1px rgba(248, 248, 246, 0.18);
+	-webkit-backdrop-filter: blur(5px);
+	backdrop-filter: blur(5px);
+	transform: translateX(-50%);
+}
+
+.site-scrollbar-thumb {
+	position: absolute;
+	left: 50%;
+	top: 0;
+	width: 9px;
+	min-height: 44px;
+	border: 1px solid #111;
+	border-radius: 999px;
+	background: #ffcf25;
+	box-shadow: 1px 1px 0 #111;
+	transform: translate3d(-50%, 0, 0);
+	transform-origin: center;
+	will-change: height, transform;
+	cursor: grab;
+	touch-action: none;
+}
+
+.site-scrollbar-thumb:hover {
+	width: 11px;
+}
+
+.site-scrollbar-thumb.is-dragging {
+	cursor: grabbing;
+}
+
 main > section {
 	min-height: 100svh;
 	scroll-snap-align: start;
@@ -3256,6 +3337,7 @@ img {
 }
 
 .contact-cue {
+	--cue-shift-x: 0px;
 	position: absolute;
 	left: 55%;
 	top: 46%;
@@ -3268,7 +3350,7 @@ img {
 	stroke-linejoin: round;
 	stroke-width: 2.25;
 	opacity: 0.96;
-	transform: translate(-50%, -50%);
+	transform: translate(calc(-50% + var(--cue-shift-x)), -50%);
 	pointer-events: none;
 }
 
@@ -3372,6 +3454,26 @@ body.is-contact-dialog-open {
 	overflow: hidden;
 }
 
+.contact-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 110;
+	background: rgba(20, 11, 39, 0.76);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: auto;
+	cursor: pointer;
+	transition: opacity 280ms ease, visibility 0s linear 280ms;
+}
+
+.contact-overlay.is-visible {
+	opacity: 1;
+	visibility: visible;
+	transition-delay: 0s;
+}
+
 .contact-dialog {
 	position: fixed;
 	inset: 0;
@@ -3391,16 +3493,7 @@ body.is-contact-dialog-open {
 }
 
 .contact-dialog::backdrop {
-	background: rgba(17, 17, 17, 0);
-	-webkit-backdrop-filter: blur(0);
-	backdrop-filter: blur(0);
-	transition: background-color 280ms ease, -webkit-backdrop-filter 280ms ease, backdrop-filter 280ms ease;
-}
-
-.contact-dialog.is-contact-dialog-visible::backdrop {
-	background: rgba(17, 17, 17, 0.72);
-	-webkit-backdrop-filter: blur(7px);
-	backdrop-filter: blur(7px);
+	background: transparent;
 }
 
 .contact-dialog-shell {
@@ -3849,7 +3942,7 @@ body.is-contact-dialog-open {
 		left: 50%;
 		top: 58%;
 		width: 220px;
-		transform: translate(-50%, -50%) rotate(10deg);
+		transform: translate(calc(-50% + var(--cue-shift-x)), -50%) rotate(10deg);
 	}
 }
 
@@ -3931,7 +4024,7 @@ body.is-contact-dialog-open {
 		justify-self: center;
 		width: 174px;
 		margin-left: 0;
-		transform: rotate(72deg);
+		transform: translateX(var(--cue-shift-x)) rotate(72deg);
 		transform-origin: center;
 	}
 
@@ -4017,7 +4110,7 @@ body.is-contact-dialog-open {
 		animation: none;
 	}
 
-	.contact-dialog::backdrop {
+	.contact-overlay {
 		transition: none;
 	}
 

@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactTitle = document.querySelector('[data-contact-title]');
   const talkLabel = document.querySelector('[data-talk-label]');
   const contactDialog = document.querySelector('[data-contact-dialog]');
+  const contactOverlay = document.querySelector('[data-contact-overlay]');
   const contactDialogShell = document.querySelector('[data-contact-dialog-shell]');
   const contactOpeners = Array.from(document.querySelectorAll('[data-contact-open]'));
   const contactForm = document.querySelector('[data-contact-form]');
@@ -175,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   if (!reducedMotion && window.gsap) {
-   // if (contactCue) gsap.set(contactCue, {x: -1000, autoAlpha: 0});
+    if (contactCue) gsap.set(contactCue, {'--cue-shift-x': '-16px', autoAlpha: 0});
 
     if (contactTitle) {
       contactTitleMorph = setupWordMorph({
@@ -228,15 +229,15 @@ document.addEventListener('DOMContentLoaded', () => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         contactSection.classList.add('is-visible');
-      /*  if (contactCue && window.gsap && !reducedMotion) {
+        if (contactCue && window.gsap && !reducedMotion) {
           gsap.to(contactCue, {
-            x: 0,
+            '--cue-shift-x': '0px',
             autoAlpha: 1,
             duration: 0.72,
             ease: 'power2.out',
-            clearProps: 'transform,opacity,visibility'
+            clearProps: 'opacity,visibility'
           });
-        }*/
+        }
         if (contactTitleLetters.length && window.gsap) {
           gsap.to(contactTitleLetters, {
             yPercent: 0,
@@ -301,6 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
       resetContactExperience();
       if (contactDialog.open) contactDialog.close();
       contactDialog.classList.remove('is-contact-dialog-visible');
+      contactOverlay?.classList.remove('is-visible');
       document.body.classList.remove('is-contact-dialog-open');
       isDialogClosing = false;
       if (window.gsap) gsap.set([contactDialog, contactDialogShell, ...contactDialogParts].filter(Boolean), {clearProps: 'all'});
@@ -315,6 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
       contactDialogBackdropFrame = 0;
 
       contactDialog.classList.remove('is-contact-dialog-visible');
+      contactOverlay?.classList.remove('is-visible');
 
       if (!reducedMotion && window.gsap) {
         gsap.killTweensOf([contactDialog, ...contactDialogParts]);
@@ -340,6 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.add('is-contact-dialog-open');
       contactDialogBackdropFrame = requestAnimationFrame(() => {
         contactDialog.classList.add('is-contact-dialog-visible');
+        contactOverlay?.classList.add('is-visible');
         contactDialogBackdropFrame = 0;
       });
 
@@ -381,6 +385,8 @@ document.addEventListener('DOMContentLoaded', () => {
     contactDialog.querySelectorAll('[data-contact-close]').forEach((button) => {
       button.addEventListener('click', closeContactDialog);
     });
+
+    contactOverlay?.addEventListener('click', closeContactDialog);
 
     contactDialog.addEventListener('click', (event) => {
       if (event.target === contactDialog) closeContactDialog();

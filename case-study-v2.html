@@ -8,6 +8,7 @@
 		<title>LLL Hub — Case Study v2 | PSINE</title>
 		<link rel="preload" href="NHaasGroteskDSPro-55Rg.otf" as="font" type="font/otf" crossorigin>
 		<link rel="preload" href="NHaasGroteskDSPro-95Blk.otf" as="font" type="font/otf" crossorigin>
+		<link rel="stylesheet" href="section-index.css">
 		<link rel="stylesheet" href="styles.css">
 		<link rel="stylesheet" href="case-study-v2.css">
 	</head>
@@ -19,7 +20,7 @@
 				<img src="LOGO.svg" alt="PSINE">
 			</a>
 			<nav class="header-controls" aria-label="Navegación del caso de estudio">
-				<a class="btn-talk" href="mailto:patricio.sine@gmail.com?subject=Project%20inquiry%20%E2%80%94%20PSINE">LET'S TALK</a>
+				<a class="btn-talk" href="#contact" data-contact-open aria-haspopup="dialog" aria-controls="contact-dialog">LET'S TALK</a>
 				<a class="cs2-back" href="index.html#work"><span aria-hidden="true">←</span> SELECTED WORK</a>
 			</nav>
 		</header>
@@ -302,17 +303,100 @@
 				<div class="cs2-section-index" aria-hidden="true"><span>05 / STACK</span><span>TOOLS BEHIND THE PRODUCT</span></div>
 			</section>
 
-			<section class="cs2-next">
-				<div class="cs2-shell" data-cs2-reveal>
-					<p>¿Tenés un producto que necesita sentirse así de claro?</p>
-					<h2>Let's make it<br><em>work.</em></h2>
-					<div class="cs2-next-links">
-						<a href="mailto:patricio.sine@gmail.com?subject=Project%20inquiry%20%E2%80%94%20PSINE">Start a project <span aria-hidden="true">↗</span></a>
-						<a href="index.html#work">Back to selected work <span aria-hidden="true">←</span></a>
+			<section id="contact" class="contact-section" aria-labelledby="contact-title" data-contact-section>
+				<div class="contact-inner">
+					<div class="contact-copy">
+						<p class="contact-kicker"><span aria-hidden="true"></span> Available for selected projects</p>
+						<h2 id="contact-title" data-contact-title aria-label="Let's Talk!">
+							<span class="contact-line"><span data-contact-lead>Let's</span></span>
+							<span class="contact-line contact-word-switch" data-contact-word-switch>
+								<span data-word-default>Talk!</span>
+								<span data-word-alternate>Cuack!</span>
+							</span>
+						</h2>
+						<p class="contact-intro">¿Tenés un producto que necesita sentirse así de claro? Contame dónde se traba y hagamos que toda la experiencia funcione.</p>
 					</div>
+
+					<svg class="contact-cue" viewBox="0 0 360 112" aria-hidden="true">
+						<path d="M8 11C13 68 83 105 166 99C239 94 301 75 344 50M318 42L344 50L337 79"></path>
+					</svg>
+
+					<div class="contact-cta-scene" data-contact-cta-scene>
+						<a class="contact-cta" href="mailto:patricio.sine@gmail.com?subject=Product%20inquiry%20%E2%80%94%20PSINE" data-magnetic-button data-contact-open aria-label="Start a project" aria-haspopup="dialog" aria-controls="contact-dialog">
+							<img class="contact-spark contact-spark-one" src="images/button-star-2.svg" alt="" aria-hidden="true">
+							<img class="contact-spark contact-spark-two" src="images/button-star-1.svg" alt="" aria-hidden="true">
+							<img class="contact-cta-top" src="images/button-top.svg" alt="" aria-hidden="true">
+							<img class="contact-cta-base" src="images/button-bottom.svg" alt="" aria-hidden="true">
+						</a>
+					</div>
+				</div>
+
+				<div class="section-index" aria-hidden="true">
+					<span>06 / CONTACT</span>
+					<span>LLL HUB &middot; CASE STUDY</span>
 				</div>
 			</section>
 		</main>
+
+		<div class="contact-overlay" data-contact-overlay aria-hidden="true"></div>
+
+		<dialog class="contact-dialog" id="contact-dialog" data-contact-dialog aria-labelledby="contact-dialog-title" aria-describedby="contact-dialog-description">
+			<div class="contact-dialog-shell" data-contact-dialog-shell>
+				<div class="contact-dialog-topline">
+					<p><span aria-hidden="true"></span> Available for selected projects</p>
+					<button class="contact-dialog-close" type="button" data-contact-close aria-label="Close contact form">
+						<span>CLOSE</span><span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="contact-dialog-heading">
+					<p class="contact-dialog-index">06 / CONTACT</p>
+					<h2 id="contact-dialog-title">Tell me what<br><em>we're making.</em></h2>
+					<p id="contact-dialog-description">A rough idea is enough. Share the essentials and your email app will prepare the message.</p>
+				</div>
+
+				<form class="contact-dialog-form" action="mailto:patricio.sine@gmail.com" method="post" enctype="text/plain" data-contact-form>
+					<div class="contact-dialog-fields">
+						<label>
+							<span>Your name</span>
+							<input type="text" name="name" autocomplete="name" placeholder="Donald Duck" required>
+							<small class="contact-field-error">Please add your name.</small>
+						</label>
+						<label>
+							<span>Your email</span>
+							<input type="email" name="email" autocomplete="email" placeholder="hello@example.com" required>
+							<small class="contact-field-error">Please enter a valid email.</small>
+						</label>
+					</div>
+
+					<label class="contact-dialog-message">
+						<span>Tell me about the project</span>
+						<textarea name="message" rows="4" placeholder="The idea, timing, scope or whatever you already know..." required></textarea>
+						<small class="contact-field-error">A few details will help me understand the idea.</small>
+					</label>
+
+					<div class="contact-dialog-actions">
+						<button class="contact-dialog-submit" type="submit">
+							<span data-contact-submit-label>SEND THE IDEA</span>
+							<span class="contact-submit-arrow" aria-hidden="true">&nearr;</span>
+							<span class="contact-submit-spinner" aria-hidden="true"></span>
+						</button>
+						<a href="mailto:patricio.sine@gmail.com">Or email me directly <span aria-hidden="true">&nearr;</span></a>
+					</div>
+				</form>
+
+				<section class="contact-dialog-feedback" data-contact-feedback hidden tabindex="-1" aria-live="polite" aria-label="Email draft ready">
+					<div class="contact-feedback-icon" aria-hidden="true"><span>&check;</span></div>
+					<p class="contact-feedback-kicker">EMAIL DRAFT READY</p>
+					<h3>One last<br>little click.</h3>
+					<p>Your email app should be open with the project details filled in. Review the message and press <strong>Send</strong> there.</p>
+					<div class="contact-feedback-actions">
+						<a class="contact-feedback-primary" href="mailto:patricio.sine@gmail.com" data-contact-mail-link>OPEN EMAIL APP <span aria-hidden="true">&nearr;</span></a>
+						<button type="button" data-contact-reset>Write another message</button>
+					</div>
+				</section>
+			</div>
+		</dialog>
 
 		<footer class="cs2-footer">
 			<a href="index.html" aria-label="PSINE home"><img src="LOGO.svg" alt="PSINE"></a>
@@ -322,7 +406,9 @@
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+		<script src="custom-scrollbar.js"></script>
 		<script src="horizontal-gallery.js"></script>
+		<script src="contact-case.js"></script>
 		<script src="case-study-v2.js"></script>
 	</body>
 </html>
