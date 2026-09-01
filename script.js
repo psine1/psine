@@ -1,7 +1,123 @@
 // GSAP timeline for the duck mascot
 document.addEventListener('DOMContentLoaded', () => {
   const loader = document.getElementById('loader');
-  if (loader) loader.remove();
+  const loaderProgress = loader?.querySelector('[data-loader-progress]');
+  const loaderPercent = loader?.querySelector('[data-loader-percent]');
+  const shouldRunLoader = document.documentElement.classList.contains('loader-pending');
+
+  if (loader && shouldRunLoader) {
+    const loaderStartedAt = performance.now();
+    const loaderImages = Array.from(document.images);
+    const loaderTasks = [];
+    let loaderCompleted = 0;
+    let loaderDisplayedProgress = 0;
+    let loaderTargetProgress = 4;
+    let loaderReady = false;
+    let loaderFinished = false;
+
+    const updateLoaderTarget = () => {
+      const total = Math.max(1, loaderTasks.length);
+      loaderTargetProgress = Math.max(loaderTargetProgress, Math.min(96, (loaderCompleted / total) * 96));
+    };
+
+    const waitForImage = (image) => new Promise((resolve) => {
+      const decodeImage = () => {
+        if (typeof image.decode === 'function') {
+          image.decode().catch(() => {}).finally(resolve);
+        } else {
+          resolve();
+        }
+      };
+
+      if (image.complete) {
+        decodeImage();
+        return;
+      }
+
+      image.addEventListener('load', decodeImage, {once: true});
+      image.addEventListener('error', resolve, {once: true});
+    });
+
+    loaderImages.forEach((image) => {
+      const task = waitForImage(image).finally(() => {
+        loaderCompleted += 1;
+        updateLoaderTarget();
+      });
+      loaderTasks.push(task);
+    });
+
+    if (document.fonts?.ready) {
+      const fontTask = document.fonts.ready.catch(() => {}).finally(() => {
+        loaderCompleted += 1;
+        updateLoaderTarget();
+      });
+      loaderTasks.push(fontTask);
+    }
+
+    const windowLoadTask = new Promise((resolve) => {
+      if (document.readyState === 'complete') resolve();
+      else window.addEventListener('load', resolve, {once: true});
+    }).finally(() => {
+      loaderCompleted += 1;
+      updateLoaderTarget();
+    });
+    loaderTasks.push(windowLoadTask);
+
+    const finishLoader = () => {
+      if (loaderFinished) return;
+      loaderFinished = true;
+      loaderTargetProgress = 100;
+      loaderDisplayedProgress = 100;
+      if (loaderProgress) loaderProgress.style.transform = 'scaleX(1)';
+      if (loaderPercent) loaderPercent.textContent = '100%';
+      try {
+        localStorage.setItem('psine-loader-v1', 'complete');
+      } catch (error) {
+        // Storage can be unavailable in private browsing; the loader still exits normally.
+      }
+      document.documentElement.classList.remove('loader-pending');
+      document.body.setAttribute('aria-busy', 'false');
+
+      window.setTimeout(() => {
+        loader.classList.add('is-leaving');
+        window.setTimeout(() => loader.remove(), 560);
+      }, 220);
+    };
+
+    const renderLoader = () => {
+      const difference = loaderTargetProgress - loaderDisplayedProgress;
+      loaderDisplayedProgress += difference * 0.09;
+      if (Math.abs(difference) < 0.08) loaderDisplayedProgress = loaderTargetProgress;
+
+      const roundedProgress = Math.min(100, Math.round(loaderDisplayedProgress));
+      if (loaderProgress) loaderProgress.style.transform = `scaleX(${loaderDisplayedProgress / 100})`;
+      if (loaderPercent) loaderPercent.textContent = `${String(roundedProgress).padStart(2, '0')}%`;
+
+      const minimumTimePassed = performance.now() - loaderStartedAt >= 900;
+      if (loaderReady && minimumTimePassed && loaderDisplayedProgress >= 94.5) {
+        finishLoader();
+        return;
+      }
+
+      if (!loaderFinished) window.requestAnimationFrame(renderLoader);
+    };
+
+    Promise.allSettled(loaderTasks).then(() => {
+      loaderReady = true;
+      loaderTargetProgress = 100;
+    });
+
+    window.setTimeout(() => {
+      loaderReady = true;
+      loaderTargetProgress = 100;
+    }, 12000);
+
+    window.requestAnimationFrame(renderLoader);
+  } else {
+    document.documentElement.classList.remove('loader-pending');
+    document.body.setAttribute('aria-busy', 'false');
+    if (loader) loader.remove();
+  }
 
   const currentYear = document.querySelector('[data-current-year]');
   if (currentYear) currentYear.textContent = String(new Date().getFullYear());
@@ -698,7 +814,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ].filter(Boolean);
 
   if (servicesDuckParts.length) {
-    gsap.set(servicesDuckParts, {x: 0, y: 0, xPercent: -50, yPercent: -50});
+    gsap.set(servicesDuckParts, {x: 0, y: 0});
   }
 
   if (servicesDuckWrap && servicesSection) {
@@ -1110,7 +1226,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroDuckParts = [armLeft, armRight, legLeft, legRight, body, head].filter(Boolean);
 
   if (heroDuckParts.length) {
-    gsap.set(heroDuckParts, {x: 0, y: 0, xPercent: -50, yPercent: -50});
+    gsap.set(heroDuckParts, {x: 0, y: 0});
   }
 
   const enter = gsap.timeline({defaults:{duration:0.8, ease:'power3.out'}});

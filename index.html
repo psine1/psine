@@ -4,14 +4,29 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 		<title>Creative Developer - Psine</title>
+		<script>
+			try {
+				if (localStorage.getItem('psine-loader-v1') !== 'complete') {
+					document.documentElement.classList.add('loader-pending');
+				}
+			} catch (error) {
+				document.documentElement.classList.add('loader-pending');
+			}
+		</script>
 		<link rel="stylesheet" href="section-index.css">
-		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="styles.css?v=20260901-5">
 	</head>
-	<body class="dark">
+	<body class="dark" aria-busy="true">
 
-		<div id="loader">
+		<div id="loader" role="status" aria-live="polite" aria-label="Loading portfolio">
 			<div class="loader-shell">
-				<div>Loading...</div>
+				<div class="loader-progress-row">
+					<img src="LOGO.svg" alt="PSINE" class="loader-logo">
+					<strong data-loader-percent>00%</strong>
+				</div>
+				<div class="loader-track" aria-hidden="true">
+					<span data-loader-progress></span>
+				</div>
 			</div>
 		</div>
 
@@ -379,6 +394,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 		<script src="custom-scrollbar.js"></script>
 		<script src="horizontal-gallery.js"></script>
-		<script src="script.js"></script>
+		<script src="script.js?v=20260901-5"></script>
 	</body>
 </html>
