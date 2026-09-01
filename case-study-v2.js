@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const galleryProgress = document.querySelector('[data-cs2-gallery-progress]');
 	const productSection = document.querySelector('.cs2-product');
 	const productSticky = document.querySelector('.cs2-product-sticky');
-
+ 
 	if (year) year.textContent = String(new Date().getFullYear());
 
 	const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
