@@ -688,6 +688,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const servicesArmRight = document.querySelector('.services-arm-right');
   const servicesLegLeft = document.querySelector('.services-leg-left');
   const servicesLegRight = document.querySelector('.services-leg-right');
+  const servicesBody = document.querySelector('.services-body');
+  const servicesDuckParts = [
+    servicesArmLeft,
+    servicesArmRight,
+    servicesLegLeft,
+    servicesLegRight,
+    servicesBody
+  ].filter(Boolean);
+
+  if (servicesDuckParts.length) {
+    gsap.set(servicesDuckParts, {x: 0, y: 0, xPercent: -50, yPercent: -50});
+  }
 
   if (servicesDuckWrap && servicesSection) {
     const clampDuckEntry = (value, min, max) => Math.min(Math.max(value, min), max);
@@ -1088,10 +1100,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const duck = document.querySelector('.duck-mascot');
   const armLeft = document.querySelector('.duck-arm-left');
   const armRight = document.querySelector('.duck-arm-right');
+  const legLeft = document.querySelector('.duck-leg-left');
+  const legRight = document.querySelector('.duck-leg-right');
+  const body = document.querySelector('.duck-body');
   const head = document.querySelector('.duck-head');
   const headNod = document.querySelector('.duck-head-nod');
   const headTrack = document.querySelector('.duck-head-track');
   const shadow = document.querySelector('.duck-shadow');
+  const heroDuckParts = [armLeft, armRight, legLeft, legRight, body, head].filter(Boolean);
+
+  if (heroDuckParts.length) {
+    gsap.set(heroDuckParts, {x: 0, y: 0, xPercent: -50, yPercent: -50});
+  }
 
   const enter = gsap.timeline({defaults:{duration:0.8, ease:'power3.out'}});
 
@@ -1100,8 +1120,8 @@ document.addEventListener('DOMContentLoaded', () => {
   //enter.from(['.duck-body','.duck-head','.duck-arm-left','.duck-arm-right','.duck-leg-left','.duck-leg-right'], {autoAlpha:0, y:18, stagger:0.08}, '-=0.5');
 
   
-gsap.set(armLeft, {transformOrigin: '37.33% 61.49%'});
-gsap.set(".duck-body", {transformOrigin: '49.87% 72.89%'});
+  gsap.set(armLeft, {transformOrigin: '37.33% 61.49%'});
+  gsap.set(body, {transformOrigin: '49.87% 72.89%'});
 
   // quick playful movements on enter
   enter.to(armLeft, {rotation: 10,  duration:0.5, yoyo:true, repeat: -1, ease:'sine.inOut'}, '<');
@@ -1110,17 +1130,17 @@ gsap.set(".duck-body", {transformOrigin: '49.87% 72.89%'});
 
   // idle loop: subtle bob and shadow squash
     gsap.to('.duck-mascot', {y: -150, scaleX: 0.93, duration: 0.6, ease:'power2.inOut', yoyo:true, repeat:-1});
-    gsap.to('.duck-leg-left', {rotation: -4, duration: 0.6, ease:'sine.inOut', yoyo:true, repeat:-1});
-    gsap.to('.duck-leg-right', {rotation: 4, duration: 0.6, ease:'sine.inOut', yoyo:true, repeat:-1});
-    gsap.to('.duck-body', {y: 10, rotation: 5, duration: 0.6, ease:'sine.inOut', yoyo:true, repeat:-1, delay: 0.6});
-    gsap.to('.duck-head', {y: 5, x: 15, rotation: 3, duration: 0.6, ease:'sine.inOut', yoyo:true, repeat:-1, delay: 0.6});
+    gsap.to(legLeft, {rotation: -4, duration: 0.6, ease:'sine.inOut', yoyo:true, repeat:-1});
+    gsap.to(legRight, {rotation: 4, duration: 0.6, ease:'sine.inOut', yoyo:true, repeat:-1});
+    gsap.to(body, {y: 10, rotation: 5, duration: 0.6, ease:'sine.inOut', yoyo:true, repeat:-1, delay: 0.6});
+    gsap.to(head, {y: 5, x: 15, rotation: 3, duration: 0.6, ease:'sine.inOut', yoyo:true, repeat:-1, delay: 0.6});
     gsap.to('.duck-mascot', {scaleY: 0.98, transformOrigin:' 50% 100%', duration: 0.6, ease:'sine.inOut', yoyo:true, repeat:-1, delay: 0.6});
 
 
   gsap.to('.duck-shadow', {scaleX:0.75, autoAlpha: 0.6, duration: 0.6, yoyo:true, repeat:-1, transformOrigin:'center'});
 
   // small head float / look
-  gsap.to('.duck-head', {rotation: -4, duration:3, ease:'sine.inOut', yoyo:true, repeat:-1, transformOrigin:'51.58% 39.70%'});
+  gsap.to(headNod, {rotation: -4, duration:3, ease:'sine.inOut', yoyo:true, repeat:-1, transformOrigin:'51.58% 39.70%'});
 
 
   /*
