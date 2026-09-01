@@ -8,6 +8,51 @@ document.addEventListener('DOMContentLoaded', () => {
 	const replayButton = document.querySelector('[data-banner-replay]');
 	let activeCampaign = document.querySelector('[data-campaign].is-active')?.dataset.campaign || 'onimusha';
 
+	const setFrameSource = (frame, source) => {
+		if (!frame || !source) return;
+		frame.dataset.currentSrc = source;
+		frame.src = source;
+	};
+
+	const replayFrame = (frame) => {
+		if (!frame) return;
+		const source = frame.dataset.currentSrc || frame.dataset.src || frame.getAttribute('src');
+		if (!source) return;
+		const replayUrl = new URL(source, document.baseURI);
+		replayUrl.searchParams.set('_replay', String(Date.now()));
+		frame.src = replayUrl.href;
+	};
+
+	const restartFrameOnReentry = (stage, frame, initialSource) => {
+		if (!stage || !frame) return;
+		let hasEntered = false;
+		let isVisible = false;
+
+		const enter = () => {
+			if (isVisible) return;
+			isVisible = true;
+			if (!hasEntered) {
+				hasEntered = true;
+				if (!frame.getAttribute('src')) setFrameSource(frame, initialSource);
+				else if (!frame.dataset.currentSrc) frame.dataset.currentSrc = initialSource || frame.getAttribute('src');
+				return;
+			}
+			replayFrame(frame);
+		};
+
+		if (!('IntersectionObserver' in window)) {
+			enter();
+			return;
+		}
+
+		new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) enter();
+				else isVisible = false;
+			});
+		}, {threshold: 0.2, rootMargin: '0px 0px -10% 0px'}).observe(stage);
+	};
+
 	const fitBanner = () => {
 		if (!bannerStage || !bannerFrameShell) return;
 		const [nativeWidth, nativeHeight] = bannerStage.dataset.size.split('x').map(Number);
@@ -27,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const loadOnimushaSize = (button) => {
 		if (!bannerFrame || !button?.dataset.src) return;
-		bannerFrame.src = button.dataset.src;
+		setFrameSource(bannerFrame, button.dataset.src);
 		bannerFrame.title = button.dataset.title;
 	};
 
@@ -51,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			if (activeCampaign === 'onimusha') {
 				loadOnimushaSize(sizeButtons.find((item) => item.classList.contains('is-active')) || sizeButtons[0]);
 			} else if (bannerFrame) {
-				bannerFrame.src = button.dataset.src;
+				setFrameSource(bannerFrame, button.dataset.src);
 				bannerFrame.title = button.dataset.title;
 			}
 			if (campaignName) campaignName.textContent = button.dataset.name;
@@ -64,8 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	replayButton?.addEventListener('click', () => {
-		if (!bannerFrame) return;
-		bannerFrame.setAttribute('src', bannerFrame.getAttribute('src'));
+		replayFrame(bannerFrame);
 	});
 
 	if (bannerStage) {
@@ -73,6 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		else window.addEventListener('resize', fitBanner);
 		window.requestAnimationFrame(fitBanner);
 	}
+
+	restartFrameOnReentry(bannerStage, bannerFrame, bannerFrame?.getAttribute('src'));
 
 	const formatStage = document.querySelector('[data-bn-format-stage]');
 	const formatFrameShell = formatStage?.querySelector('.bn-single-frame');
@@ -102,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		button.addEventListener('click', () => {
 			if (!formatStage || !formatFrame) return;
 			formatStage.dataset.size = button.dataset.bnFormatSize;
-			if (formatFrame.getAttribute('src') !== button.dataset.src) formatFrame.src = button.dataset.src;
+			setFrameSource(formatFrame, button.dataset.src);
 			formatFrame.title = button.dataset.title;
 			if (formatName) formatName.textContent = button.querySelector('strong')?.textContent || button.dataset.bnFormatSize;
 
@@ -117,8 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	formatReplay?.addEventListener('click', () => {
-		if (!formatFrame) return;
-		formatFrame.setAttribute('src', formatFrame.getAttribute('src'));
+		replayFrame(formatFrame);
 	});
 
 	if (formatStage) {
@@ -126,4 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		else window.addEventListener('resize', fitFormatBanner);
 		window.requestAnimationFrame(fitFormatBanner);
 	}
+
+	restartFrameOnReentry(formatStage, formatFrame, formatFrame?.dataset.src || formatButtons[0]?.dataset.src);
 });
