@@ -193,6 +193,11 @@ img {
 	pointer-events: none;
 }
 
+.site-header-blend {
+	z-index: 70;
+	mix-blend-mode: difference;
+}
+
 .brand,
 .header-controls,
 .btn-menu,
@@ -3285,13 +3290,13 @@ img {
 }
 
 [data-contact-section]:has([data-magnetic-button]:is(:hover, :focus-visible)) [data-contact-title]:not(.has-gsap-word-morph) [data-word-default],
-[data-talk-label]:not(.has-gsap-word-morph):hover [data-word-default] {
+[data-talk-label]:not(.has-gsap-word-morph):is(:hover, :focus-visible) [data-word-default] {
 	visibility: hidden;
 	opacity: 0;
 }
 
 [data-contact-section]:has([data-magnetic-button]:is(:hover, :focus-visible)) [data-contact-title]:not(.has-gsap-word-morph) [data-word-alternate],
-[data-talk-label]:not(.has-gsap-word-morph):hover [data-word-alternate] {
+[data-talk-label]:not(.has-gsap-word-morph):is(:hover, :focus-visible) [data-word-alternate] {
 	visibility: visible;
 	opacity: 1;
 }

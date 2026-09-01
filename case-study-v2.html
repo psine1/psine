@@ -20,7 +20,13 @@
 				<img src="LOGO.svg" alt="PSINE">
 			</a>
 			<nav class="header-controls" aria-label="Navegación del caso de estudio">
-				<a class="btn-talk" href="#contact" data-contact-open aria-haspopup="dialog" aria-controls="contact-dialog">LET'S TALK</a>
+				<a class="btn-talk" href="#contact" data-talk-label data-contact-open aria-label="Let's Talk!" aria-haspopup="dialog" aria-controls="contact-dialog">
+					<span class="talk-label-lead" data-talk-lead>LET'S</span>
+					<span class="talk-word-switch" data-talk-word-switch>
+						<span data-word-default>TALK!</span>
+						<span data-word-alternate>CUACK!</span>
+					</span>
+				</a>
 				<a class="cs2-back" href="index.html#work"><span aria-hidden="true">←</span> SELECTED WORK</a>
 			</nav>
 		</header>

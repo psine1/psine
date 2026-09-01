@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactCue = document.querySelector('.contact-cue');
   const contactSparks = Array.from(document.querySelectorAll('.contact-spark'));
   const contactTitle = document.querySelector('[data-contact-title]');
+  const talkLabel = document.querySelector('[data-talk-label]');
   const contactDialog = document.querySelector('[data-contact-dialog]');
   const contactOverlay = document.querySelector('[data-contact-overlay]');
   const contactDialogShell = document.querySelector('[data-contact-dialog-shell]');
@@ -153,6 +154,96 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   };
 
+  const setupTalkLabelMorph = () => {
+    if (!talkLabel || reducedMotion || !window.gsap) return;
+    const lead = talkLabel.querySelector('[data-talk-lead]');
+    const switcher = talkLabel.querySelector('[data-talk-word-switch]');
+    const defaultWord = switcher?.querySelector('[data-word-default]');
+    const alternateWord = switcher?.querySelector('[data-word-alternate]');
+    if (!lead || !defaultWord || !alternateWord) return;
+
+    const leadLetters = splitTextIntoLetters(lead, 'talk-label-letter');
+    const defaultLetters = splitTextIntoLetters(defaultWord, 'talk-label-letter');
+    const alternateLetters = splitTextIntoLetters(alternateWord, 'talk-label-letter');
+    let morphTimeline = null;
+
+    talkLabel.classList.add('has-gsap-word-morph', 'is-word-morph-ready');
+    gsap.set(alternateWord, {autoAlpha: 0});
+    gsap.set(alternateLetters, {yPercent: 120, opacity: 0});
+
+    const showAlternate = () => {
+      morphTimeline?.kill();
+      gsap.killTweensOf([...defaultLetters, ...alternateLetters]);
+      talkLabel.setAttribute('aria-label', "Let's Duck!");
+      gsap.set([defaultWord, alternateWord], {autoAlpha: 1});
+      playLetterBounce(leadLetters);
+
+      morphTimeline = gsap.timeline({
+        onComplete: () => gsap.set(defaultWord, {autoAlpha: 0})
+      })
+        .to(defaultLetters, {
+          yPercent: -120,
+          rotation: () => gsap.utils.random(-12, 12, 1),
+          opacity: 0,
+          duration: 0.28,
+          stagger: {each: 0.026, from: 'random'},
+          ease: 'power2.in'
+        }, 0)
+        .fromTo(alternateLetters, {
+          yPercent: 120,
+          rotation: () => gsap.utils.random(-13, 13, 1),
+          scaleY: 0.62,
+          opacity: 0
+        }, {
+          yPercent: 0,
+          rotation: 0,
+          scaleY: 1,
+          opacity: 1,
+          duration: 0.56,
+          stagger: {each: 0.04, from: 'random'},
+          ease: 'back.out(1.9)'
+        }, 0.08);
+    };
+
+    const showDefault = () => {
+      morphTimeline?.kill();
+      gsap.killTweensOf([...defaultLetters, ...alternateLetters]);
+      talkLabel.setAttribute('aria-label', "Let's Talk!");
+      gsap.set([defaultWord, alternateWord], {autoAlpha: 1});
+
+      morphTimeline = gsap.timeline({
+        onComplete: () => gsap.set(alternateWord, {autoAlpha: 0})
+      })
+        .to(alternateLetters, {
+          yPercent: 120,
+          rotation: () => gsap.utils.random(-10, 10, 1),
+          opacity: 0,
+          duration: 0.25,
+          stagger: {each: 0.022, from: 'random'},
+          ease: 'power2.in'
+        }, 0)
+        .fromTo(defaultLetters, {
+          yPercent: -115,
+          rotation: () => gsap.utils.random(-10, 10, 1),
+          scaleY: 0.7,
+          opacity: 0
+        }, {
+          yPercent: 0,
+          rotation: 0,
+          scaleY: 1,
+          opacity: 1,
+          duration: 0.5,
+          stagger: {each: 0.036, from: 'random'},
+          ease: 'back.out(1.7)'
+        }, 0.06);
+    };
+
+    talkLabel.addEventListener('pointerenter', showAlternate);
+    talkLabel.addEventListener('pointerleave', showDefault);
+    talkLabel.addEventListener('focus', showAlternate);
+    talkLabel.addEventListener('blur', showDefault);
+  };
+
   if (!reducedMotion && window.gsap) {
     contactTitleMorph = setupContactTitleMorph();
     if (contactTitleMorph) {
@@ -165,6 +256,8 @@ document.addEventListener('DOMContentLoaded', () => {
         opacity: 0
       });
     }
+
+    setupTalkLabelMorph();
 
     magneticButton?.addEventListener('pointerenter', () => contactTitleMorph?.showAlternate());
     magneticButton?.addEventListener('pointerleave', () => contactTitleMorph?.showDefault());
