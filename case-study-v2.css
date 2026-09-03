@@ -277,34 +277,44 @@
 
 .cs2-actions {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 8px;
+	grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+	gap: 12px;
 }
 
 .cs2-button {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 12px;
-	min-height: 52px;
-	padding: 0 15px;
+	gap: 8px;
+	min-width: 0;
+	min-height: 48px;
+	padding: 0 14px;
+	overflow: hidden;
 	border: 1px solid rgba(248, 248, 246, 0.55);
 	border-radius: 999px;
-	font-size: 10px;
+	font-size: 9px;
 	font-weight: 700;
+	line-height: 1;
+	letter-spacing: 0.015em;
 	text-transform: uppercase;
-	transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+	transition: color 220ms ease, background-color 220ms ease, border-color 220ms ease, transform 220ms ease;
+}
+
+.cs2-button > span {
+	min-width: 0;
+	white-space: nowrap;
 }
 
 .cs2-button svg {
 	flex: 0 0 auto;
-	width: 18px;
-	height: 18px;
+	width: 16px;
+	height: 16px;
 	fill: none;
 	stroke: currentColor;
 	stroke-linecap: round;
 	stroke-linejoin: round;
 	stroke-width: 1.8;
+	transition: transform 300ms cubic-bezier(.2, .8, .2, 1);
 }
 
 .cs2-button-primary {
@@ -314,14 +324,31 @@
 }
 
 .cs2-button:hover {
-	transform: translateY(-3px);
+	transform: translateY(-2px);
 }
 
-.cs2-button-primary:hover,
-.cs2-button-ghost:hover {
+.cs2-button:hover svg {
+	transform: translate(2px, -2px);
+}
+
+.banners-page .cs2-button-primary:hover svg {
+	transform: translateY(3px);
+}
+
+.cs2-button-primary:hover {
 	border-color: var(--cs2-white);
 	background: var(--cs2-white);
 	color: var(--cs2-ink);
+}
+
+.cs2-button-ghost {
+	background: rgba(248, 248, 246, 0.025);
+}
+
+.cs2-button-ghost:hover {
+	border-color: rgba(248, 248, 246, 0.9);
+	background: rgba(248, 248, 246, 0.09);
+	color: var(--cs2-white);
 }
 
 .cs2-hero-media {

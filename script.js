@@ -122,6 +122,135 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentYear = document.querySelector('[data-current-year]');
   if (currentYear) currentYear.textContent = String(new Date().getFullYear());
 
+  const siteHeader = document.querySelector('.site-header-blend');
+  const headerBlendSections = Array.from(document.querySelectorAll('[data-header-blend]'));
+
+  if (siteHeader && headerBlendSections.length) {
+    let headerBlendFrame = 0;
+
+    const updateHeaderBlend = () => {
+      headerBlendFrame = 0;
+      const headerRect = siteHeader.getBoundingClientRect();
+      const sampleY = headerRect.top + headerRect.height * 0.75;
+      const shouldBlend = headerBlendSections.some((section) => {
+        const sectionRect = section.getBoundingClientRect();
+        return sectionRect.top <= sampleY && sectionRect.bottom > sampleY;
+      });
+
+      siteHeader.classList.toggle('is-blending', shouldBlend);
+    };
+
+    const requestHeaderBlendUpdate = () => {
+      if (headerBlendFrame) return;
+      headerBlendFrame = requestAnimationFrame(updateHeaderBlend);
+    };
+
+    updateHeaderBlend();
+    window.addEventListener('scroll', requestHeaderBlendUpdate, {passive: true});
+    window.addEventListener('resize', requestHeaderBlendUpdate);
+  }
+
+  const menuTrigger = document.querySelector('[data-menu-open]');
+  const menuOverlay = document.querySelector('[data-menu-overlay]');
+  const menuPanel = document.querySelector('[data-menu-panel]');
+  const menuBackdrop = document.querySelector('[data-menu-backdrop]');
+  const menuCloseButton = document.querySelector('[data-menu-close]');
+  const menuLinks = Array.from(document.querySelectorAll('[data-menu-link]'));
+
+  if (menuTrigger && menuOverlay && menuPanel) {
+    const menuReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const menuFocusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    let menuCloseTimer = 0;
+    let menuFocusTimer = 0;
+    let lastMenuTrigger = menuTrigger;
+
+    const finishMenuClose = (restoreFocus) => {
+      menuOverlay.classList.remove('is-closing');
+      menuOverlay.setAttribute('aria-hidden', 'true');
+      if (restoreFocus && lastMenuTrigger?.isConnected) {
+        lastMenuTrigger.focus({preventScroll: true});
+      }
+    };
+
+    const closeMenu = ({restoreFocus = true} = {}) => {
+      if (!menuOverlay.classList.contains('is-open')) return;
+      if (menuCloseTimer) clearTimeout(menuCloseTimer);
+      if (menuFocusTimer) clearTimeout(menuFocusTimer);
+
+      menuOverlay.classList.remove('is-open');
+      menuOverlay.classList.add('is-closing');
+      menuTrigger.setAttribute('aria-expanded', 'false');
+      menuTrigger.setAttribute('aria-label', 'Open menu');
+      document.body.classList.remove('is-menu-open');
+
+      const closeDuration = menuReducedMotion ? 0 : 500;
+      menuCloseTimer = window.setTimeout(() => {
+        menuCloseTimer = 0;
+        finishMenuClose(restoreFocus);
+      }, closeDuration);
+    };
+
+    const openMenu = () => {
+      if (menuOverlay.classList.contains('is-open')) return;
+      if (menuCloseTimer) clearTimeout(menuCloseTimer);
+      if (menuFocusTimer) clearTimeout(menuFocusTimer);
+      menuCloseTimer = 0;
+      menuFocusTimer = 0;
+      lastMenuTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : menuTrigger;
+
+      menuOverlay.classList.remove('is-closing');
+      menuOverlay.setAttribute('aria-hidden', 'false');
+      menuTrigger.setAttribute('aria-expanded', 'true');
+      menuTrigger.setAttribute('aria-label', 'Close menu');
+      document.body.classList.add('is-menu-open');
+      menuPanel.scrollTop = 0;
+
+      requestAnimationFrame(() => {
+        menuOverlay.classList.add('is-open');
+        menuFocusTimer = window.setTimeout(() => {
+          menuFocusTimer = 0;
+          (menuCloseButton || menuPanel).focus({preventScroll: true});
+        }, menuReducedMotion ? 0 : 260);
+      });
+    };
+
+    menuTrigger.addEventListener('click', openMenu);
+    menuCloseButton?.addEventListener('click', () => closeMenu());
+    menuBackdrop?.addEventListener('click', () => closeMenu());
+    menuLinks.forEach((link) => {
+      link.addEventListener('click', () => closeMenu({restoreFocus: false}));
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (!menuOverlay.classList.contains('is-open')) return;
+
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeMenu();
+        return;
+      }
+
+      if (event.key !== 'Tab') return;
+      const focusableElements = Array.from(menuPanel.querySelectorAll(menuFocusableSelector))
+        .filter((element) => !element.hasAttribute('hidden'));
+      if (!focusableElements.length) {
+        event.preventDefault();
+        menuPanel.focus();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    });
+  }
+
   const contactSection = document.querySelector('[data-contact-section]');
   const contactButtonScene = document.querySelector('[data-contact-cta-scene]');
   const magneticButton = document.querySelector('[data-magnetic-button]');
@@ -1244,8 +1373,9 @@ document.addEventListener('DOMContentLoaded', () => {
   enter.to(armRight, {rotation: 3, transformOrigin:'50% 50%', duration:0.5, yoyo:true, repeat: -1, ease:'sine.inOut'}, '<');
   enter.to(duck, {y:-6, duration:0.6, yoyo:true, repeat:3, ease:'sine.inOut'}, '-=0.6');
 
-  // idle loop: subtle bob and shadow squash
-    gsap.to('.duck-mascot', {y: -150, scaleX: 0.93, duration: 0.6, ease:'power2.inOut', yoyo:true, repeat:-1});
+  // Keep the mobile bob compact so the duck never overlaps the hero title.
+    const duckFloatY = window.matchMedia('(max-width: 720px)').matches ? -44 : -150;
+    gsap.to(duck, {y: duckFloatY, scaleX: 0.93, duration: 0.6, ease:'power2.inOut', yoyo:true, repeat:-1});
     gsap.to(legLeft, {rotation: -4, duration: 0.6, ease:'sine.inOut', yoyo:true, repeat:-1});
     gsap.to(legRight, {rotation: 4, duration: 0.6, ease:'sine.inOut', yoyo:true, repeat:-1});
     gsap.to(body, {y: 10, rotation: 5, duration: 0.6, ease:'sine.inOut', yoyo:true, repeat:-1, delay: 0.6});

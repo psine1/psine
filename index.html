@@ -14,7 +14,7 @@
 			}
 		</script>
 		<link rel="stylesheet" href="section-index.css">
-		<link rel="stylesheet" href="styles.css?v=20260901-5">
+		<link rel="stylesheet" href="styles.css?v=20260903-17">
 	</head>
 	<body class="dark" aria-busy="true">
 
@@ -42,19 +42,60 @@
 						<span data-word-alternate>CUACK!</span>
 					</span>
 				</a>
-				<button class="btn-menu" type="button" aria-label="Open menu">
+				<button class="btn-menu" type="button" data-menu-open aria-label="Open menu" aria-controls="site-menu" aria-expanded="false">
 					<span>MENU</span>
 					<span class="menu-icon" aria-hidden="true"></span>
 				</button>
 			</nav>
 		</header>
 
+		<div class="menu-overlay" data-menu-overlay aria-hidden="true">
+			<div class="menu-backdrop" data-menu-backdrop></div>
+			<aside class="menu-panel" id="site-menu" data-menu-panel role="dialog" aria-modal="true" aria-labelledby="site-menu-title" tabindex="-1">
+				<h2 class="menu-visually-hidden" id="site-menu-title">Main menu</h2>
+
+				<div class="menu-panel-top menu-reveal" style="--menu-order: 0">
+					<a class="menu-panel-brand" href="#" data-menu-link aria-label="PSINE — Back to top">PSINE<sup>®</sup></a>
+					<div class="menu-panel-actions">
+						<a class="menu-panel-talk" href="#contact" data-contact-open data-menu-link aria-haspopup="dialog" aria-controls="contact-dialog">LET'S TALK</a>
+						<button class="menu-panel-close" type="button" data-menu-close aria-label="Close menu">
+							<span>MENU</span><span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
+
+				<div class="menu-panel-main">
+					<nav class="menu-primary" aria-label="Main menu">
+						<a class="menu-primary-link menu-reveal" href="#work" data-menu-link style="--menu-order: 1"><span>Work</span></a>
+						<a class="menu-primary-link menu-reveal" href="#services" data-menu-link style="--menu-order: 2"><span>Services</span></a>
+						<a class="menu-primary-link menu-reveal" href="#skills" data-menu-link style="--menu-order: 3"><span>Skills</span></a>						
+						<a class="menu-primary-link menu-reveal" href="#contact" data-menu-link style="--menu-order: 5"><span>Contact</span></a>
+					</nav>
+					<p class="menu-availability menu-reveal" style="--menu-order: 6"><span aria-hidden="true"></span> Available for selected projects</p>
+				</div>
+
+				<div class="menu-panel-footer">
+					<div class="menu-footer-group menu-reveal" style="--menu-order: 7">
+						<p>BUSINESS ENQUIRY</p>
+						<a href="mailto:patricio.sine@gmail.com">patricio.sine@gmail.com <span aria-hidden="true">↗</span></a>
+					</div>
+					<div class="menu-footer-group menu-reveal" style="--menu-order: 8">
+						<p>ELSEWHERE</p>
+						<div class="menu-social-links">
+							<a href="https://github.com/psine1" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+							<a href="#" data-menu-link>Back to top <span aria-hidden="true">↑</span></a>
+						</div>
+					</div>
+				</div>
+			</aside>
+		</div>
+
 		<main>
 			<section class="hero">
 				<div class="hero-copy reveal">
 					<h1>Creative<br>Developer.</h1>
 					<div class="hero-actions">
-						<a class="start-link" href="#contact">START A PROJECT <span aria-hidden="true">-&gt;</span></a>
+						<a class="start-link" href="#contact" data-contact-open aria-haspopup="dialog" aria-controls="contact-dialog"><span class="start-link-label">START A PROJECT</span><span class="start-link-arrow" aria-hidden="true">→</span></a>
 					</div>
 				</div>
 
@@ -196,7 +237,7 @@
 				</div>
 			</section>
 
-			<section class="skills-section scroll-snap-exempt" aria-label="Skills">
+			<section id="skills" class="skills-section scroll-snap-exempt" aria-label="Skills">
 				<div class="skills-sticky">
 					<div class="skills-heading">
 						<h2>Skills</h2>
@@ -209,6 +250,8 @@
 						<div class="skills-rail" data-skill-rail></div>
 					</div>
 
+					<p class="skills-instruction"><span aria-hidden="true">↔</span> Scroll / Drag</p>
+
 					<div class="section-index" aria-hidden="true">
 						<span>03 / SKILLS</span>
 						<span>PERSONAL PORTFOLIO &middot; 2026</span>
@@ -216,7 +259,7 @@
 				</div>
 			</section>
 
-			<section id="work" class="portfolio-section scroll-snap-exempt" aria-labelledby="portfolio-title" data-work-section>
+			<section id="work" class="portfolio-section scroll-snap-exempt" aria-labelledby="portfolio-title" data-work-section data-header-blend>
 				<div class="work-sticky">
 					<header class="portfolio-heading">
 						<h2 id="portfolio-title">Selected<br>Work.</h2>
@@ -394,6 +437,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 		<script src="custom-scrollbar.js"></script>
 		<script src="horizontal-gallery.js"></script>
-		<script src="script.js?v=20260901-5"></script>
+		<script src="script.js?v=20260903-3"></script>
 	</body>
 </html>
