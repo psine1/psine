@@ -1,0 +1,262 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#loader-container {
+    width: 300px;
+    height: 600px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    position: absolute;
+    background: #fff;
+    z-index: 10000;
+    border: 1px solid #555555;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -o-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    background: #fff;
+}
+
+#banner_content {
+    display: none;
+}
+
+.banner {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 300px;
+    height: 600px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border: 1px solid #555555;
+    overflow: hidden;
+    display: block !important;
+    background: #e4ff00;
+    transform: translate3d(0px, 0px, 0px);
+}
+
+strong {
+    font-weight: bold;
+}
+
+sup {
+    font-size: 6px;
+    position: relative;
+    top: -0.8em;
+    left: -2px;
+}
+
+.positionAb {
+    position: absolute;
+}
+
+.aC {
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+#clickTag {
+    width: 300px;
+    height: 600px;
+    cursor: pointer;
+    box-sizing: border-box;
+    top: -1px;
+    left: -1px;
+}
+
+#loader-container .circle {
+    -webkit-animation: spin 0.5s linear infinite;
+    animation: spin 0.5s linear infinite;
+    border: 5px solid #ddd;
+    border-bottom-color: #333;
+    border-radius: 50%;
+    height: 40px;
+    left: 50%;
+    margin-left: -22.5px;
+    margin-top: -22.5px;
+    position: absolute;
+    top: 50%;
+    -webkit-transition: all 0.7s ease-in-out;
+    -o-transition: all 0.7s ease-in-out;
+    transition: all 0.7s ease-in-out;
+    width: 40px;
+}
+
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+
+img{
+    width: 100%;
+    height: 100%;
+    background-size:contain;
+
+}
+
+
+#road{
+    left: -208px;
+    top: -40px;
+    width: 556px;
+    height: 475px;
+}
+
+#maskroad{
+    left: -208px;
+    top: -40px;
+    width: 556px;
+    height: 475px;
+}
+
+#mirror{
+    left: -5px;
+    top: -3px;
+    width: 310px;
+    height: 620px;
+}
+
+#car{
+    left: -5px;
+    top: -3px;
+    width: 310px;
+    height: 620px;
+}
+
+[id*='txt-']{
+    left: 0px;
+    top: 0px;
+    width: 300px;
+    height: 600px;
+}
+
+[id*='scene']{
+    left: 0px;
+    top: 0px;
+    width: 300px;
+    height: 600px;
+}
+
+#bg-fr2{
+    left: 0px;
+    top: 0px;
+    width: 300px;
+    height: 600px;    
+}
+
+#mountain-fr2{
+    left: 0px;
+    top: 0px;
+    width: 300px;
+    height: 600px;    
+}
+
+#bg-fr3{
+    left: 0px;
+    top: 0px;
+    width: 361px;
+    height: 600px;    
+}
+
+#people{
+    left: 70px;
+    top: 0px;
+    width: 300px;
+    height: 600px;    
+}
+
+#divider{
+    left: 0px;
+    top: 0px;
+    width: 300px;
+    height: 600px;
+}
+
+#bg-endFrame{
+    left: -1px;
+    top: -1px;
+    width: 300px;
+    height: 600px;
+}
+
+#logo-init{
+    left: 0px;
+    top: 0px;
+    width: 300px;
+    height: 600px;
+}
+
+#logo-end{
+    left: 23px;
+    top: 152px;
+    width: 253px;
+    height: 144px;
+}
+
+#cta{
+    top: 472px;
+    left: 60px;
+    width: 180px;
+    height: 44px;
+    background-color: #ffffff;
+    border-radius: 25px;
+}
+
+#cta img{
+    border-radius: 25px;
+}
+
+
+
+
+#cloud-1{
+    left: -277px;
+    top: -43px;
+    width: 526px;
+    height: 222px;
+}
+
+
+#cloud-2 {
+    left: -151px;
+    top: -43px;
+    width: 526px;
+    height: 222px;
+}
+
+#cloud-3 {
+    left: -59px;
+    top: -7px;
+    width: 466px;
+    height: 196px;
+}

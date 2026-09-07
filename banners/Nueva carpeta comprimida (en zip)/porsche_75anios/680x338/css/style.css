@@ -1,0 +1,159 @@
+*,
+*::after {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+img {
+  border: 0;
+}
+
+body {
+  cursor: pointer;
+}
+
+#wrapper {
+  width: 600px;
+  height: 338px;
+  overflow: hidden;
+  border: 1px solid #141010;
+  background-color: #ffffff;
+  visibility: hidden;
+}
+
+#logo {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.positionAb{
+  position: absolute;
+}
+
+#logo {
+  background-image: url(../images/logo@2x.png);
+  opacity: 0;
+}
+
+#frame1,
+#frame2,
+#frame3,
+#btn {
+  opacity: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.border {
+  background: white;
+}
+
+.border-left {
+  width: 8px;
+  height: 100%;
+  -webkit-transform-origin: 50% top;
+  transform-origin: 50% top;
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+}
+
+.border-right {
+  width: 148px;
+  height: 100%;
+  top: 0px;
+}
+
+.border-left {
+  left: 0;
+}
+
+.border-right {
+  right: 0;
+}
+
+.border-top,
+.border-bottom {
+  width: 100%;
+}
+
+.border-top {
+  height: 8px;
+  top: 0;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+}
+
+.border-bottom {
+  height: 8px;
+  bottom: 0;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0); 
+}
+
+#btn {
+  width: 84px;
+  height: 27px;
+  top: 276px;
+  left: 192px;
+  background: transparent url('../images/button@2x.png') no-repeat;
+  background-size: contain;
+  z-index: 99;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #FFFFFF;
+}
+
+#btn.btn--bgcolor:hover {
+  background: #FFFFFF url('../images/button-hover@2x.png') no-repeat;
+  background-size: contain;
+}
+
+#brush-1{
+  width: 718px;
+  height: 461px;
+  top: -50px;
+  left: -73px;
+}
+
+
+
+#wrap-car{
+  width: 345px;
+  left: 64px;
+  top: 106px;
+}
+
+#car{
+  width: 345px;
+  left: 0px;
+  top: 0px;
+}
+
+#wheel-1{
+  width: 41px;
+  left: 243px;
+  top: 91px;
+}
+
+#wheel-2{
+  width: 41px;
+  left: 64px;
+  top: 90px;
+}
+
+[id*='txt-1-']{
+  width: 600px;
+  left: 0px;
+  top: 0px;
+}
+
+#car img, [id*='wheel-'] img, [id*='txt-'] img{
+  width: 100%;
+}
+

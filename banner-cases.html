@@ -1,0 +1,1183 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="A curated selection of HTML5 banner campaigns created by PSINE, from responsive display to interactive rich media.">
+		<meta name="theme-color" content="#202020">
+		<title>Banner Campaigns — Selected Work | PSINE</title>
+		<link rel="preload" href="NHaasGroteskDSPro-55Rg.otf" as="font" type="font/otf" crossorigin>
+		<link rel="preload" href="NHaasGroteskDSPro-95Blk.otf" as="font" type="font/otf" crossorigin>
+		<link rel="stylesheet" href="section-index.css">
+		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="case-study-v2.css?v=20260904">
+		<script>document.documentElement.classList.add('bc-js');</script>
+		<style>
+			.banner-cases-page {
+				--bc-line-dark: rgba(17, 17, 17, 0.2);
+				--bc-line-light: rgba(248, 248, 246, 0.22);
+				background: var(--cs2-dark);
+			}
+
+			.banner-cases-page .brand img {
+				filter: brightness(0) invert(1);
+			}
+
+			.banner-cases-page .cs2-button-primary:hover svg {
+				transform: translateY(3px);
+			}
+
+			.bc-hero {
+				min-height: 100vh;
+				min-height: 100svh;
+			}
+
+			.bc-hero .cs2-hero-grid {
+				display: grid;
+				grid-template-columns: minmax(0, 1.42fr) minmax(310px, 0.58fr);
+				grid-template-rows: 1fr auto;
+				column-gap: clamp(52px, 7vw, 132px);
+				align-items: end;
+			}
+
+			.bc-hero .cs2-hero-title {
+				align-self: start;
+				width: min(66vw, 1120px);
+			}
+
+			.bc-hero .cs2-hero-title h1 {
+				font-size: clamp(68px, 8.4vw, 158px);
+				font-weight: 900;
+				line-height: 0.78;
+				letter-spacing: -0.035em;
+			}
+
+			.bc-hero .cs2-hero-title h1 em {
+				display: inline-block;
+			}
+
+			.bc-hero-summary {
+				position: static;
+				grid-column: 2;
+				grid-row: 1 / span 2;
+				align-self: end;
+				width: 100%;
+				padding-bottom: 0;
+			}
+
+			.bc-hero-tally {
+				grid-column: 1;
+				align-self: end;
+				display: grid;
+				grid-template-columns: auto 1fr;
+				align-items: end;
+				gap: clamp(22px, 3vw, 44px);
+				max-width: 820px;
+				padding-top: clamp(38px, 6vh, 78px);
+			}
+
+			.bc-hero-tally > strong {
+				font-size: clamp(80px, 10vw, 170px);
+				font-weight: 900;
+				line-height: 0.66;
+				letter-spacing: -0.06em;
+			}
+
+			.bc-hero-tally-meta {
+				display: grid;
+				gap: 14px;
+				padding-bottom: 1px;
+			}
+
+			.bc-hero-tally-meta p {
+				margin: 0;
+				font-family: "Courier New", monospace;
+				font-size: 9px;
+				font-weight: 700;
+				letter-spacing: 0.09em;
+				text-transform: uppercase;
+			}
+
+			.bc-tally-bars {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				gap: 7px;
+			}
+
+			.bc-tally-bars span {
+				display: block;
+				height: 12px;
+				border-radius: 999px;
+				background: var(--cs2-yellow);
+			}
+
+			.bc-tally-bars span:nth-child(2) { background: var(--cs2-purple); }
+			.bc-tally-bars span:nth-child(3) { background: var(--cs2-pink); }
+
+			.bc-overview {
+				--cs2-section-number: "02";
+			}
+
+			.bc-overview .cs2-overview-story h2 {
+				max-width: 650px;
+			}
+
+			.bc-library {
+				--cs2-section-number: "03";
+				position: relative;
+				padding: clamp(108px, 10vw, 170px) 0 calc(var(--cs2-index-height) + clamp(84px, 8vw, 130px));
+				background: var(--cs2-dark);
+				color: var(--cs2-white);
+			}
+
+			.bc-library-heading {
+				display: grid;
+				grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+				align-items: end;
+				gap: clamp(44px, 8vw, 150px);
+			}
+
+			.bc-library-heading .cs2-section-label {
+				margin-bottom: clamp(24px, 3vw, 42px);
+			}
+
+			.bc-library-heading h2 {
+				max-width: 970px;
+				margin: 0;
+				font-size: clamp(56px, 6.5vw, 118px);
+				font-weight: 900;
+				line-height: 0.82;
+				letter-spacing: -0.025em;
+			}
+
+			.bc-library-heading h2 em {
+				color: var(--cs2-yellow);
+			}
+
+			.bc-library-heading > p {
+				max-width: 460px;
+				margin: 0 0 4px;
+				color: #d4d4d0;
+				font-size: clamp(17px, 1.25vw, 22px);
+				line-height: 1.28;
+			}
+
+			.bc-filter-panel {
+				display: grid;
+				grid-template-columns: minmax(150px, 0.32fr) minmax(0, 1.68fr);
+				gap: clamp(24px, 4vw, 70px);
+				align-items: start;
+				margin-top: clamp(62px, 7vw, 110px);
+				padding: 22px 0;
+				border-top: 1px solid var(--bc-line-light);
+				border-bottom: 1px solid var(--bc-line-light);
+			}
+
+			.bc-filter-label,
+			.bc-grid-status {
+				margin: 0;
+				font-family: "Courier New", monospace;
+				font-size: 9px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+
+			.bc-filter-label {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				padding-top: 9px;
+			}
+
+			.bc-filter-label::before {
+				content: "";
+				width: 7px;
+				height: 7px;
+				border-radius: 50%;
+				background: var(--cs2-yellow);
+			}
+
+			.bc-format-filters {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+			}
+
+			.bc-format-filter {
+				min-height: 34px;
+				padding: 0 14px;
+				border: 1px solid rgba(248, 248, 246, 0.46);
+				border-radius: 999px;
+				background: transparent;
+				color: var(--cs2-white);
+				font-family: "Courier New", monospace;
+				font-size: 9px;
+				font-weight: 700;
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+				cursor: pointer;
+				transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+			}
+
+			.bc-format-filter:hover {
+				border-color: var(--cs2-white);
+				transform: translateY(-2px);
+			}
+
+			.bc-format-filter.is-active {
+				border-color: var(--cs2-yellow);
+				background: var(--cs2-yellow);
+				color: var(--cs2-ink);
+			}
+
+			.bc-grid-meta {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 18px;
+				margin-top: clamp(42px, 5vw, 72px);
+			}
+
+			.bc-grid-selection {
+				margin: 0;
+				color: #c7c7c3;
+				font-family: "Courier New", monospace;
+				font-size: 9px;
+				font-weight: 700;
+				letter-spacing: 0.07em;
+				text-transform: uppercase;
+			}
+
+			.bc-case-list {
+				display: grid;
+				grid-template-columns: repeat(5, minmax(0, 1fr));
+				gap: clamp(12px, 1.2vw, 20px);
+				margin-top: 20px;
+			}
+
+			.bc-case {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				min-width: 0;
+				overflow: hidden;
+				border: 1px solid var(--bc-line-light);
+				border-radius: clamp(18px, 1.7vw, 26px);
+				background: #282828;
+				cursor: default;
+				transition: border-color 220ms ease, background-color 220ms ease, transform 240ms cubic-bezier(.2, .75, .2, 1), box-shadow 240ms ease;
+			}
+
+			.bc-case[hidden] {
+				display: none !important;
+			}
+
+			.bc-case-link {
+				cursor: pointer;
+			}
+
+			.bc-case-link:hover {
+				border-color: rgba(248, 248, 246, 0.72);
+				background: #2d2d2d;
+				transform: translateY(-5px);
+				box-shadow: 0 24px 55px rgba(0, 0, 0, 0.25);
+			}
+
+			.bc-case-link::after {
+				content: "↗";
+				position: absolute;
+				top: 14px;
+				right: 14px;
+				z-index: 5;
+				display: grid;
+				place-items: center;
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+				background: var(--cs2-yellow);
+				color: var(--cs2-ink);
+				font-size: 16px;
+				font-weight: 900;
+				transition: transform 220ms cubic-bezier(.2, .8, .2, 1);
+			}
+
+			.bc-case-link:hover::after {
+				transform: translate(2px, -2px);
+			}
+
+			.bc-case-copy {
+				display: flex;
+				flex-direction: column;
+				min-height: 218px;
+				padding: clamp(18px, 1.6vw, 25px);
+			}
+
+			.bc-case-topline {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 18px;
+				padding-bottom: 13px;
+				border-bottom: 1px solid var(--bc-line-light);
+				font-family: "Courier New", monospace;
+				font-size: 8px;
+				font-weight: 700;
+				letter-spacing: 0.09em;
+				text-transform: uppercase;
+			}
+
+			.bc-case-copy h3 {
+				margin: 18px 0 11px;
+				font-size: clamp(26px, 2vw, 38px);
+				font-weight: 900;
+				line-height: 0.88;
+				letter-spacing: -0.025em;
+			}
+
+			.bc-case-copy > p {
+				max-width: 410px;
+				margin: 0;
+				color: #d6d6d2;
+				font-size: clamp(13px, 0.9vw, 16px);
+				line-height: 1.3;
+			}
+
+			.bc-case-tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 7px;
+				margin: auto 0 0;
+				padding: 22px 0 0;
+				list-style: none;
+			}
+
+			.bc-case-tags li {
+				padding: 7px 9px 6px;
+				border: 1px solid rgba(248, 248, 246, 0.5);
+				border-radius: 999px;
+				font-family: "Courier New", monospace;
+				font-size: 8px;
+				font-weight: 700;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+			}
+
+			.bc-case-poster {
+				position: relative;
+				order: -1;
+				min-width: 0;
+				margin: 0;
+				overflow: hidden;
+				border-bottom: 1px solid var(--bc-line-light);
+				background: #111;
+			}
+
+			.bc-case-poster svg {
+				display: block;
+				width: 100%;
+				height: auto;
+				aspect-ratio: 5 / 3;
+				object-fit: cover;
+			}
+
+			.bc-case-poster figcaption {
+				position: absolute;
+				left: 18px;
+				bottom: 16px;
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				padding: 8px 11px;
+				border: 1px solid rgba(255, 255, 255, 0.65);
+				border-radius: 999px;
+				background: rgba(17, 17, 17, 0.68);
+				color: #fff;
+				font-family: "Courier New", monospace;
+				font-size: 8px;
+				font-weight: 700;
+				letter-spacing: 0.07em;
+				text-transform: uppercase;
+				backdrop-filter: blur(8px);
+			}
+
+			.bc-case-poster figcaption::before {
+				content: "";
+				width: 6px;
+				height: 6px;
+				border-radius: 50%;
+				background: #70e979;
+			}
+
+			.bc-placeholder-art {
+				--slot-accent: var(--cs2-purple);
+				position: relative;
+				display: grid;
+				width: 100%;
+				aspect-ratio: 5 / 3;
+				place-items: center;
+				overflow: hidden;
+				background: #302548;
+				background: color-mix(in srgb, var(--slot-accent) 36%, #181818);
+			}
+
+			.bc-placeholder-art::before {
+				content: "";
+				position: absolute;
+				inset: -50%;
+				background-image: linear-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+				background-size: 34px 34px;
+				transform: rotate(-8deg);
+			}
+
+			.bc-placeholder-art::after {
+				content: "+";
+				position: absolute;
+				right: 22px;
+				top: 18px;
+				display: grid;
+				place-items: center;
+				width: 40px;
+				height: 40px;
+				border: 1px solid rgba(255, 255, 255, 0.64);
+				border-radius: 50%;
+				color: #fff;
+				font-size: 24px;
+				font-weight: 400;
+			}
+
+			.bc-placeholder-number {
+				position: relative;
+				z-index: 1;
+				color: rgba(255, 255, 255, 0.9);
+				font-size: clamp(76px, 7vw, 126px);
+				font-weight: 900;
+				line-height: 0.7;
+				letter-spacing: -0.07em;
+			}
+
+			.bc-placeholder-label {
+				position: absolute;
+				left: 20px;
+				top: 18px;
+				z-index: 1;
+				margin: 0;
+				font-family: "Courier New", monospace;
+				font-size: 8px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+
+			.bc-case-placeholder .bc-case-poster figcaption::before {
+				background: #b3b3ad;
+			}
+
+			.bc-case-link:focus-visible,
+			.bc-format-filter:focus-visible {
+				outline: 3px solid var(--cs2-yellow);
+				outline-offset: 4px;
+			}
+
+			.bc-principles {
+				--cs2-section-number: "04";
+			}
+
+			.bc-principles .cs2-section-heading h2 {
+				max-width: 930px;
+				font-weight: 900;
+				line-height: 0.86;
+			}
+
+			.bc-principles .cs2-challenge-grid article:nth-child(1) {
+				--cs2-challenge-hover: #1c1c1c;
+			}
+
+			.bc-principles .cs2-challenge-grid article:nth-child(2) {
+				--cs2-challenge-hover: var(--cs2-purple);
+			}
+
+			.bc-principles .cs2-challenge-grid article:nth-child(3) {
+				--cs2-challenge-hover: #d83079;
+			}
+
+			.bc-contact .contact-copy h2 {
+				font-size: clamp(126px, 11vw, 210px);
+			}
+
+			.bc-contact .section-index {
+				color: var(--cs2-white);
+			}
+
+			.bc-contact .contact-cta::after {
+				content: "START A PROJECT ↗";
+				position: absolute;
+				left: 50%;
+				top: 44%;
+				z-index: 5;
+				width: max-content;
+				font-family: "Courier New", monospace;
+				font-size: 10px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				transform: translate(-50%, -50%) rotate(-3deg);
+			}
+
+			.bc-js .bc-reveal {
+				opacity: 0;
+				transform: translateY(48px);
+				transition: opacity 700ms ease, transform 850ms cubic-bezier(.2, .75, .2, 1);
+			}
+
+			.bc-js .bc-reveal.is-visible {
+				opacity: 1;
+				transform: none;
+			}
+
+			.bc-js .bc-case-link.bc-reveal.is-visible:hover {
+				transform: translateY(-5px);
+			}
+
+			@media (max-width: 1260px) {
+				.bc-case-list {
+					grid-template-columns: repeat(4, minmax(0, 1fr));
+				}
+			}
+
+			@media (max-width: 1100px) {
+				.bc-hero .cs2-hero-grid {
+					grid-template-columns: minmax(0, 1.08fr) minmax(290px, 0.62fr);
+					column-gap: 42px;
+				}
+
+				.bc-hero .cs2-hero-title {
+					width: 100%;
+				}
+
+				.bc-hero .cs2-hero-title h1 {
+					font-size: clamp(66px, 9.6vw, 116px);
+				}
+
+				.bc-case-list {
+					grid-template-columns: repeat(3, minmax(0, 1fr));
+				}
+			}
+
+			@media (max-width: 760px) {
+				.bc-hero .cs2-hero-grid {
+					display: grid;
+					grid-template-columns: 1fr;
+					grid-template-rows: auto;
+					gap: 40px;
+				}
+
+				.bc-hero .cs2-hero-title,
+				.bc-hero-summary,
+				.bc-hero-tally {
+					grid-column: 1;
+					grid-row: auto;
+				}
+
+				.bc-hero .cs2-hero-title h1 {
+					font-size: clamp(60px, 19vw, 92px);
+				}
+
+				.bc-hero-tally {
+					grid-template-columns: auto 1fr;
+					padding-top: 8px;
+				}
+
+				.bc-library-heading {
+					grid-template-columns: 1fr;
+					align-items: start;
+					gap: 28px;
+				}
+
+				.bc-library-heading h2 {
+					font-size: clamp(54px, 16vw, 80px);
+				}
+
+				.bc-case-list {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+
+				.bc-filter-panel {
+					grid-template-columns: 1fr;
+					gap: 12px;
+				}
+
+				.bc-filter-label {
+					padding-top: 0;
+				}
+
+				.bc-case-copy h3 {
+					font-size: clamp(30px, 5.5vw, 40px);
+				}
+
+				.bc-case-poster figcaption {
+					left: 12px;
+					bottom: 12px;
+				}
+
+				.bc-contact .contact-copy h2 {
+					font-size: clamp(76px, 23vw, 124px);
+				}
+			}
+
+			@media (max-width: 620px) {
+				.bc-case-list {
+					grid-template-columns: 1fr;
+				}
+
+				.bc-grid-meta {
+					align-items: flex-start;
+					flex-direction: column;
+					gap: 8px;
+				}
+
+				.bc-case-copy {
+					min-height: 210px;
+				}
+
+				.bc-case-copy h3 {
+					font-size: clamp(36px, 11vw, 48px);
+				}
+			}
+
+			@media (max-width: 480px) {
+				.bc-hero-tally > strong {
+					font-size: 72px;
+				}
+
+				.bc-tally-bars {
+					grid-template-columns: 1fr;
+					gap: 5px;
+				}
+
+				.bc-tally-bars span {
+					height: 7px;
+				}
+
+				.bc-case-poster figcaption {
+					display: none;
+				}
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				.bc-js .bc-reveal {
+					opacity: 1;
+					transform: none;
+					transition: none;
+				}
+			}
+		</style>
+	</head>
+	<body class="cs2-page banner-cases-page">
+		<div class="cs2-progress" aria-hidden="true"><span data-cs2-progress></span></div>
+
+		<header class="site-header cs2-header">
+			<a class="brand" href="index.html" aria-label="Back to PSINE home">
+				<img src="LOGO.svg" alt="PSINE">
+			</a>
+			<nav class="header-controls" aria-label="Banner work navigation">
+				<a class="btn-talk" href="#contact" aria-label="Let's talk">LET'S TALK!</a>
+				<a class="cs2-back" href="index.html#work"><span aria-hidden="true">←</span> SELECTED WORK</a>
+			</nav>
+		</header>
+
+		<main>
+			
+
+			
+
+			<section class="bc-library" id="campaigns" aria-labelledby="bc-library-title">
+				<div class="cs2-shell">
+					<header class="bc-library-heading bc-reveal">
+						<div>
+							<p class="cs2-section-label">Campaign archive</p>
+							<h2 id="bc-library-title">Pick a format.<br><em>Find the work.</em></h2>
+						</div>
+						<p>A flexible archive for fifteen campaigns. Filter the grid by delivery format and open any published card to see the full case.</p>
+					</header>
+
+					<div class="bc-filter-panel bc-reveal" aria-labelledby="bc-filter-label">
+						<p class="bc-filter-label" id="bc-filter-label">Filter by format</p>
+						<div class="bc-format-filters" role="group" aria-label="Campaign format filters">
+							<button class="bc-format-filter is-active" type="button" data-format-filter="all" aria-pressed="true">All</button>
+							<button class="bc-format-filter" type="button" data-format-filter="300x250" aria-pressed="false">300 × 250</button>
+							<button class="bc-format-filter" type="button" data-format-filter="300x600" aria-pressed="false">300 × 600</button>
+							<button class="bc-format-filter" type="button" data-format-filter="160x600" aria-pressed="false">160 × 600</button>
+							<button class="bc-format-filter" type="button" data-format-filter="320x50" aria-pressed="false">320 × 50</button>
+							<button class="bc-format-filter" type="button" data-format-filter="320x100" aria-pressed="false">320 × 100</button>
+							<button class="bc-format-filter" type="button" data-format-filter="728x90" aria-pressed="false">728 × 90</button>
+							<button class="bc-format-filter" type="button" data-format-filter="970x66" aria-pressed="false">970 × 66</button>
+							<button class="bc-format-filter" type="button" data-format-filter="970x250" aria-pressed="false">970 × 250</button>
+							<button class="bc-format-filter" type="button" data-format-filter="interactive" aria-pressed="false">Interactive</button>
+						</div>
+					</div>
+
+					<div class="bc-grid-meta bc-reveal">
+						<p class="bc-grid-status" data-grid-status aria-live="polite">15 campaigns shown</p>
+						<p class="bc-grid-selection">01 case available</p>
+					</div>
+
+					<div class="bc-case-list">
+						<!-- Replace a placeholder card when a new campaign is ready. -->
+						<article class="bc-case bc-reveal" data-campaign-name="Launch Mode" data-formats="300x250 300x600 320x100 728x90 970x250">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>01 / Responsive display</span><span>2026</span></div>
+								<h3>Launch<br>Mode</h3>
+								<p>A bright, type-led launch system built to make the message land immediately across changing placements.</p>
+								<ul class="bc-case-tags" aria-label="Launch Mode attributes">
+									<li>HTML5</li>
+									<li>Responsive</li>
+									<li>Motion</li>
+								</ul>
+							</div>
+
+							<figure class="bc-case-poster">
+								<svg viewBox="0 0 1200 720" role="img" aria-labelledby="launch-title launch-desc" preserveAspectRatio="xMidYMid slice">
+									<title id="launch-title">Launch Mode campaign artwork</title>
+									<desc id="launch-desc">A yellow campaign layout with bold black typography, a purple orbit and a black call-to-action.</desc>
+									<defs>
+										<pattern id="launch-grid" width="42" height="42" patternUnits="userSpaceOnUse">
+											<path d="M42 0H0V42" fill="none" stroke="#111" stroke-width="2" opacity=".12"/>
+										</pattern>
+										<filter id="launch-shadow" x="-40%" y="-40%" width="180%" height="180%">
+											<feDropShadow dx="14" dy="16" stdDeviation="0" flood-color="#111"/>
+										</filter>
+									</defs>
+									<rect width="1200" height="720" fill="#ffcf25"/>
+									<rect width="1200" height="720" fill="url(#launch-grid)"/>
+									<g transform="rotate(-7 954 474)" filter="url(#launch-shadow)">
+										<circle cx="960" cy="492" r="216" fill="#ff5ca7" stroke="#111" stroke-width="28"/>
+										<circle cx="960" cy="492" r="118" fill="#7544df" stroke="#111" stroke-width="22"/>
+										<circle cx="950" cy="253" r="53" fill="#f8f8f6" stroke="#111" stroke-width="16"/>
+									</g>
+									<rect x="72" y="70" width="238" height="54" rx="27" fill="#f8f8f6" stroke="#111" stroke-width="4"/>
+									<text x="191" y="104" text-anchor="middle" fill="#111" font-family="'Neue Haas', Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2">NEW SEASON / 2026</text>
+									<text x="68" y="382" fill="#111" font-family="'Neue Haas', Arial, sans-serif" font-size="190" font-weight="900" letter-spacing="-12">LAUNCH</text>
+									<text x="68" y="535" fill="#111" font-family="'Neue Haas', Arial, sans-serif" font-size="190" font-weight="900" letter-spacing="-12">MODE</text>
+									<rect x="73" y="586" width="230" height="65" rx="33" fill="#111"/>
+									<text x="188" y="627" text-anchor="middle" fill="#fff" font-family="'Neue Haas', Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="1">EXPLORE NOW →</text>
+								</svg>
+								<figcaption>Static campaign image</figcaption>
+							</figure>
+						</article>
+
+						<article class="bc-case bc-reveal" data-campaign-name="Play to Win" data-formats="300x250 interactive">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>02 / Interactive unit</span><span>2026</span></div>
+								<h3>Play<br>to Win</h3>
+								<p>A gamified rich-media idea that turns the ad itself into a tiny challenge, using a simple target and instant feedback.</p>
+								<ul class="bc-case-tags" aria-label="Play to Win attributes">
+									<li>Playable</li>
+									<li>Interaction</li>
+									<li>JavaScript</li>
+								</ul>
+							</div>
+
+							<figure class="bc-case-poster">
+								<svg viewBox="0 0 1200 720" role="img" aria-labelledby="play-title play-desc" preserveAspectRatio="xMidYMid slice">
+									<title id="play-title">Play to Win campaign artwork</title>
+									<desc id="play-desc">A purple interactive campaign layout with large white type, a yellow target and score counter.</desc>
+									<defs>
+										<pattern id="play-dots" width="46" height="46" patternUnits="userSpaceOnUse" patternTransform="rotate(-8)">
+											<circle cx="5" cy="5" r="3" fill="#fff" opacity=".16"/>
+										</pattern>
+										<filter id="play-shadow" x="-40%" y="-40%" width="180%" height="180%">
+											<feDropShadow dx="16" dy="16" stdDeviation="0" flood-color="#111"/>
+										</filter>
+									</defs>
+									<rect width="1200" height="720" fill="#7544df"/>
+									<rect width="1200" height="720" fill="url(#play-dots)"/>
+									<text x="70" y="100" fill="#fff" font-family="'Neue Haas', Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="4">INTERACTIVE UNIT</text>
+									<text x="63" y="384" fill="#fff" font-family="'Neue Haas', Arial, sans-serif" font-size="190" font-weight="900" letter-spacing="-11">PLAY</text>
+									<text x="63" y="535" fill="#fff" font-family="'Neue Haas', Arial, sans-serif" font-size="190" font-weight="900" letter-spacing="-11">TO WIN</text>
+									<text x="73" y="612" fill="#fff" font-family="'Neue Haas', Arial, sans-serif" font-size="26" font-weight="700">Hit the target</text>
+									<g filter="url(#play-shadow)">
+										<circle cx="965" cy="274" r="105" fill="#ffcf25" stroke="#111" stroke-width="18"/>
+										<path d="M908 274h114M965 217v114" stroke="#111" stroke-width="17" stroke-linecap="round"/>
+									</g>
+									<rect x="905" y="575" width="226" height="70" rx="35" fill="none" stroke="#fff" stroke-width="4"/>
+									<text x="1018" y="620" text-anchor="middle" fill="#fff" font-family="'Neue Haas', Arial, sans-serif" font-size="26" font-weight="700">SCORE: 03</text>
+								</svg>
+								<figcaption>Static campaign image</figcaption>
+							</figure>
+						</article>
+
+						<a class="bc-case bc-case-link bc-reveal" href="banners.html" data-campaign-name="Onimusha" data-formats="300x250 300x600 160x600 320x50 320x100 728x90 970x66 970x250" aria-label="Open the Onimusha banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>03 / Multi-format display</span><span>2026</span></div>
+								<h3>Onimusha</h3>
+								<p>A cinematic display campaign that carries one dramatic visual system across eight placements without losing hierarchy or impact.</p>
+								<ul class="bc-case-tags" aria-label="Onimusha banner formats">
+									<li>300 × 250</li>
+									<li>300 × 600</li>
+									<li>+6 formats</li>
+								</ul>
+							</div>
+
+							<figure class="bc-case-poster">
+								<svg viewBox="0 0 1200 720" role="img" aria-labelledby="onimusha-title onimusha-desc" preserveAspectRatio="xMidYMid slice">
+									<title id="onimusha-title">Onimusha campaign artwork</title>
+									<desc id="onimusha-desc">A final 300 by 250 Onimusha banner frame centered on a dark cinematic canvas.</desc>
+									<defs>
+										<radialGradient id="oni-glow" cx="50%" cy="45%" r="65%">
+											<stop offset="0" stop-color="#315d66"/>
+											<stop offset=".52" stop-color="#132b34"/>
+											<stop offset="1" stop-color="#071014"/>
+										</radialGradient>
+										<filter id="oni-shadow" x="-30%" y="-30%" width="160%" height="170%">
+											<feDropShadow dx="0" dy="26" stdDeviation="22" flood-color="#000" flood-opacity=".65"/>
+										</filter>
+									</defs>
+									<rect width="1200" height="720" fill="url(#oni-glow)"/>
+									<text x="58" y="78" fill="#d4ad65" font-family="'Courier New', monospace" font-size="16" font-weight="700" letter-spacing="3">MULTI-FORMAT / HTML5 DISPLAY</text>
+									<text x="1140" y="644" text-anchor="end" fill="#d4ad65" opacity=".5" font-family="'Neue Haas', Arial, sans-serif" font-size="160" font-weight="900">03</text>
+									<g transform="translate(270 72) scale(2.2)" filter="url(#oni-shadow)">
+										<rect width="300" height="250" fill="#000" stroke="#b8a16f" stroke-width="1"/>
+										<image href="banners/onimusha/300x250/images/bg2.jpg" x="0" y="0" width="300" height="250"/>
+										<image href="banners/onimusha/300x250/images/character2.png" x="0" y="0" width="300" height="250"/>
+										<image href="banners/onimusha/300x250/images/cape.png" x="22" y="-89" width="315" height="372"/>
+										<image href="banners/onimusha/300x250/images/character1.png" x="22" y="-89" width="315" height="372"/>
+										<image href="banners/onimusha/300x250/images/sword.png" x="22" y="-89" width="315" height="372"/>
+										<image href="banners/onimusha/300x250/images/gradient.png" x="0" y="0" width="300" height="250"/>
+										<image href="banners/onimusha/300x250/images/logo.png" x="57" y="83" width="191" height="98"/>
+										<image href="banners/onimusha/300x250/images/cta.png" x="44" y="189" width="210" height="33"/>
+										<image href="banners/onimusha/300x250/images/legal.png" x="0" y="0" width="300" height="600"/>
+									</g>
+								</svg>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>
+
+						<article class="bc-case bc-case-placeholder bc-reveal" data-campaign-name="Campaign 04" data-formats="300x250">
+							<figure class="bc-case-poster">
+								<div class="bc-placeholder-art" style="--slot-accent: #ff5ca7" role="img" aria-label="Placeholder image for campaign 04">
+									<p class="bc-placeholder-label">Artwork placeholder</p>
+									<span class="bc-placeholder-number">04</span>
+								</div>
+								<figcaption>Placeholder</figcaption>
+							</figure>
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>04 / Display</span><span>TBD</span></div>
+								<h3>Next<br>campaign</h3>
+								<p>Reserved for the next campaign image and project summary.</p>
+								<ul class="bc-case-tags" aria-label="Campaign 04 planned format"><li>300 × 250</li><li>Placeholder</li></ul>
+							</div>
+						</article>
+
+						<article class="bc-case bc-case-placeholder bc-reveal" data-campaign-name="Campaign 05" data-formats="300x600">
+							<figure class="bc-case-poster">
+								<div class="bc-placeholder-art" style="--slot-accent: #2daef5" role="img" aria-label="Placeholder image for campaign 05">
+									<p class="bc-placeholder-label">Artwork placeholder</p>
+									<span class="bc-placeholder-number">05</span>
+								</div>
+								<figcaption>Placeholder</figcaption>
+							</figure>
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>05 / Half page</span><span>TBD</span></div>
+								<h3>Next<br>campaign</h3>
+								<p>Reserved for the next campaign image and project summary.</p>
+								<ul class="bc-case-tags" aria-label="Campaign 05 planned format"><li>300 × 600</li><li>Placeholder</li></ul>
+							</div>
+						</article>
+
+						<article class="bc-case bc-case-placeholder bc-reveal" data-campaign-name="Campaign 06" data-formats="728x90">
+							<figure class="bc-case-poster">
+								<div class="bc-placeholder-art" style="--slot-accent: #ffcf25" role="img" aria-label="Placeholder image for campaign 06">
+									<p class="bc-placeholder-label">Artwork placeholder</p>
+									<span class="bc-placeholder-number">06</span>
+								</div>
+								<figcaption>Placeholder</figcaption>
+							</figure>
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>06 / Leaderboard</span><span>TBD</span></div>
+								<h3>Next<br>campaign</h3>
+								<p>Reserved for the next campaign image and project summary.</p>
+								<ul class="bc-case-tags" aria-label="Campaign 06 planned format"><li>728 × 90</li><li>Placeholder</li></ul>
+							</div>
+						</article>
+
+						<article class="bc-case bc-case-placeholder bc-reveal" data-campaign-name="Campaign 07" data-formats="interactive 300x250">
+							<figure class="bc-case-poster">
+								<div class="bc-placeholder-art" style="--slot-accent: #7544df" role="img" aria-label="Placeholder image for campaign 07">
+									<p class="bc-placeholder-label">Artwork placeholder</p>
+									<span class="bc-placeholder-number">07</span>
+								</div>
+								<figcaption>Placeholder</figcaption>
+							</figure>
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>07 / Rich media</span><span>TBD</span></div>
+								<h3>Next<br>campaign</h3>
+								<p>Reserved for an upcoming interactive or playable campaign.</p>
+								<ul class="bc-case-tags" aria-label="Campaign 07 planned format"><li>Interactive</li><li>300 × 250</li></ul>
+							</div>
+						</article>
+
+						<article class="bc-case bc-case-placeholder bc-reveal" data-campaign-name="Campaign 08" data-formats="160x600">
+							<figure class="bc-case-poster">
+								<div class="bc-placeholder-art" style="--slot-accent: #38bdf8" role="img" aria-label="Placeholder image for campaign 08">
+									<p class="bc-placeholder-label">Artwork placeholder</p>
+									<span class="bc-placeholder-number">08</span>
+								</div>
+								<figcaption>Placeholder</figcaption>
+							</figure>
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>08 / Skyscraper</span><span>TBD</span></div>
+								<h3>Next<br>campaign</h3>
+								<p>Reserved for the next campaign image and project summary.</p>
+								<ul class="bc-case-tags" aria-label="Campaign 08 planned format"><li>160 × 600</li><li>Placeholder</li></ul>
+							</div>
+						</article>
+
+						<article class="bc-case bc-case-placeholder bc-reveal" data-campaign-name="Campaign 09" data-formats="320x100">
+							<figure class="bc-case-poster">
+								<div class="bc-placeholder-art" style="--slot-accent: #ff7ab7" role="img" aria-label="Placeholder image for campaign 09">
+									<p class="bc-placeholder-label">Artwork placeholder</p>
+									<span class="bc-placeholder-number">09</span>
+								</div>
+								<figcaption>Placeholder</figcaption>
+							</figure>
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>09 / Mobile banner</span><span>TBD</span></div>
+								<h3>Next<br>campaign</h3>
+								<p>Reserved for the next campaign image and project summary.</p>
+								<ul class="bc-case-tags" aria-label="Campaign 09 planned format"><li>320 × 100</li><li>Placeholder</li></ul>
+							</div>
+						</article>
+
+						<article class="bc-case bc-case-placeholder bc-reveal" data-campaign-name="Campaign 10" data-formats="970x250">
+							<figure class="bc-case-poster">
+								<div class="bc-placeholder-art" style="--slot-accent: #3ecf8e" role="img" aria-label="Placeholder image for campaign 10">
+									<p class="bc-placeholder-label">Artwork placeholder</p>
+									<span class="bc-placeholder-number">10</span>
+								</div>
+								<figcaption>Placeholder</figcaption>
+							</figure>
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>10 / Billboard</span><span>TBD</span></div>
+								<h3>Next<br>campaign</h3>
+								<p>Reserved for the next campaign image and project summary.</p>
+								<ul class="bc-case-tags" aria-label="Campaign 10 planned format"><li>970 × 250</li><li>Placeholder</li></ul>
+							</div>
+						</article>
+
+						<article class="bc-case bc-case-placeholder bc-reveal" data-campaign-name="Campaign 11" data-formats="300x250 300x600">
+							<figure class="bc-case-poster">
+								<div class="bc-placeholder-art" style="--slot-accent: #e2a91a" role="img" aria-label="Placeholder image for campaign 11">
+									<p class="bc-placeholder-label">Artwork placeholder</p>
+									<span class="bc-placeholder-number">11</span>
+								</div>
+								<figcaption>Placeholder</figcaption>
+							</figure>
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>11 / Display set</span><span>TBD</span></div>
+								<h3>Next<br>campaign</h3>
+								<p>Reserved for a campaign with square and vertical formats.</p>
+								<ul class="bc-case-tags" aria-label="Campaign 11 planned formats"><li>300 × 250</li><li>300 × 600</li></ul>
+							</div>
+						</article>
+
+						<article class="bc-case bc-case-placeholder bc-reveal" data-campaign-name="Campaign 12" data-formats="320x50">
+							<figure class="bc-case-poster">
+								<div class="bc-placeholder-art" style="--slot-accent: #8b5fe6" role="img" aria-label="Placeholder image for campaign 12">
+									<p class="bc-placeholder-label">Artwork placeholder</p>
+									<span class="bc-placeholder-number">12</span>
+								</div>
+								<figcaption>Placeholder</figcaption>
+							</figure>
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>12 / Mobile banner</span><span>TBD</span></div>
+								<h3>Next<br>campaign</h3>
+								<p>Reserved for the next campaign image and project summary.</p>
+								<ul class="bc-case-tags" aria-label="Campaign 12 planned format"><li>320 × 50</li><li>Placeholder</li></ul>
+							</div>
+						</article>
+
+						<article class="bc-case bc-case-placeholder bc-reveal" data-campaign-name="Campaign 13" data-formats="970x66">
+							<figure class="bc-case-poster">
+								<div class="bc-placeholder-art" style="--slot-accent: #2daef5" role="img" aria-label="Placeholder image for campaign 13">
+									<p class="bc-placeholder-label">Artwork placeholder</p>
+									<span class="bc-placeholder-number">13</span>
+								</div>
+								<figcaption>Placeholder</figcaption>
+							</figure>
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>13 / Super leaderboard</span><span>TBD</span></div>
+								<h3>Next<br>campaign</h3>
+								<p>Reserved for the next campaign image and project summary.</p>
+								<ul class="bc-case-tags" aria-label="Campaign 13 planned format"><li>970 × 66</li><li>Placeholder</li></ul>
+							</div>
+						</article>
+
+						<article class="bc-case bc-case-placeholder bc-reveal" data-campaign-name="Campaign 14" data-formats="728x90">
+							<figure class="bc-case-poster">
+								<div class="bc-placeholder-art" style="--slot-accent: #ff5ca7" role="img" aria-label="Placeholder image for campaign 14">
+									<p class="bc-placeholder-label">Artwork placeholder</p>
+									<span class="bc-placeholder-number">14</span>
+								</div>
+								<figcaption>Placeholder</figcaption>
+							</figure>
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>14 / Leaderboard</span><span>TBD</span></div>
+								<h3>Next<br>campaign</h3>
+								<p>Reserved for the next campaign image and project summary.</p>
+								<ul class="bc-case-tags" aria-label="Campaign 14 planned format"><li>728 × 90</li><li>Placeholder</li></ul>
+							</div>
+						</article>
+
+						<article class="bc-case bc-case-placeholder bc-reveal" data-campaign-name="Campaign 15" data-formats="300x250">
+							<figure class="bc-case-poster">
+								<div class="bc-placeholder-art" style="--slot-accent: #3ecf8e" role="img" aria-label="Placeholder image for campaign 15">
+									<p class="bc-placeholder-label">Artwork placeholder</p>
+									<span class="bc-placeholder-number">15</span>
+								</div>
+								<figcaption>Placeholder</figcaption>
+							</figure>
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>15 / Display</span><span>TBD</span></div>
+								<h3>Next<br>campaign</h3>
+								<p>Reserved for the next campaign image and project summary.</p>
+								<ul class="bc-case-tags" aria-label="Campaign 15 planned format"><li>300 × 250</li><li>Placeholder</li></ul>
+							</div>
+						</article>
+					</div>
+				</div>
+				<div class="cs2-section-index" aria-hidden="true"><span>03 / CAMPAIGNS</span><span>15 SLOTS · FILTER BY FORMAT</span></div>
+			</section>
+
+			<section class="cs2-section cs2-challenge bc-principles" id="approach" aria-labelledby="bc-approach-title">
+				<div class="cs2-shell">
+					<header class="cs2-section-heading bc-reveal">
+						<p class="cs2-section-label">The approach</p>
+						<h2 id="bc-approach-title">Built to work.<br>Made to be seen.</h2>
+					</header>
+
+					<div class="cs2-challenge-grid" aria-label="Banner production principles">
+						<article class="bc-reveal">
+							<span>01 / IDEA</span>
+							<div class="cs2-challenge-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M8.5 14.5A7 7 0 1 1 15.5 14.5C14.4 15.3 14 16 14 18h-4c0-2-.4-2.7-1.5-3.5Z"/></svg></div>
+							<h3>Read fast</h3>
+							<p>A sharp visual hierarchy makes the idea clear before attention moves on.</p>
+						</article>
+						<article class="bc-reveal">
+							<span>02 / SYSTEM</span>
+							<div class="cs2-challenge-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="14" height="11" rx="2"/><path d="M7 19h4M9 15v4"/><rect x="18" y="8" width="4" height="11" rx="1"/></svg></div>
+							<h3>Adapt well</h3>
+							<p>Each ratio gets a considered composition, not a smaller copy of the same layout.</p>
+						</article>
+						<article class="bc-reveal">
+							<span>03 / DELIVERY</span>
+							<div class="cs2-challenge-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12 9 17 20 6"/><circle cx="12" cy="12" r="10"/></svg></div>
+							<h3>Ship clean</h3>
+							<p>Motion, weight and fallbacks stay inside real-world media constraints.</p>
+						</article>
+					</div>
+				</div>
+				<div class="cs2-section-index" aria-hidden="true"><span>04 / APPROACH</span><span>IDEA · SYSTEM · DELIVERY</span></div>
+			</section>
+
+			<section id="contact" class="contact-section bc-contact" aria-labelledby="contact-title">
+				<div class="contact-inner">
+					<div class="contact-copy">
+						<p class="contact-kicker"><span aria-hidden="true"></span> Available for selected projects</p>
+						<h2 id="contact-title">
+							<span class="contact-line">Let's</span>
+							<span class="contact-line">move.</span>
+						</h2>
+						<p class="contact-intro">Need a campaign that works hard in a very small space? Share the idea and let's give it movement.</p>
+					</div>
+
+					<svg class="contact-cue" viewBox="0 0 360 112" aria-hidden="true">
+						<path d="M8 11C13 68 83 105 166 99C239 94 301 75 344 50M318 42L344 50L337 79"></path>
+					</svg>
+
+					<div class="contact-cta-scene">
+						<a class="contact-cta" href="mailto:patricio.sine@gmail.com?subject=Banner%20campaign%20inquiry%20%E2%80%94%20PSINE" aria-label="Start a banner project">
+							<img class="contact-spark contact-spark-one" src="images/button-star-2.svg" alt="" aria-hidden="true">
+							<img class="contact-spark contact-spark-two" src="images/button-star-1.svg" alt="" aria-hidden="true">
+							<img class="contact-cta-top" src="images/button-top.svg" alt="" aria-hidden="true">
+							<img class="contact-cta-base" src="images/button-bottom.svg" alt="" aria-hidden="true">
+						</a>
+					</div>
+				</div>
+
+				<div class="section-index" aria-hidden="true">
+					<span>05 / CONTACT</span>
+					<span>BANNER CAMPAIGNS · SELECTED WORK</span>
+				</div>
+			</section>
+		</main>
+
+		<footer class="cs2-footer">
+			<a href="index.html" aria-label="PSINE home"><img src="LOGO.svg" alt="PSINE"></a>
+			<p>© <span data-cs2-year>2026</span> PSINE</p>
+			<p>Product design &amp; creative development.</p>
+		</footer>
+
+		<script src="custom-scrollbar.js"></script>
+		<script>
+			(() => {
+				const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+				const progress = document.querySelector('[data-cs2-progress]');
+				const year = document.querySelector('[data-cs2-year]');
+				const reveals = document.querySelectorAll('.bc-reveal');
+				const filters = document.querySelectorAll('[data-format-filter]');
+				const campaignCards = document.querySelectorAll('[data-formats]');
+				const gridStatus = document.querySelector('[data-grid-status]');
+				const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+				if (year) year.textContent = String(new Date().getFullYear());
+
+				const updateProgress = () => {
+					if (!progress) return;
+					const scrollable = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+					progress.style.transform = `scaleX(${clamp(window.scrollY / scrollable, 0, 1)})`;
+				};
+
+				window.addEventListener('scroll', updateProgress, {passive: true});
+				window.addEventListener('resize', updateProgress);
+				updateProgress();
+
+				filters.forEach((filterButton) => {
+					filterButton.addEventListener('click', () => {
+						const activeFormat = filterButton.dataset.formatFilter;
+						let visibleCount = 0;
+
+						filters.forEach((button) => {
+							const isActive = button === filterButton;
+							button.classList.toggle('is-active', isActive);
+							button.setAttribute('aria-pressed', String(isActive));
+						});
+
+						campaignCards.forEach((card) => {
+							const formats = card.dataset.formats.split(' ');
+							const isVisible = activeFormat === 'all' || formats.includes(activeFormat);
+							card.hidden = !isVisible;
+							if (isVisible) visibleCount += 1;
+						});
+
+						if (gridStatus) gridStatus.textContent = `${visibleCount} ${visibleCount === 1 ? 'campaign' : 'campaigns'} shown`;
+					});
+				});
+
+				if (reducedMotion || !('IntersectionObserver' in window)) {
+					reveals.forEach((element) => element.classList.add('is-visible'));
+					return;
+				}
+
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach((entry) => {
+						if (!entry.isIntersecting) return;
+						entry.target.classList.add('is-visible');
+						observer.unobserve(entry.target);
+					});
+				}, {threshold: 0.08, rootMargin: '0px 0px -7%'});
+
+				reveals.forEach((element) => observer.observe(element));
+			})();
+		</script>
+	</body>
+</html>

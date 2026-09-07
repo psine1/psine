@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 728 90">
+  <!-- Generator: Adobe Illustrator 29.8.2, SVG Export Plug-In . SVG Version: 2.1.1 Build 3)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: url(#linear-gradient2);
+      }
+
+      .st1 {
+        fill: url(#linear-gradient1);
+      }
+
+      .st2 {
+        fill: none;
+      }
+
+      .st3 {
+        clip-path: url(#clippath-1);
+      }
+
+      .st4 {
+        fill: url(#linear-gradient7);
+      }
+
+      .st5 {
+        fill: url(#linear-gradient4);
+      }
+
+      .st6 {
+        fill: url(#linear-gradient5);
+      }
+
+      .st7 {
+        fill: url(#linear-gradient3);
+      }
+
+      .st8 {
+        fill: url(#linear-gradient6);
+      }
+
+      .st9 {
+        fill: url(#linear-gradient);
+      }
+
+      .st10 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="st2" width="728" height="90"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <polygon class="st2" points="767.9 112.83 -11.26 104.08 -11.26 -50 746.66 -50 767.9 112.83"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="81.24" y1="270.2" x2="81.24" y2="455.45" gradientTransform="translate(284.45 -182.44) rotate(.45) scale(1 .63)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1d3947"/>
+      <stop offset=".6" stop-color="#3b707d"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient1" x1="269.91" y1="-40.65" x2="276.19" y2="49.16" gradientTransform="translate(316.68 38.99) rotate(4.31)" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient2" x1="208.96" y1="-46.33" x2="217.59" y2="77.08" gradientTransform="translate(316.68 38.99) rotate(4.31)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#224552"/>
+      <stop offset="1" stop-color="#7393a3"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient3" x1="641.61" y1="85.3" x2="473.27" y2="36.41" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient4" x1="647.97" y1="94.17" x2="477.52" y2="44.67" xlink:href="#linear-gradient3"/>
+    <linearGradient id="linear-gradient5" x1="544" y1="35.32" x2="544" y2="35.32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fcf7c9" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#fcf7c9" stop-opacity=".2"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient6" x1="541.92" y1="45.51" x2="541.92" y2="45.51" xlink:href="#linear-gradient5"/>
+    <linearGradient id="linear-gradient7" x1="314.89" y1="42.88" x2="476.9" y2="42.88" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#315e6c"/>
+      <stop offset="1" stop-color="#3b707d" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g class="st10">
+    <g class="st3">
+      <g>
+        <polygon class="st9" points="742.38 102.21 -15.43 100.56 -14.52 -15.49 387.22 7.73 742.38 102.21"/>
+        <g>
+          <path class="st1" d="M424.46,82.4s41.57-44.86,51.57-48.75c5.92-2.3,28.33-9.8,14.3-11.55-11.72-1.46-23.16-2.65-23.16-2.65l.14-1.37s9.56,1.01,22.89,2.58c6.69.78,15.03,1.66,22.17,2.69,68.88,9.97,200.65,21.63,241.75,33.1l-49.32,52.95-281.83-7.3,1.49-19.71Z"/>
+          <path class="st0" d="M387.22,7.73c9.06,1.06,69.51,8.43,79.18,9.83,93.27,13.5,232.51,28.53,288.17,44.05l-34.26,71.64-415.6-11.93,2.01-26.69s-11.85-44.38,1.69-49.63c8.02-3.11,41.69-19.42,22.7-21.79"/>
+          <path class="st7" d="M452.76,33.03s114.54,34.21,202.1,58.21l16.7-.14-220.02-59.26"/>
+          <path class="st5" d="M454.06,34.27s84.88,28.24,167.41,56.76l14.74-.14-183.11-57.85"/>
+        </g>
+      </g>
+      <path class="st6" d="M544,35.32"/>
+      <path class="st8" d="M541.92,45.51"/>
+    </g>
+    <rect class="st4" x="-6.52" y="-15.15" width="503.64" height="116.06"/>
+  </g>
+</svg>

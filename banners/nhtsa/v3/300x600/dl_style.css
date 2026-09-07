@@ -1,0 +1,266 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#loader-container {
+    width: 300px;
+    height: 600px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    position: absolute;
+    background: #d3eefe;
+    z-index: 10000;
+    border: 1px solid #555555;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -o-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    background: #FFF;
+}
+
+#banner_content {
+    display: none;
+}
+
+.banner {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 300px;
+    height: 600px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border: 1px solid #555555;
+    overflow: hidden;
+    display: block !important;
+    background: #d3eefe;
+    transform: translate3d(0px, 0px, 0px);
+}
+
+strong {
+    font-weight: bold;
+}
+
+sup {
+    font-size: 6px;
+    position: relative;
+    top: -0.8em;
+    left: -2px;
+}
+
+.positionAb {
+    position: absolute;
+}
+
+.fullSize {
+    width: 300px;
+    height: 600px;
+}
+
+.aC {
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+#clickTag {
+    width: 300px;
+    height: 600px;
+    cursor: pointer;
+    box-sizing: border-box;
+    top: -1px;
+    left: -1px;
+}
+
+#loader-container .circle {
+    -webkit-animation: spin 0.5s linear infinite;
+    animation: spin 0.5s linear infinite;
+    border: 5px solid #ddd;
+    border-bottom-color: #333;
+    border-radius: 50%;
+    height: 40px;
+    left: 50%;
+    margin-left: -22.5px;
+    margin-top: -22.5px;
+    position: absolute;
+    top: 50%;
+    -webkit-transition: all 0.7s ease-in-out;
+    -o-transition: all 0.7s ease-in-out;
+    transition: all 0.7s ease-in-out;
+    width: 40px;
+}
+
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+
+.wrapAd{
+    width: 300px;
+    height: 600px;
+    left: 0px;
+    top: 0px;
+  }
+
+img{
+    width: 100%;
+    height: auto;
+    background-size:contain;
+}
+
+
+#wrapWay {
+  position: absolute;
+  width: 300px;
+  height: 600px;
+  left: 0px;
+  clip-path: polygon(0 0, 60% 0, 60% 100%, 0% 100%);
+
+}
+
+.line-mark {
+  width: 50px;        /* Estrecha como una línea vial */
+  height: 12px;      /* Más alta para simular el guion */
+  background-color: #FFF; /* Podés usar blanco si querés algo más clásico */
+  border-radius: 1px;
+  position: absolute;
+  top: -100;
+  left: -100;
+  pointer-events: none;
+  transform: scale(1) rotate(0deg);
+  opacity: 0.8;      /* Un toque más suave */
+}
+
+#car1, #car1-lightR, #car1-lightL{
+width: 167px;
+    height: auto;
+    left: 120px;
+    top: 376px;
+}
+
+#fr2inner{
+    width: 300px;
+    height: 600px;
+    left: 0px;
+    top: 0px;    
+}
+
+#wrapCar2{
+width: 300px;
+    height: 600px;
+    left: -419px;
+    top: 9px;
+}
+
+#car2{
+    width: 257px;
+    height: 141px;
+    left: 220px;
+    top: 370px;
+}
+
+#car3{
+    width: 49px;
+    height: auto;
+    left: 130px;
+    top: 372px;
+}
+
+#wheel1{
+    perspective: 800px;
+    width: 35px;
+    height: 51px;
+    left: 454px;
+    top: 439px;
+    transform: translate(0px, 0px) rotateY(-73.9999deg);
+}
+
+#wheel2{
+    perspective: 800px;
+    width: 57px;
+    height: auto;
+    left: 375px;
+    top: 440px;
+    transform: translate(0px, 0px) rotateY(-73.9999deg);
+}
+
+
+
+
+#wrapElipse{
+    width: 312px;
+    height: auto;
+    left: -60px;
+    top: 324px;
+
+}
+
+#wrapElipse2{
+    width: 430px;
+    height: auto;
+    left: -46px;
+    top: 134px;
+}
+
+#lights{
+    width: 300px;
+    height: 600px;
+    left: 0px;
+    top: 0px;
+}
+
+#bg2{
+    width: 300px;
+    height: 600px;
+    left: 0px;
+    top: 0px;
+}
+
+#warning {
+    width: 126px;
+    height: 126px;
+    left: 34px;
+    top: 445px;
+}
+
+
+#logo {
+    width: 300px;
+    height: 600px;
+    left: 0px;
+    top: 0px;
+}
+
+#cta {
+    width: 111px;
+    height: 33px;
+    left: 28px;
+    top: 537px;
+}

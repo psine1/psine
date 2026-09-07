@@ -1,0 +1,285 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#loader-container {
+    width: 300px;
+    height: 600px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    position: absolute;
+    background: #fff;
+    z-index: 10000;
+    border: 1px solid #555555;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -o-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    background: #fff;
+}
+
+#banner_content {
+    display: none;
+}
+
+.banner {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 300px;
+    height: 600px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border: 1px solid #555555;
+    overflow: hidden;
+    display: block !important;
+    background: #e4ff00;
+    transform: translate3d(0px, 0px, 0px);
+}
+
+strong {
+    font-weight: bold;
+}
+
+sup {
+    font-size: 6px;
+    position: relative;
+    top: -0.8em;
+    left: -2px;
+}
+
+.positionAb {
+    position: absolute;
+}
+
+.aC {
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+#clickTag {
+    width: 300px;
+    height: 600px;
+    cursor: pointer;
+    box-sizing: border-box;
+    top: -1px;
+    left: -1px;
+}
+
+#loader-container .circle {
+    -webkit-animation: spin 0.5s linear infinite;
+    animation: spin 0.5s linear infinite;
+    border: 5px solid #ddd;
+    border-bottom-color: #333;
+    border-radius: 50%;
+    height: 40px;
+    left: 50%;
+    margin-left: -22.5px;
+    margin-top: -22.5px;
+    position: absolute;
+    top: 50%;
+    -webkit-transition: all 0.7s ease-in-out;
+    -o-transition: all 0.7s ease-in-out;
+    transition: all 0.7s ease-in-out;
+    width: 40px;
+}
+
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+
+img{
+    width: 100%;
+    height: 100%;
+    background-size:contain;
+
+}
+
+#logo-init{
+    width: 86px;
+    height: 22px;
+    left: 107px;
+    top: 552px;
+}
+
+#icon-1{
+    width: 114px;
+    height: 114px;
+    top: 265px;
+    left: 5px;
+}
+
+#icon-2{
+    width: 70px;
+    height: 70px;
+    top: 175px;
+    left: 120px;
+}
+
+#icon-3{
+    width: 99px;
+    height: 99px;
+    top: 334px;
+    left: 208px;
+}
+
+#icon-4{
+    width: 78px;
+    height: 78px;
+    top: 385px;
+    left: 135px;
+}
+
+#icon-5{
+    width: 60px;
+    height: 60px;
+    top: 163px;
+    left: 155px;
+}
+
+#icon-6{
+    width: 60px;
+    height: 60px;
+    top: 102px;
+    left: 220px;
+}
+
+#icon-7{
+    width: 62px;
+    height: 62px;
+    top: 168px;
+    left: 28px;
+}
+
+#circle-1{
+    width: 324px;
+    height: 324px;
+    top: 249px;
+    left: 59px;
+}
+
+#circle-2{
+    width: 384px;
+    height: 384px;
+    top: -62px;
+    left: 96px;
+}
+
+#circle-3{
+    width: 384px;
+    height: 384px;
+    top: 382px;
+    left: -279px;
+}
+
+#circle-4{
+    width: 384px;
+    height: 384px;
+    top: -120px;
+    left: -236px;
+}
+
+#line-icon-1{
+    width: 300px;
+    height: 250px;
+    top: 205px;
+    left: -10px;    
+}
+
+.st0{fill:none;stroke:#B9D9EB;stroke-width:0.85;stroke-miterlimit:10;}
+
+[id*='screen-1']{
+    width: 181px;
+    height: 145px;
+    top: 384px;
+    left: 154px;    
+}
+
+[id*='screen-2']{
+    width: 115px;
+    height: 92px;
+    top: 113px;
+    left: 43px;    
+}
+
+[id*='screen-3']{
+    width: 46px;
+    height: 37px;
+    top: 195px;
+    left: 217px;    
+}
+
+[id*='screen-4']{
+    width: 73px;
+    height: 58px;
+    top: 406px;
+    left: 39px;    
+}
+
+[id*='txt-']{
+    width: 300px;
+    height: 600px;
+    top: 0px;
+    left: 0px;    
+}
+
+
+#logo-end{
+    width: 176px;
+    height: 44px;
+    left: 62px;
+    top: 244px;    
+}
+
+#line-logo{
+    width: 176px;
+    height: 44px;
+    left: 62px;
+    top: 244px; 
+}
+
+    .stLogo{fill:none;stroke:#B9D9EB;stroke-width:0.85;stroke-miterlimit:10;}
+
+
+
+[id*='cta']{
+    width: 227px;
+    height: 37px;
+    left: 35px;
+    top: 479px;
+    border-radius: 30px;
+    background-color: #1f3942;
+}
+
+[id*='cta'] img{
+    border-radius: 30px;
+}

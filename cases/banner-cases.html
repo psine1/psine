@@ -1,0 +1,1408 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="A curated selection of HTML5 banner campaigns created by PSINE, from responsive display to interactive rich media.">
+		<meta name="theme-color" content="#202020">
+		<title>Banner Campaigns — Selected Work | PSINE</title>
+		<link rel="preload" href="../NHaasGroteskDSPro-55Rg.otf" as="font" type="font/otf" crossorigin>
+		<link rel="preload" href="../NHaasGroteskDSPro-95Blk.otf" as="font" type="font/otf" crossorigin>
+		<link rel="stylesheet" href="../section-index.css">
+		<link rel="stylesheet" href="../styles.css">
+		<link rel="stylesheet" href="case-study-v2.css?v=20260904">
+		<script>document.documentElement.classList.add('bc-js');</script>
+		<style>
+			.banner-cases-page {
+				--bc-line-dark: rgba(17, 17, 17, 0.2);
+				--bc-line-light: rgba(248, 248, 246, 0.22);
+				background: var(--cs2-dark);
+			}
+
+			.banner-cases-page .brand img {
+				filter: brightness(0) invert(1);
+			}
+
+			.banner-cases-page .cs2-button-primary:hover svg {
+				transform: translateY(3px);
+			}
+
+			.bc-hero {
+				min-height: 100vh;
+				min-height: 100svh;
+			}
+
+			.bc-hero .cs2-hero-grid {
+				display: grid;
+				grid-template-columns: minmax(0, 1.42fr) minmax(310px, 0.58fr);
+				grid-template-rows: 1fr auto;
+				column-gap: clamp(52px, 7vw, 132px);
+				align-items: end;
+			}
+
+			.bc-hero .cs2-hero-title {
+				align-self: start;
+				width: min(66vw, 1120px);
+			}
+
+			.bc-hero .cs2-hero-title h1 {
+				font-size: clamp(68px, 8.4vw, 158px);
+				font-weight: 900;
+				line-height: 0.78;
+				letter-spacing: -0.035em;
+			}
+
+			.bc-hero .cs2-hero-title h1 em {
+				display: inline-block;
+			}
+
+			.bc-hero-summary {
+				position: static;
+				grid-column: 2;
+				grid-row: 1 / span 2;
+				align-self: end;
+				width: 100%;
+				padding-bottom: 0;
+			}
+
+			.bc-hero-tally {
+				grid-column: 1;
+				align-self: end;
+				display: grid;
+				grid-template-columns: auto 1fr;
+				align-items: end;
+				gap: clamp(22px, 3vw, 44px);
+				max-width: 820px;
+				padding-top: clamp(38px, 6vh, 78px);
+			}
+
+			.bc-hero-tally > strong {
+				font-size: clamp(80px, 10vw, 170px);
+				font-weight: 900;
+				line-height: 0.66;
+				letter-spacing: -0.06em;
+			}
+
+			.bc-hero-tally-meta {
+				display: grid;
+				gap: 14px;
+				padding-bottom: 1px;
+			}
+
+			.bc-hero-tally-meta p {
+				margin: 0;
+				font-family: "Courier New", monospace;
+				font-size: 9px;
+				font-weight: 700;
+				letter-spacing: 0.09em;
+				text-transform: uppercase;
+			}
+
+			.bc-tally-bars {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				gap: 7px;
+			}
+
+			.bc-tally-bars span {
+				display: block;
+				height: 12px;
+				border-radius: 999px;
+				background: var(--cs2-yellow);
+			}
+
+			.bc-tally-bars span:nth-child(2) { background: var(--cs2-purple); }
+			.bc-tally-bars span:nth-child(3) { background: var(--cs2-pink); }
+
+			.bc-overview {
+				--cs2-section-number: "02";
+			}
+
+			.bc-overview .cs2-overview-story h2 {
+				max-width: 650px;
+			}
+
+			.bc-library {
+				--cs2-section-number: "03";
+				position: relative;
+				padding: clamp(108px, 10vw, 170px) 0 calc(var(--cs2-index-height) + clamp(84px, 8vw, 130px));
+				background: var(--cs2-dark);
+				color: var(--cs2-white);
+			}
+
+			.bc-library-heading {
+				display: grid;
+				grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+				align-items: end;
+				gap: clamp(44px, 8vw, 150px);
+			}
+
+			.bc-library-heading .cs2-section-label {
+				margin-bottom: clamp(24px, 3vw, 42px);
+			}
+
+			.bc-library-heading h2 {
+				max-width: 970px;
+				margin: 0;
+				font-size: clamp(56px, 6.5vw, 118px);
+				font-weight: 900;
+				line-height: 0.82;
+				letter-spacing: -0.025em;
+			}
+
+			.bc-library-heading h2 em {
+				color: var(--cs2-yellow);
+			}
+
+			.bc-library-heading > p {
+				max-width: 460px;
+				margin: 0 0 4px;
+				color: #d4d4d0;
+				font-size: clamp(17px, 1.25vw, 22px);
+				line-height: 1.28;
+			}
+
+			.bc-filter-panel {
+				display: grid;
+				grid-template-columns: minmax(150px, 0.32fr) minmax(0, 1.68fr);
+				gap: clamp(24px, 4vw, 70px);
+				align-items: start;
+				margin-top: clamp(62px, 7vw, 110px);
+				padding: 22px 0;
+				border-top: 1px solid var(--bc-line-light);
+				border-bottom: 1px solid var(--bc-line-light);
+			}
+
+			.bc-filter-label,
+			.bc-grid-status {
+				margin: 0;
+				font-family: "Courier New", monospace;
+				font-size: 9px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+
+			.bc-filter-label {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				padding-top: 9px;
+			}
+
+			.bc-filter-label::before {
+				content: "";
+				width: 7px;
+				height: 7px;
+				border-radius: 50%;
+				background: var(--cs2-yellow);
+			}
+
+			.bc-format-filters {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+			}
+
+			.bc-format-filter {
+				min-height: 34px;
+				padding: 0 14px;
+				border: 1px solid rgba(248, 248, 246, 0.46);
+				border-radius: 999px;
+				background: transparent;
+				color: var(--cs2-white);
+				font-family: "Courier New", monospace;
+				font-size: 9px;
+				font-weight: 700;
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+				cursor: pointer;
+				transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+			}
+
+			.bc-format-filter:hover {
+				border-color: var(--cs2-white);
+				transform: translateY(-2px);
+			}
+
+			.bc-format-filter.is-active {
+				border-color: var(--cs2-yellow);
+				background: var(--cs2-yellow);
+				color: var(--cs2-ink);
+			}
+
+			.bc-grid-meta {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 18px;
+				margin-top: clamp(42px, 5vw, 72px);
+			}
+
+			.bc-grid-selection {
+				margin: 0;
+				color: #c7c7c3;
+				font-family: "Courier New", monospace;
+				font-size: 9px;
+				font-weight: 700;
+				letter-spacing: 0.07em;
+				text-transform: uppercase;
+			}
+
+			.bc-case-list {
+				display: grid;
+				grid-template-columns: repeat(5, minmax(0, 1fr));
+				gap: clamp(12px, 1.2vw, 20px);
+				margin-top: 20px;
+			}
+
+			.bc-case {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				min-width: 0;
+				overflow: hidden;
+				border: 1px solid var(--bc-line-light);
+				border-radius: clamp(18px, 1.7vw, 26px);
+				background: #282828;
+				cursor: default;
+				transition: border-color 220ms ease, background-color 220ms ease, transform 240ms cubic-bezier(.2, .75, .2, 1), box-shadow 240ms ease;
+			}
+
+			.bc-case[hidden] {
+				display: none !important;
+			}
+
+			.bc-case-link {
+				cursor: pointer;
+			}
+
+			.bc-case-link:hover {
+				border-color: rgba(248, 248, 246, 0.72);
+				background: #2d2d2d;
+				transform: translateY(-5px);
+				box-shadow: 0 24px 55px rgba(0, 0, 0, 0.25);
+			}
+
+			.bc-case-link::after {
+				content: "↗";
+				position: absolute;
+				top: 14px;
+				right: 14px;
+				z-index: 5;
+				display: grid;
+				place-items: center;
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+				background: var(--cs2-yellow);
+				color: var(--cs2-ink);
+				font-size: 16px;
+				font-weight: 900;
+				transition: transform 220ms cubic-bezier(.2, .8, .2, 1);
+			}
+
+			.bc-case-link:hover::after {
+				transform: translate(2px, -2px);
+			}
+
+			.bc-case-copy {
+				display: flex;
+				flex-direction: column;
+				min-height: 218px;
+				padding: clamp(18px, 1.6vw, 25px);
+			}
+
+			.bc-case-topline {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 18px;
+				padding-bottom: 13px;
+				border-bottom: 1px solid var(--bc-line-light);
+				font-family: "Courier New", monospace;
+				font-size: 8px;
+				font-weight: 700;
+				letter-spacing: 0.09em;
+				text-transform: uppercase;
+			}
+
+			.bc-case-copy h3 {
+				margin: 18px 0 11px;
+				font-size: clamp(26px, 2vw, 38px);
+				font-weight: 900;
+				line-height: 0.88;
+				letter-spacing: -0.025em;
+			}
+
+			.bc-case-copy > p {
+				max-width: 410px;
+				margin: 0;
+				color: #d6d6d2;
+				font-size: clamp(13px, 0.9vw, 16px);
+				line-height: 1.3;
+			}
+
+			.bc-case-tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 7px;
+				margin: auto 0 0;
+				padding: 22px 0 0;
+				list-style: none;
+			}
+
+			.bc-case-tags li {
+				padding: 7px 9px 6px;
+				border: 1px solid rgba(248, 248, 246, 0.5);
+				border-radius: 999px;
+				font-family: "Courier New", monospace;
+				font-size: 8px;
+				font-weight: 700;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+			}
+
+			.bc-case-poster {
+				position: relative;
+				order: -1;
+				min-width: 0;
+				margin: 0;
+				overflow: hidden;
+				border-bottom: 1px solid var(--bc-line-light);
+				background: #111;
+			}
+
+			.bc-case-poster svg {
+				display: block;
+				width: 100%;
+				height: auto;
+				aspect-ratio: 5 / 3;
+				object-fit: cover;
+			}
+
+			.bc-thumb-art {
+				--thumb-accent: #ffcf25;
+				--thumb-bg: #171717;
+				--thumb-image: none;
+				position: relative;
+				width: 100%;
+				aspect-ratio: 5 / 3;
+				overflow: hidden;
+				isolation: isolate;
+				background: radial-gradient(circle at 50% 43%, color-mix(in srgb, var(--thumb-accent) 38%, var(--thumb-bg)), var(--thumb-bg) 72%);
+			}
+
+			.bc-thumb-art::before {
+				content: "";
+				position: absolute;
+				z-index: -1;
+				inset: -14%;
+				background-image: linear-gradient(rgba(9, 9, 9, 0.28), rgba(9, 9, 9, 0.56)), var(--thumb-image);
+				background-position: center;
+				background-size: cover;
+				filter: blur(24px) saturate(0.86);
+				opacity: 0.62;
+				transform: scale(1.08);
+			}
+
+			.bc-thumb-stage {
+				position: absolute;
+				left: 50%;
+				top: 10%;
+				z-index: 2;
+				width: 55%;
+				aspect-ratio: 6 / 5;
+				overflow: hidden;
+				transform: translateX(-50%);
+				border: 1px solid color-mix(in srgb, var(--thumb-accent) 45%, #fff);
+				background: #111;
+				box-shadow: 0 22px 30px rgba(0, 0, 0, 0.58);
+			}
+
+			.bc-thumb-stage--landscape {
+				width: 64%;
+				aspect-ratio: 4 / 3;
+			}
+
+			.bc-thumb-stage > img {
+				display: block;
+				pointer-events: none;
+			}
+
+			.bc-thumb-cover,
+			.bc-thumb-layer-full {
+				position: absolute;
+				inset: 0;
+				width: 100%;
+				height: 100%;
+			}
+
+			.bc-thumb-cover {
+				object-fit: cover;
+			}
+
+			.bc-thumb-layer-full {
+				object-fit: fill;
+			}
+
+			.bc-thumb-layer {
+				position: absolute;
+				height: auto;
+			}
+
+			.bc-case-poster figcaption {
+				position: absolute;
+				left: 18px;
+				bottom: 16px;
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				padding: 8px 11px;
+				border: 1px solid rgba(255, 255, 255, 0.65);
+				border-radius: 999px;
+				background: rgba(17, 17, 17, 0.68);
+				color: #fff;
+				font-family: "Courier New", monospace;
+				font-size: 8px;
+				font-weight: 700;
+				letter-spacing: 0.07em;
+				text-transform: uppercase;
+				backdrop-filter: blur(8px);
+			}
+
+			.bc-case-poster figcaption::before {
+				content: "";
+				width: 6px;
+				height: 6px;
+				border-radius: 50%;
+				background: #70e979;
+			}
+
+			.bc-placeholder-art {
+				--slot-accent: var(--cs2-purple);
+				position: relative;
+				display: grid;
+				width: 100%;
+				aspect-ratio: 5 / 3;
+				place-items: center;
+				overflow: hidden;
+				background: #302548;
+				background: color-mix(in srgb, var(--slot-accent) 36%, #181818);
+			}
+
+			.bc-placeholder-art::before {
+				content: "";
+				position: absolute;
+				inset: -50%;
+				background-image: linear-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+				background-size: 34px 34px;
+				transform: rotate(-8deg);
+			}
+
+			.bc-placeholder-art::after {
+				content: "+";
+				position: absolute;
+				right: 22px;
+				top: 18px;
+				display: grid;
+				place-items: center;
+				width: 40px;
+				height: 40px;
+				border: 1px solid rgba(255, 255, 255, 0.64);
+				border-radius: 50%;
+				color: #fff;
+				font-size: 24px;
+				font-weight: 400;
+			}
+
+			.bc-placeholder-number {
+				position: relative;
+				z-index: 1;
+				color: rgba(255, 255, 255, 0.9);
+				font-size: clamp(76px, 7vw, 126px);
+				font-weight: 900;
+				line-height: 0.7;
+				letter-spacing: -0.07em;
+			}
+
+			.bc-placeholder-label {
+				position: absolute;
+				left: 20px;
+				top: 18px;
+				z-index: 1;
+				margin: 0;
+				font-family: "Courier New", monospace;
+				font-size: 8px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+
+			.bc-case-placeholder .bc-case-poster figcaption::before {
+				background: #b3b3ad;
+			}
+
+			.bc-case-link:focus-visible,
+			.bc-format-filter:focus-visible {
+				outline: 3px solid var(--cs2-yellow);
+				outline-offset: 4px;
+			}
+
+			.bc-principles {
+				--cs2-section-number: "04";
+			}
+
+			.bc-principles .cs2-section-heading h2 {
+				max-width: 930px;
+				font-weight: 900;
+				line-height: 0.86;
+			}
+
+			.bc-principles .cs2-challenge-grid article:nth-child(1) {
+				--cs2-challenge-hover: #1c1c1c;
+			}
+
+			.bc-principles .cs2-challenge-grid article:nth-child(2) {
+				--cs2-challenge-hover: var(--cs2-purple);
+			}
+
+			.bc-principles .cs2-challenge-grid article:nth-child(3) {
+				--cs2-challenge-hover: #d83079;
+			}
+
+			.bc-contact .contact-copy h2 {
+				font-size: clamp(126px, 11vw, 210px);
+			}
+
+			.bc-contact .section-index {
+				color: var(--cs2-white);
+			}
+
+			.bc-contact .contact-cta::after {
+				content: "START A PROJECT ↗";
+				position: absolute;
+				left: 50%;
+				top: 44%;
+				z-index: 5;
+				width: max-content;
+				font-family: "Courier New", monospace;
+				font-size: 10px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				transform: translate(-50%, -50%) rotate(-3deg);
+			}
+
+			.bc-js .bc-reveal {
+				opacity: 0;
+				transform: translateY(48px);
+				transition: opacity 700ms ease, transform 850ms cubic-bezier(.2, .75, .2, 1);
+			}
+
+			.bc-js .bc-reveal.is-visible {
+				opacity: 1;
+				transform: none;
+			}
+
+			.bc-js .bc-case-link.bc-reveal.is-visible:hover {
+				transform: translateY(-5px);
+			}
+
+			@media (max-width: 1260px) {
+				.bc-case-list {
+					grid-template-columns: repeat(4, minmax(0, 1fr));
+				}
+			}
+
+			@media (max-width: 1100px) {
+				.bc-hero .cs2-hero-grid {
+					grid-template-columns: minmax(0, 1.08fr) minmax(290px, 0.62fr);
+					column-gap: 42px;
+				}
+
+				.bc-hero .cs2-hero-title {
+					width: 100%;
+				}
+
+				.bc-hero .cs2-hero-title h1 {
+					font-size: clamp(66px, 9.6vw, 116px);
+				}
+
+				.bc-case-list {
+					grid-template-columns: repeat(3, minmax(0, 1fr));
+				}
+			}
+
+			@media (max-width: 760px) {
+				.bc-hero .cs2-hero-grid {
+					display: grid;
+					grid-template-columns: 1fr;
+					grid-template-rows: auto;
+					gap: 40px;
+				}
+
+				.bc-hero .cs2-hero-title,
+				.bc-hero-summary,
+				.bc-hero-tally {
+					grid-column: 1;
+					grid-row: auto;
+				}
+
+				.bc-hero .cs2-hero-title h1 {
+					font-size: clamp(60px, 19vw, 92px);
+				}
+
+				.bc-hero-tally {
+					grid-template-columns: auto 1fr;
+					padding-top: 8px;
+				}
+
+				.bc-library-heading {
+					grid-template-columns: 1fr;
+					align-items: start;
+					gap: 28px;
+				}
+
+				.bc-library-heading h2 {
+					font-size: clamp(54px, 16vw, 80px);
+				}
+
+				.bc-case-list {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+
+				.bc-filter-panel {
+					grid-template-columns: 1fr;
+					gap: 12px;
+				}
+
+				.bc-filter-label {
+					padding-top: 0;
+				}
+
+				.bc-case-copy h3 {
+					font-size: clamp(30px, 5.5vw, 40px);
+				}
+
+				.bc-case-poster figcaption {
+					left: 12px;
+					bottom: 12px;
+				}
+
+				.bc-contact .contact-copy h2 {
+					font-size: clamp(76px, 23vw, 124px);
+				}
+			}
+
+			@media (max-width: 620px) {
+				.bc-case-list {
+					grid-template-columns: 1fr;
+				}
+
+				.bc-grid-meta {
+					align-items: flex-start;
+					flex-direction: column;
+					gap: 8px;
+				}
+
+				.bc-case-copy {
+					min-height: 210px;
+				}
+
+				.bc-case-copy h3 {
+					font-size: clamp(36px, 11vw, 48px);
+				}
+			}
+
+			@media (max-width: 480px) {
+				.bc-hero-tally > strong {
+					font-size: 72px;
+				}
+
+				.bc-tally-bars {
+					grid-template-columns: 1fr;
+					gap: 5px;
+				}
+
+				.bc-tally-bars span {
+					height: 7px;
+				}
+
+				.bc-case-poster figcaption {
+					display: none;
+				}
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				.bc-js .bc-reveal {
+					opacity: 1;
+					transform: none;
+					transition: none;
+				}
+			}
+		</style>
+	</head>
+	<body class="cs2-page banner-cases-page">
+		<div class="cs2-progress" aria-hidden="true"><span data-cs2-progress></span></div>
+
+		<header class="site-header cs2-header">
+			<a class="brand" href="../index.html" aria-label="Back to PSINE home">
+				<img src="../LOGO.svg" alt="PSINE">
+			</a>
+			<nav class="header-controls" aria-label="Banner work navigation">
+				<a class="btn-talk" href="#contact" aria-label="Let's talk">LET'S TALK!</a>
+				<a class="cs2-back" href="../index.html#work"><span aria-hidden="true">←</span> SELECTED WORK</a>
+			</nav>
+		</header>
+
+		<main>
+			
+
+			
+
+			<section class="bc-library" id="campaigns" aria-labelledby="bc-library-title">
+				<div class="cs2-shell">
+					<header class="bc-library-heading bc-reveal">
+						<div>
+							<p class="cs2-section-label">Campaign archive</p>
+							<h2 id="bc-library-title">Pick a format.<br><em>Find the work.</em></h2>
+						</div>
+						<p>A flexible archive for twenty-three campaigns. Filter the grid by delivery format and open any published card to see the full case.</p>
+					</header>
+
+					<div class="bc-filter-panel bc-reveal" aria-labelledby="bc-filter-label">
+						<p class="bc-filter-label" id="bc-filter-label">Filter by format</p>
+						<div class="bc-format-filters" role="group" aria-label="Campaign format filters">
+							<button class="bc-format-filter is-active" type="button" data-format-filter="all" aria-pressed="true">All</button>
+							<button class="bc-format-filter" type="button" data-format-filter="300x250" aria-pressed="false">300 × 250</button>
+							<button class="bc-format-filter" type="button" data-format-filter="300x600" aria-pressed="false">300 × 600</button>
+							<button class="bc-format-filter" type="button" data-format-filter="160x600" aria-pressed="false">160 × 600</button>
+							<button class="bc-format-filter" type="button" data-format-filter="320x50" aria-pressed="false">320 × 50</button>
+							<button class="bc-format-filter" type="button" data-format-filter="320x100" aria-pressed="false">320 × 100</button>
+							<button class="bc-format-filter" type="button" data-format-filter="728x90" aria-pressed="false">728 × 90</button>
+							<button class="bc-format-filter" type="button" data-format-filter="970x66" aria-pressed="false">970 × 66</button>
+							<button class="bc-format-filter" type="button" data-format-filter="970x250" aria-pressed="false">970 × 250</button>
+							<button class="bc-format-filter" type="button" data-format-filter="800x600" aria-pressed="false">800 × 600</button>
+							<button class="bc-format-filter" type="button" data-format-filter="interactive" aria-pressed="false">Interactive</button>
+						</div>
+					</div>
+
+					<div class="bc-grid-meta bc-reveal">
+						<p class="bc-grid-status" data-grid-status aria-live="polite">23 campaigns shown</p>
+						<p class="bc-grid-selection">23 cases available</p>
+					</div>
+
+					<div class="bc-case-list">
+						<a class="bc-case bc-case-link bc-reveal" href="banner-onimusha.html" data-campaign-name="Onimusha" data-formats="300x250 300x600 160x600 320x50 320x100 728x90 970x66 970x250" aria-label="Open the Onimusha banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>01 / Multi-format display</span><span>2026</span></div>
+								<h3>Onimusha</h3>
+								<p>A cinematic display campaign that carries one dramatic visual system across eight placements without losing hierarchy or impact.</p>
+								<ul class="bc-case-tags" aria-label="Onimusha banner formats">
+									<li>300 × 250</li>
+									<li>300 × 600</li>
+									<li>+6 formats</li>
+								</ul>
+							</div>
+
+							<figure class="bc-case-poster">
+								<svg viewBox="0 0 1200 720" role="img" aria-labelledby="onimusha-title onimusha-desc" preserveAspectRatio="xMidYMid slice">
+									<title id="onimusha-title">Onimusha campaign artwork</title>
+									<desc id="onimusha-desc">A final 300 by 250 Onimusha banner frame centered on a dark cinematic canvas.</desc>
+									<defs>
+										<radialGradient id="oni-glow" cx="50%" cy="45%" r="65%">
+											<stop offset="0" stop-color="#315d66"/>
+											<stop offset=".52" stop-color="#132b34"/>
+											<stop offset="1" stop-color="#071014"/>
+										</radialGradient>
+										<filter id="oni-shadow" x="-30%" y="-30%" width="160%" height="170%">
+											<feDropShadow dx="0" dy="26" stdDeviation="22" flood-color="#000" flood-opacity=".65"/>
+										</filter>
+									</defs>
+									<rect width="1200" height="720" fill="url(#oni-glow)"/>
+									<g transform="translate(270 72) scale(2.2)" filter="url(#oni-shadow)">
+										<rect width="300" height="250" fill="#000" stroke="#b8a16f" stroke-width="1"/>
+										<image href="../banners/onimusha/v1/300x250/images/bg2.jpg" x="0" y="0" width="300" height="250"/>
+										<image href="../banners/onimusha/v1/300x250/images/character2.png" x="0" y="0" width="300" height="250"/>
+										<image href="../banners/onimusha/v1/300x250/images/cape.png" x="22" y="-89" width="315" height="372"/>
+										<image href="../banners/onimusha/v1/300x250/images/character1.png" x="22" y="-89" width="315" height="372"/>
+										<image href="../banners/onimusha/v1/300x250/images/sword.png" x="22" y="-89" width="315" height="372"/>
+										<image href="../banners/onimusha/v1/300x250/images/gradient.png" x="0" y="0" width="300" height="250"/>
+										<image href="../banners/onimusha/v1/300x250/images/logo.png" x="57" y="83" width="191" height="98"/>
+										<image href="../banners/onimusha/v1/300x250/images/cta.png" x="44" y="189" width="210" height="33"/>
+										<image href="../banners/onimusha/v1/300x250/images/legal.png" x="0" y="0" width="300" height="600"/>
+									</g>
+								</svg>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>
+
+					<a class="bc-case bc-case-link bc-reveal" href="banner-resident_evil.html" data-campaign-name="Resident Evil Requiem" data-formats="300x250 300x600 160x600 320x50 320x100 728x90 970x66 970x250" aria-label="Open the Resident Evil Requiem banner case study">
+						<div class="bc-case-copy">
+							<div class="bc-case-topline"><span>02 / Entertainment</span><span>2025</span></div>
+							<h3>Resident Evil<br>Requiem</h3>
+							<p>A suspense-led display system that preserves cinematic atmosphere, character focus and legibility across eight placements.</p>
+							<ul class="bc-case-tags" aria-label="Resident Evil Requiem banner formats">
+								<li>2 concepts</li>
+								<li>300 &times; 250</li>
+								<li>+7 formats</li>
+							</ul>
+						</div>
+
+						<figure class="bc-case-poster">
+							<svg viewBox="0 0 1200 720" role="img" aria-labelledby="requiem-title requiem-desc" preserveAspectRatio="xMidYMid slice">
+								<title id="requiem-title">Resident Evil Requiem campaign artwork</title>
+								<desc id="requiem-desc">A final 300 by 250 Resident Evil Requiem banner centered on a dark red cinematic canvas.</desc>
+								<defs>
+									<radialGradient id="requiem-glow" cx="50%" cy="43%" r="72%">
+										<stop offset="0" stop-color="#67282a"/>
+										<stop offset=".48" stop-color="#241113"/>
+										<stop offset="1" stop-color="#080708"/>
+									</radialGradient>
+									<pattern id="requiem-lines" width="6" height="6" patternUnits="userSpaceOnUse">
+										<path d="M0 1H6" stroke="#fff" stroke-width="1" opacity=".035"/>
+									</pattern>
+									<filter id="requiem-shadow" x="-30%" y="-30%" width="160%" height="170%">
+										<feDropShadow dx="0" dy="26" stdDeviation="22" flood-color="#000" flood-opacity=".78"/>
+									</filter>
+								</defs>
+								<rect width="1200" height="720" fill="url(#requiem-glow)"/>
+								<rect width="1200" height="720" fill="url(#requiem-lines)"/>
+								<g transform="translate(270 72) scale(2.2)" filter="url(#requiem-shadow)">
+									<rect width="300" height="250" fill="#080808" stroke="#b86b6b" stroke-opacity=".55" stroke-width="1"/>
+									<image href="../banners/resident_evil/v2/300x250/25CAP_ND_Display-HTML_Post-Launch_300x250.jpg" x="0" y="0" width="300" height="250"/>
+								</g>
+							</svg>
+							<figcaption>View case study</figcaption>
+						</figure>
+					</a>
+
+					<a class="bc-case bc-case-link bc-reveal" href="banner-porsche_electric.html" data-campaign-name="Porsche Electric" data-formats="300x250 300x600 728x90 970x250" aria-label="Open the Porsche Electric banner case study">
+						<div class="bc-case-copy">
+							<div class="bc-case-topline"><span>03 / Automotive</span><span>2025</span></div>
+							<h3>Porsche<br>Electric</h3>
+							<p>A premium lead-generation campaign balancing product presence, restrained motion and a clear conversion path.</p>
+							<ul class="bc-case-tags" aria-label="Porsche Electric banner formats">
+								<li>300 &times; 250</li>
+								<li>300 &times; 600</li>
+								<li>+2 formats</li>
+							</ul>
+						</div>
+
+						<figure class="bc-case-poster">
+							<svg viewBox="0 0 1200 720" role="img" aria-labelledby="porsche-title porsche-desc" preserveAspectRatio="xMidYMid slice">
+								<title id="porsche-title">Porsche Electric campaign artwork</title>
+								<desc id="porsche-desc">A final 300 by 250 Porsche Macan Electric banner centered on a warm coastal canvas.</desc>
+								<defs>
+									<linearGradient id="porsche-glow" x1="0" y1="0" x2="1" y2="1">
+										<stop offset="0" stop-color="#3b3029"/>
+										<stop offset=".5" stop-color="#151c22"/>
+										<stop offset="1" stop-color="#090b0d"/>
+									</linearGradient>
+									<filter id="porsche-bg-blur" x="-20%" y="-20%" width="140%" height="140%">
+										<feGaussianBlur stdDeviation="26"/>
+									</filter>
+									<filter id="porsche-shadow" x="-30%" y="-30%" width="160%" height="170%">
+										<feDropShadow dx="0" dy="26" stdDeviation="22" flood-color="#000" flood-opacity=".72"/>
+									</filter>
+								</defs>
+								<rect width="1200" height="720" fill="url(#porsche-glow)"/>
+								<image href="../banners/porsche_electric/300x250/04-25PORPLA-11628_E-Performance-LeadsAdsForm-Macan_Display_300x250pxl-HTML.jpg" x="-40" y="-140" width="1280" height="1067" preserveAspectRatio="xMidYMid slice" opacity=".24" filter="url(#porsche-bg-blur)"/>
+								<rect width="1200" height="720" fill="#080b0d" opacity=".34"/>
+								<g transform="translate(270 72) scale(2.2)" filter="url(#porsche-shadow)">
+									<rect width="300" height="250" fill="#090b0d" stroke="#ddd0bf" stroke-opacity=".58" stroke-width="1"/>
+									<image href="../banners/porsche_electric/300x250/04-25PORPLA-11628_E-Performance-LeadsAdsForm-Macan_Display_300x250pxl-HTML.jpg" x="0" y="0" width="300" height="250"/>
+								</g>
+							</svg>
+							<figcaption>View case study</figcaption>
+						</figure>
+					</a>
+
+						<a class="bc-case bc-case-link bc-reveal" href="banner-porsche_75anios.html" data-campaign-name="Porsche 75 Years" data-formats="300x250" aria-label="Open the Porsche 75 Years banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>06 / Brand anniversary</span><span>2023</span></div>
+								<h3>Porsche<br>75 Years</h3>
+								<p>A colorful anniversary campaign celebrating heritage with a concise interactive message and unmistakable product focus.</p>
+								<ul class="bc-case-tags" aria-label="Porsche 75 Years banner attributes"><li>75 years</li><li>300 &times; 250</li><li>Interactive</li></ul>
+							</div>
+							<figure class="bc-case-poster">
+								<div class="bc-thumb-art" data-index="06" style="--thumb-accent: #ff2a82; --thumb-bg: #210019; --thumb-image: url('../banners/porsche_75anios/300x250/BackupImage_300x250.jpg')" role="img" aria-label="Porsche 75 Years campaign cover">
+									
+									<div class="bc-thumb-stage"><img class="bc-thumb-cover" src="../banners/porsche_75anios/300x250/BackupImage_300x250.jpg" alt="" loading="lazy" decoding="async"></div>
+								</div>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>		
+						
+						<a class="bc-case bc-case-link bc-reveal" href="banner-orlando.html" data-campaign-name="Universal Epic Universe" data-formats="interactive landscape" aria-label="Open the Universal Epic Universe case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>20 / Theme parks</span><span>Coming soon</span></div>
+								<h3>Universal<br>Epic Universe</h3>
+								<p>An immersive interactive map inviting visitors to explore the worlds, attractions and stories of Universal Epic Universe.</p>
+								<ul class="bc-case-tags" aria-label="Universal Epic Universe experience attributes"><li>Interactive map</li><li>Tablet</li><li>Experience</li></ul>
+							</div>
+							<figure class="bc-case-poster">
+								<div class="bc-thumb-art" data-index="20" style="--thumb-accent: #1489ff; --thumb-bg: #111820; --thumb-image: url('../banners/orlando.png')" role="img" aria-label="Universal Epic Universe experience cover">
+									<div class="bc-thumb-stage"><img class="bc-thumb-cover" src="../banners/orlando.png" alt="" loading="lazy" decoding="async"></div>
+								</div>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>						
+
+						<a class="bc-case bc-case-link bc-reveal" href="banner-cheezit.html" data-campaign-name="Cheez-It" data-formats="300x250 160x600 728x90" aria-label="Open the Cheez-It banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>04 / Consumer goods</span><span>Archive</span></div>
+								<h3>Cheez-It</h3>
+								<p>A bold snack campaign built around product scale, saturated color and fast typography across two creative directions.</p>
+								<ul class="bc-case-tags" aria-label="Cheez-It banner formats"><li>2 concepts</li><li>300 &times; 250</li><li>+2 formats</li></ul>
+							</div>
+							<figure class="bc-case-poster">
+								<div class="bc-thumb-art" data-index="04" style="--thumb-accent: #ffd226; --thumb-bg: #4a0803; --thumb-image: url('../banners/cheezIt/v1/300x250/300x250.jpg')" role="img" aria-label="Cheez-It campaign cover">
+									
+									<div class="bc-thumb-stage"><img class="bc-thumb-cover" src="../banners/cheezIt/v1/300x250/300x250.jpg" alt="" loading="lazy" decoding="async"></div>
+								</div>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>
+
+						<a class="bc-case bc-case-link bc-reveal" href="banner-lego.html" data-campaign-name="LEGO Formula 1" data-formats="640x1080 1024x600 interactive portrait landscape" aria-label="Open the LEGO Formula 1 banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>19 / Branded playable</span><span>Archive</span></div>
+								<h3>LEGO<br>Formula 1</h3>
+								<p>A responsive LEGO Formula 1 playable built for portrait and landscape, combining character selection, motion and product storytelling.</p>
+								<ul class="bc-case-tags" aria-label="LEGO Formula 1 banner attributes"><li>2 orientations</li><li>Playable</li><li>Responsive</li></ul>
+							</div>
+							<figure class="bc-case-poster">
+								<div class="bc-thumb-art" data-index="19" style="--thumb-accent: #00a6b2; --thumb-bg: #151820; --thumb-image: url('../banners/lego_f1.jpg')" role="img" aria-label="LEGO Formula 1 campaign cover">
+									<div class="bc-thumb-stage"><img class="bc-thumb-cover" src="../banners/lego_f1.jpg" alt="" loading="lazy" decoding="async"></div>
+								</div>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>						
+
+						<a class="bc-case bc-case-link bc-reveal" href="banner-nhtsa.html" data-campaign-name="NHTSA ADAS" data-formats="300x250 300x600 160x600 728x90" aria-label="Open the NHTSA ADAS banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>05 / Driver education</span><span>Archive</span></div>
+								<h3>NHTSA<br>ADAS</h3>
+								<p>An educational display series translating driver-assistance features into clear and approachable visual stories.</p>
+								<ul class="bc-case-tags" aria-label="NHTSA ADAS banner formats"><li>3 concepts</li><li>300 &times; 250</li><li>+3 formats</li></ul>
+							</div>
+							<figure class="bc-case-poster">
+								<div class="bc-thumb-art" data-index="05" style="--thumb-accent: #b9eff4; --thumb-bg: #29364a; --thumb-image: url('../banners/nhtsa/v3/300x250/NHTSA-ADAS-RevisedBanner_Lane-Keeping-Assistance_A_300X250.jpg')" role="img" aria-label="NHTSA ADAS campaign cover">
+									
+									<div class="bc-thumb-stage"><img class="bc-thumb-cover" src="../banners/nhtsa/v3/300x250/NHTSA-ADAS-RevisedBanner_Lane-Keeping-Assistance_A_300X250.jpg" alt="" loading="lazy" decoding="async"></div>
+								</div>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>
+
+						<a class="bc-case bc-case-link bc-reveal" href="banner-wonder.html" data-campaign-name="Wonder" data-formats="300x250 300x600 970x250" aria-label="Open the Wonder banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>08 / Virtual events</span><span>Archive</span></div>
+								<h3>Wonder</h3>
+								<p>A vivid campaign system using fluid color, direct messaging and three concepts to promote virtual experiences.</p>
+								<ul class="bc-case-tags" aria-label="Wonder banner formats"><li>3 concepts</li><li>300 &times; 250</li><li>+2 formats</li></ul>
+							</div>
+							<figure class="bc-case-poster">
+								<div class="bc-thumb-art" data-index="08" style="--thumb-accent: #d9ff00; --thumb-bg: #123f43; --thumb-image: url('../banners/wonder/v3/300x250/300x250.jpg')" role="img" aria-label="Wonder campaign cover">
+									
+									<div class="bc-thumb-stage"><img class="bc-thumb-cover" src="../banners/wonder/v3/300x250/300x250.jpg" alt="" loading="lazy" decoding="async"></div>
+								</div>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>
+
+						<a class="bc-case bc-case-link bc-reveal" href="banner-botleo.html" data-campaign-name="Bottle-O Winter" data-formats="1024x570 interactive landscape" aria-label="Open the Bottle-O Winter banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>17 / Beverage retail</span><span>2025</span></div>
+								<h3>Bottle-O<br>Winter</h3>
+								<p>A responsive retail activation bringing a bold green brand world and a curated drinks lineup into an interactive seasonal experience.</p>
+								<ul class="bc-case-tags" aria-label="Bottle-O Winter banner attributes"><li>1024 &times; 570</li><li>Interactive</li><li>Landscape</li></ul>
+							</div>
+							<figure class="bc-case-poster">
+								<div class="bc-thumb-art" data-index="17" style="--thumb-accent: #00bd42; --thumb-bg: #063b21; --thumb-image: url('../banners/botleo.png')" role="img" aria-label="Bottle-O Winter campaign cover">
+									<div class="bc-thumb-stage"><img class="bc-thumb-cover" src="../banners/botleo.png" alt="" loading="lazy" decoding="async"></div>
+								</div>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>						
+
+						<a class="bc-case bc-case-link bc-reveal" href="banner-ventura_country.html" data-campaign-name="Ventura County Coast" data-formats="300x250 300x600 160x600 728x90 970x250" aria-label="Open the Ventura County Coast banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>07 / Destination</span><span>Archive</span></div>
+								<h3>Ventura<br>County Coast</h3>
+								<p>A bright destination campaign combining a relaxed coastal identity with a direct booking message across five placements.</p>
+								<ul class="bc-case-tags" aria-label="Ventura County Coast banner formats"><li>300 &times; 250</li><li>300 &times; 600</li><li>+3 formats</li></ul>
+							</div>
+							<figure class="bc-case-poster">
+								<div class="bc-thumb-art" data-index="07" style="--thumb-accent: #f6b834; --thumb-bg: #063b52; --thumb-image: url('../banners/ventura_country/300x250/300x250.jpg')" role="img" aria-label="Ventura County Coast campaign cover">
+									
+									<div class="bc-thumb-stage"><img class="bc-thumb-cover" src="../banners/ventura_country/300x250/300x250.jpg" alt="" loading="lazy" decoding="async"></div>
+								</div>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>
+
+
+
+						<a class="bc-case bc-case-link bc-reveal" href="banner-lg.html" data-campaign-name="LG UltraGear" data-formats="300x250 300x600 160x600 728x90 970x250" aria-label="Open the LG UltraGear banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>09 / Gaming hardware</span><span>Archive</span></div>
+								<h3>LG<br>UltraGear</h3>
+								<p>A performance-focused product story pairing cinematic gaming imagery with a sharp, high-contrast conversion frame.</p>
+								<ul class="bc-case-tags" aria-label="LG UltraGear banner formats"><li>300 &times; 250</li><li>300 &times; 600</li><li>+3 formats</li></ul>
+							</div>
+							<figure class="bc-case-poster">
+								<div class="bc-thumb-art" data-index="09" style="--thumb-accent: #ff2457; --thumb-bg: #07070a; --thumb-image: url('../banners/lg/300x250/images/endFrame.jpg')" role="img" aria-label="LG UltraGear campaign cover">
+									
+									<div class="bc-thumb-stage"><img class="bc-thumb-cover" src="../banners/lg/300x250.jpg" alt="" loading="lazy" decoding="async"></div>
+								</div>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>
+
+						<a class="bc-case bc-case-link bc-reveal" href="banner-foodpanda.html" data-campaign-name="Foodpanda" data-formats="300x250 interactive" aria-label="Open the Foodpanda banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>10 / Interactive carousel</span><span>2022</span></div>
+								<h3>Foodpanda</h3>
+								<p>An interactive carousel that gives the brand mascot a playful role while keeping discovery and ordering immediately clear.</p>
+								<ul class="bc-case-tags" aria-label="Foodpanda banner attributes"><li>Interactive</li><li>Carousel</li><li>300 &times; 250</li></ul>
+							</div>
+							<figure class="bc-case-poster">
+								<div class="bc-thumb-art" data-index="10" style="--thumb-accent: #ff2b85; --thumb-bg: #52243b; --thumb-image: url('../banners/foodpanda/300x250/img-4-a.jpg')" role="img" aria-label="Foodpanda campaign cover">
+									
+									<div class="bc-thumb-stage">
+										<img class="bc-thumb-layer-full" src="../banners/foodpanda/300x250/img-4-a.jpg" alt="" loading="lazy" decoding="async">
+										<img class="bc-thumb-layer-full" src="../banners/foodpanda/300x250/img-4-b.png" alt="" loading="lazy" decoding="async">
+									</div>
+								</div>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>
+
+						<a class="bc-case bc-case-link bc-reveal" href="banner-x_games.html" data-campaign-name="X Games" data-formats="300x250 300x600 160x600 728x90" aria-label="Open the X Games banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>11 / Live events</span><span>2023</span></div>
+								<h3>X Games<br>California</h3>
+								<p>A kinetic event campaign channeling action-sports energy into a flexible set of branded ticket-driving placements.</p>
+								<ul class="bc-case-tags" aria-label="X Games banner formats"><li>300 &times; 250</li><li>300 &times; 600</li><li>+3 formats</li></ul>
+							</div>
+							<figure class="bc-case-poster">
+								<div class="bc-thumb-art" data-index="11" style="--thumb-accent: #ef233c; --thumb-bg: #15363b; --thumb-image: url('../banners/x_games/300x250/images/bg-1.jpg')" role="img" aria-label="X Games California campaign cover">
+									
+									<div class="bc-thumb-stage"><img class="bc-thumb-cover" src="../banners/x_games/300x250.jpg" alt="" loading="lazy" decoding="async"></div>
+								</div>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>
+
+						<a class="bc-case bc-case-link bc-reveal" href="banner-goojitzu.html" data-campaign-name="Goo Jit Zu Gootron" data-formats="1014x570 interactive landscape" aria-label="Open the Goo Jit Zu Gootron banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>18 / Toy activation</span><span>Archive</span></div>
+								<h3>Goo Jit Zu<br>Gootron</h3>
+								<p>A character-led playable that turns product discovery into a hands-on battle experience built around the Gootron Supreme toy.</p>
+								<ul class="bc-case-tags" aria-label="Goo Jit Zu Gootron banner attributes"><li>1014 &times; 570</li><li>Playable</li><li>Landscape</li></ul>
+							</div>
+							<figure class="bc-case-poster">
+								<div class="bc-thumb-art" data-index="18" style="--thumb-accent: #ff7a1a; --thumb-bg: #3d2e19; --thumb-image: url('../banners/goojitzu.jpg')" role="img" aria-label="Goo Jit Zu Gootron campaign cover">
+									<div class="bc-thumb-stage"><img class="bc-thumb-cover" src="../banners/goojitzu.jpg" alt="" loading="lazy" decoding="async"></div>
+								</div>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>						
+
+						<a class="bc-case bc-case-link bc-reveal" href="banner-eatside_exterminators.html" data-campaign-name="Eastside Exterminators" data-formats="300x250 300x600 160x600 728x90" aria-label="Open the Eastside Exterminators banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>12 / Home services</span><span>Archive</span></div>
+								<h3>Eastside<br>Exterminators</h3>
+								<p>A reassuring service campaign pairing everyday home moments with clear pest-control messaging across two concepts.</p>
+								<ul class="bc-case-tags" aria-label="Eastside Exterminators banner formats"><li>2 concepts</li><li>300 &times; 250</li><li>+3 formats</li></ul>
+							</div>
+							<figure class="bc-case-poster">
+								<div class="bc-thumb-art" data-index="12" style="--thumb-accent: #ef1d2d; --thumb-bg: #12212b; --thumb-image: url('../banners/eatside_exterminators/v2/300x250/images/img5.jpg')" role="img" aria-label="Eastside Exterminators campaign cover">
+									
+									<div class="bc-thumb-stage"><img class="bc-thumb-cover" src="../banners/eatside_exterminators/eatside_exterminators.png" alt="" loading="lazy" decoding="async"></div>
+								</div>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>
+
+						<a class="bc-case bc-case-link bc-reveal" href="banner-exquisita.html" data-campaign-name="Exquisita" data-formats="300x250 728x90" aria-label="Open the Exquisita banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>13 / Food &amp; beverage</span><span>Archive</span></div>
+								<h3>Exquisita</h3>
+								<p>A playful product-family campaign bringing four packages together through organic shapes and characterful motion.</p>
+								<ul class="bc-case-tags" aria-label="Exquisita banner formats"><li>300 &times; 250</li><li>728 &times; 90</li><li>Motion</li></ul>
+							</div>
+							<figure class="bc-case-poster">
+								<div class="bc-thumb-art" data-index="13" style="--thumb-accent: #87ddf7; --thumb-bg: #443064; --thumb-image: url('../banners/exquisita/300x250/ameba.png')" role="img" aria-label="Exquisita campaign cover">
+									
+									<div class="bc-thumb-stage"><img class="bc-thumb-cover" src="../banners/exquisita/banner-exquisita.png" alt="" loading="lazy" decoding="async"></div>
+
+								</div>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>
+
+						<a class="bc-case bc-case-link bc-reveal" href="banner-locomotive.html" data-campaign-name="Locomotive Agency" data-formats="300x250 300x600 160x600 728x90" aria-label="Open the Locomotive Agency banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>14 / Agency campaign</span><span>Archive</span></div>
+								<h3>Locomotive<br>Agency</h3>
+								<p>A cinematic B2B campaign combining industrial imagery, detailed motion and a polished lead-generation end frame.</p>
+								<ul class="bc-case-tags" aria-label="Locomotive Agency banner formats"><li>300 &times; 250</li><li>300 &times; 600</li><li>+2 formats</li></ul>
+							</div>
+							<figure class="bc-case-poster">
+								<div class="bc-thumb-art" data-index="14" style="--thumb-accent: #d4a43c; --thumb-bg: #171613; --thumb-image: url('../banners/locomotive/300x250/photo_1_bg.jpg')" role="img" aria-label="Locomotive Agency campaign cover">
+									
+									<div class="bc-thumb-stage" style="background: #333;">
+										<img class="bc-thumb-layer" style="left: 0; top: 0; width: 100%;" src="../banners/locomotive/300x250/photo_1_bg.jpg" alt="" loading="lazy" decoding="async">
+										<span style="position: absolute; inset: 2.4%; background: rgba(35, 35, 35, 0.88);"></span>
+										<img class="bc-thumb-layer" style="left: 22.67%; top: 19.2%; width: 54.67%;" src="../banners/locomotive/300x250/logo_locomotive_base.png" alt="" loading="lazy" decoding="async">
+										<img class="bc-thumb-layer" style="left: 23%; top: 8%; width: 54.67%;" src="../banners/locomotive/300x250/logo_locomotive_outlines.png" alt="" loading="lazy" decoding="async">
+										<img class="bc-thumb-layer" style="left: 30%; top: 76%; width: 40%;" src="../banners/locomotive/300x250/txt_4_1_base.png" alt="" loading="lazy" decoding="async">
+									</div>
+								</div>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>
+
+						<a class="bc-case bc-case-link bc-reveal" href="banner-oppd.html" data-campaign-name="OPPD" data-formats="300x250 300x600 160x600 728x90" aria-label="Open the OPPD banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>15 / Energy education</span><span>Archive</span></div>
+								<h3>OPPD</h3>
+								<p>An animated utility campaign making solar plans approachable through simple language and a warm illustrated world.</p>
+								<ul class="bc-case-tags" aria-label="OPPD banner formats"><li>300 &times; 250</li><li>300 &times; 600</li><li>+2 formats</li></ul>
+							</div>
+							<figure class="bc-case-poster">
+								<div class="bc-thumb-art" data-index="15" style="--thumb-accent: #f4a128; --thumb-bg: #3a210d; --thumb-image: url('../banners/oppd/300x250/images/bg.jpg')" role="img" aria-label="OPPD campaign cover">
+									
+									<div class="bc-thumb-stage"><img class="bc-thumb-cover" src="../banners/oppd/300x250.jpg" alt="" loading="lazy" decoding="async"></div>
+								</div>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>
+
+						<a class="bc-case bc-case-link bc-reveal" href="banner-supervielle.html" data-campaign-name="Supervielle" data-formats="800x600 interactive" aria-label="Open the Supervielle banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>16 / Banking</span><span>Archive</span></div>
+								<h3>Supervielle</h3>
+								<p>A playful banking campaign combining torn-paper transitions, product benefits and an unexpected canine co-star.</p>
+								<ul class="bc-case-tags" aria-label="Supervielle banner attributes"><li>800 &times; 600</li><li>Rich media</li><li>Motion</li></ul>
+							</div>
+							<figure class="bc-case-poster">
+								<div class="bc-thumb-art" data-index="16" style="--thumb-accent: #ef4050; --thumb-bg: #501a3d; --thumb-image: url('../banners/supervielle/800x600/images/bg5.jpg')" role="img" aria-label="Supervielle campaign cover">
+									
+									<div class="bc-thumb-stage"><img class="bc-thumb-cover" src="../banners/supervielle/800x600.png" alt="" loading="lazy" decoding="async"></div>
+								</div>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>
+
+
+
+						<a class="bc-case bc-case-link bc-reveal" href="banner-subway.html" data-campaign-name="Subway Subdog" data-formats="700x1280 interactive portrait" aria-label="Open the Subway Subdog banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>21 / Food campaign</span><span>Archive</span></div>
+								<h3>Subway<br>Subdog</h3>
+								<p>A portrait playable bringing back the Subdog through a bold product-led experience with unmistakable Subway branding.</p>
+								<ul class="bc-case-tags" aria-label="Subway Subdog banner attributes"><li>700 &times; 1280</li><li>Playable</li><li>Portrait</li></ul>
+							</div>
+							<figure class="bc-case-poster">
+								<div class="bc-thumb-art" data-index="21" style="--thumb-accent: #ffc600; --thumb-bg: #053e24; --thumb-image: url('../banners/subway.png')" role="img" aria-label="Subway Subdog campaign cover">
+									<div class="bc-thumb-stage"><img class="bc-thumb-cover" src="../banners/subway.png" alt="" loading="lazy" decoding="async"></div>
+								</div>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>
+
+						<a class="bc-case bc-case-link bc-reveal" href="banner-addidas.html" data-campaign-name="Adidas ZX" data-formats="300x250 300x600 160x600 320x50 728x90" aria-label="Open the Adidas ZX banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>22 / Product launch</span><span>2025</span></div>
+								<h3>Adidas<br>ZX</h3>
+								<p>A tactile product campaign that turns cushioning, motion and color into a flexible launch system across formats.</p>
+								<ul class="bc-case-tags" aria-label="Adidas ZX banner formats">
+									<li>4 concepts</li>
+									<li>300 &times; 250</li>
+									<li>+4 formats</li>
+								</ul>
+							</div>
+
+							<figure class="bc-case-poster">
+								<svg viewBox="0 0 1200 720" role="img" aria-labelledby="adidas-title adidas-desc" preserveAspectRatio="xMidYMid slice">
+									<title id="adidas-title">Adidas ZX campaign artwork</title>
+									<desc id="adidas-desc">A blue Adidas ZX campaign image presented on a deep blue product-launch canvas.</desc>
+									<defs>
+										<linearGradient id="adidas-glow" x1="0" y1="0" x2="1" y2="1">
+											<stop offset="0" stop-color="#081b5b"/>
+											<stop offset=".52" stop-color="#295dc7"/>
+											<stop offset="1" stop-color="#ec266d"/>
+										</linearGradient>
+										<filter id="adidas-shadow" x="-30%" y="-30%" width="160%" height="170%">
+											<feDropShadow dx="0" dy="24" stdDeviation="20" flood-color="#020a24" flood-opacity=".7"/>
+										</filter>
+									</defs>
+									<rect width="1200" height="720" fill="url(#adidas-glow)"/>
+									<circle cx="190" cy="660" r="250" fill="#79bdff" opacity=".16"/>
+									<circle cx="1080" cy="50" r="220" fill="#ff4f87" opacity=".14"/>
+									<g filter="url(#adidas-shadow)">
+										<rect x="220" y="132" width="760" height="456" fill="#8bc3ff" stroke="#fff" stroke-opacity=".42" stroke-width="2"/>
+									<image href="../banners/adidas_caratula.jpg" x="220" y="132" width="760" height="456" preserveAspectRatio="xMidYMid slice"/>
+								</g>
+							</svg>
+							<figcaption>View case study</figcaption>
+						</figure>
+					</a>
+
+						<a class="bc-case bc-case-link bc-reveal" href="banner-alcohol_impaired.html" data-campaign-name="Alcohol Impaired" data-formats="300x250 300x600 160x600 728x90 970x250" aria-label="Open the Alcohol Impaired banner case study">
+							<div class="bc-case-copy">
+								<div class="bc-case-topline"><span>23 / Public safety</span><span>Archive</span></div>
+								<h3>Alcohol<br>Impaired</h3>
+								<p>A torn-road visual metaphor turns a serious public-safety message into an immediate and memorable campaign.</p>
+								<ul class="bc-case-tags" aria-label="Alcohol Impaired banner formats"><li>300 &times; 250</li><li>300 &times; 600</li><li>+3 formats</li></ul>
+							</div>
+							<figure class="bc-case-poster">
+								<div class="bc-thumb-art" data-index="23" style="--thumb-accent: #ef4255; --thumb-bg: #071719; --thumb-image: url('../banners/alcohol_impaired/300x250/Alcohol_Tear_300x250.jpg')" role="img" aria-label="Alcohol Impaired campaign cover">
+									
+									<div class="bc-thumb-stage"><img class="bc-thumb-cover" src="../banners/alcohol_impaired/300x250/Alcohol_Tear_300x250.jpg" alt="" loading="lazy" decoding="async"></div>
+								</div>
+								<figcaption>View case study</figcaption>
+							</figure>
+						</a>
+					</div>
+				</div>
+				<div class="cs2-section-index" aria-hidden="true"><span>03 / CAMPAIGNS</span><span>23 CAMPAIGNS · FILTER BY FORMAT</span></div>
+			</section>
+
+			<section class="cs2-section cs2-challenge bc-principles" id="approach" aria-labelledby="bc-approach-title">
+				<div class="cs2-shell">
+					<header class="cs2-section-heading bc-reveal">
+						<p class="cs2-section-label">The approach</p>
+						<h2 id="bc-approach-title">Built to work.<br>Made to be seen.</h2>
+					</header>
+
+					<div class="cs2-challenge-grid" aria-label="Banner production principles">
+						<article class="bc-reveal">
+							<span>01 / IDEA</span>
+							<div class="cs2-challenge-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M8.5 14.5A7 7 0 1 1 15.5 14.5C14.4 15.3 14 16 14 18h-4c0-2-.4-2.7-1.5-3.5Z"/></svg></div>
+							<h3>Read fast</h3>
+							<p>A sharp visual hierarchy makes the idea clear before attention moves on.</p>
+						</article>
+						<article class="bc-reveal">
+							<span>02 / SYSTEM</span>
+							<div class="cs2-challenge-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="14" height="11" rx="2"/><path d="M7 19h4M9 15v4"/><rect x="18" y="8" width="4" height="11" rx="1"/></svg></div>
+							<h3>Adapt well</h3>
+							<p>Each ratio gets a considered composition, not a smaller copy of the same layout.</p>
+						</article>
+						<article class="bc-reveal">
+							<span>03 / DELIVERY</span>
+							<div class="cs2-challenge-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12 9 17 20 6"/><circle cx="12" cy="12" r="10"/></svg></div>
+							<h3>Ship clean</h3>
+							<p>Motion, weight and fallbacks stay inside real-world media constraints.</p>
+						</article>
+					</div>
+				</div>
+				<div class="cs2-section-index" aria-hidden="true"><span>04 / APPROACH</span><span>IDEA · SYSTEM · DELIVERY</span></div>
+			</section>
+
+			<section id="contact" class="contact-section bc-contact" aria-labelledby="contact-title">
+				<div class="contact-inner">
+					<div class="contact-copy">
+						<p class="contact-kicker"><span aria-hidden="true"></span> Available for selected projects</p>
+						<h2 id="contact-title">
+							<span class="contact-line">Let's</span>
+							<span class="contact-line">move.</span>
+						</h2>
+						<p class="contact-intro">Need a campaign that works hard in a very small space? Share the idea and let's give it movement.</p>
+					</div>
+
+					<svg class="contact-cue" viewBox="0 0 360 112" aria-hidden="true">
+						<path d="M8 11C13 68 83 105 166 99C239 94 301 75 344 50M318 42L344 50L337 79"></path>
+					</svg>
+
+					<div class="contact-cta-scene">
+						<a class="contact-cta" href="mailto:patricio.sine@gmail.com?subject=Banner%20campaign%20inquiry%20%E2%80%94%20PSINE" aria-label="Start a banner project">
+							<img class="contact-spark contact-spark-one" src="../images/button-star-2.svg" alt="" aria-hidden="true">
+							<img class="contact-spark contact-spark-two" src="../images/button-star-1.svg" alt="" aria-hidden="true">
+							<img class="contact-cta-top" src="../images/button-top.svg" alt="" aria-hidden="true">
+							<img class="contact-cta-base" src="../images/button-bottom.svg" alt="" aria-hidden="true">
+						</a>
+					</div>
+				</div>
+
+				<div class="section-index" aria-hidden="true">
+					<span>05 / CONTACT</span>
+					<span>BANNER CAMPAIGNS · SELECTED WORK</span>
+				</div>
+			</section>
+		</main>
+
+		<footer class="cs2-footer">
+			<a href="../index.html" aria-label="PSINE home"><img src="../LOGO.svg" alt="PSINE"></a>
+			<p>© <span data-cs2-year>2026</span> PSINE</p>
+			<p>Product design &amp; creative development.</p>
+		</footer>
+
+		<script src="../custom-scrollbar.js"></script>
+		<script>
+			(() => {
+				const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+				const progress = document.querySelector('[data-cs2-progress]');
+				const year = document.querySelector('[data-cs2-year]');
+				const reveals = document.querySelectorAll('.bc-reveal');
+				const filters = document.querySelectorAll('[data-format-filter]');
+				const campaignCards = document.querySelectorAll('[data-formats]');
+				const gridStatus = document.querySelector('[data-grid-status]');
+				const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+				if (year) year.textContent = String(new Date().getFullYear());
+
+				const updateProgress = () => {
+					if (!progress) return;
+					const scrollable = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+					progress.style.transform = `scaleX(${clamp(window.scrollY / scrollable, 0, 1)})`;
+				};
+
+				window.addEventListener('scroll', updateProgress, {passive: true});
+				window.addEventListener('resize', updateProgress);
+				updateProgress();
+
+				filters.forEach((filterButton) => {
+					filterButton.addEventListener('click', () => {
+						const activeFormat = filterButton.dataset.formatFilter;
+						let visibleCount = 0;
+
+						filters.forEach((button) => {
+							const isActive = button === filterButton;
+							button.classList.toggle('is-active', isActive);
+							button.setAttribute('aria-pressed', String(isActive));
+						});
+
+						campaignCards.forEach((card) => {
+							const formats = card.dataset.formats.split(' ');
+							const isVisible = activeFormat === 'all' || formats.includes(activeFormat);
+							card.hidden = !isVisible;
+							if (isVisible) visibleCount += 1;
+						});
+
+						if (gridStatus) gridStatus.textContent = `${visibleCount} ${visibleCount === 1 ? 'campaign' : 'campaigns'} shown`;
+					});
+				});
+
+				if (reducedMotion || !('IntersectionObserver' in window)) {
+					reveals.forEach((element) => element.classList.add('is-visible'));
+					return;
+				}
+
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach((entry) => {
+						if (!entry.isIntersecting) return;
+						entry.target.classList.add('is-visible');
+						observer.unobserve(entry.target);
+					});
+				}, {threshold: 0.08, rootMargin: '0px 0px -7%'});
+
+				reveals.forEach((element) => observer.observe(element));
+			})();
+		</script>
+	</body>
+</html>
