@@ -4346,6 +4346,32 @@ body.is-contact-dialog-open {
 	border-color: #cc2f51;
 }
 
+.contact-form-honeypot {
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	clip: rect(0 0 0 0) !important;
+	clip-path: inset(50%) !important;
+	white-space: nowrap !important;
+	border: 0 !important;
+	pointer-events: none;
+}
+
+.contact-form-status {
+	margin: -10px 0 0;
+	color: #b42346;
+	font-size: 13px;
+	font-weight: 700;
+	line-height: 1.35;
+}
+
+.contact-form-status:empty {
+	display: none;
+}
+
 .contact-dialog-actions {
 	display: flex;
 	align-items: center;

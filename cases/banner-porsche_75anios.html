@@ -196,10 +196,10 @@
 				<div class="contact-dialog-heading">
 					<p class="contact-dialog-index">05 / CONTACT</p>
 					<h2 id="contact-dialog-title">Tell me what<br><em>we're making.</em></h2>
-					<p id="contact-dialog-description">A rough idea is enough. Share the essentials and your email app will prepare the message.</p>
+					<p id="contact-dialog-description">A rough idea is enough. Share the essentials and send it directly from the site.</p>
 				</div>
 
-				<form class="contact-dialog-form" action="mailto:patricio.sine@gmail.com" method="post" enctype="text/plain" data-contact-form>
+				<form class="contact-dialog-form" action="../send-contact.php" method="post" accept-charset="UTF-8" data-contact-form>
 					<div class="contact-dialog-fields">
 						<label>
 							<span>Your name</span>
@@ -219,6 +219,13 @@
 						<small class="contact-field-error">A few details will help me understand the idea.</small>
 					</label>
 
+					<label class="contact-form-honeypot" aria-hidden="true">
+						<span>Leave this field empty</span>
+						<input type="text" name="website" tabindex="-1" autocomplete="off">
+					</label>
+
+					<p class="contact-form-status" data-contact-status role="status" aria-live="polite"></p>
+
 					<div class="contact-dialog-actions">
 						<button class="contact-dialog-submit" type="submit">
 							<span data-contact-submit-label>SEND THE IDEA</span>
@@ -229,13 +236,13 @@
 					</div>
 				</form>
 
-				<section class="contact-dialog-feedback" data-contact-feedback hidden tabindex="-1" aria-live="polite" aria-label="Email draft ready">
+				<section class="contact-dialog-feedback" data-contact-feedback hidden tabindex="-1" aria-live="polite" aria-label="Message sent">
 					<div class="contact-feedback-icon" aria-hidden="true"><span>&check;</span></div>
-					<p class="contact-feedback-kicker">EMAIL DRAFT READY</p>
-					<h3>One last<br>little click.</h3>
-					<p>Your email app should be open with the project details filled in. Review the message and press <strong>Send</strong> there.</p>
+					<p class="contact-feedback-kicker">MESSAGE SENT</p>
+					<h3>Thanks!<br>Message received.</h3>
+					<p>Your message was sent successfully. I will get back to you as soon as possible.</p>
 					<div class="contact-feedback-actions">
-						<a class="contact-feedback-primary" href="mailto:patricio.sine@gmail.com" data-contact-mail-link>OPEN EMAIL APP <span aria-hidden="true">&nearr;</span></a>
+						<a class="contact-feedback-primary" href="mailto:patricio.sine@gmail.com">EMAIL ME DIRECTLY <span aria-hidden="true">&nearr;</span></a>
 						<button type="button" data-contact-reset>Write another message</button>
 					</div>
 				</section>

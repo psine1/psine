@@ -510,22 +510,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastContactTrigger = null;
     let isDialogClosing = false;
     let contactDialogBackdropFrame = 0;
-    let contactSubmitTimer = 0;
     const contactDialogParts = contactDialogShell
       ? Array.from(contactDialogShell.querySelectorAll('.contact-dialog-topline, .contact-dialog-heading, .contact-dialog-form'))
       : [];
     const contactFeedback = contactDialog.querySelector('[data-contact-feedback]');
     const contactSubmitButton = contactForm?.querySelector('.contact-dialog-submit');
     const contactSubmitLabel = contactForm?.querySelector('[data-contact-submit-label]');
-    const contactMailLink = contactDialog.querySelector('[data-contact-mail-link]');
+    const contactStatus = contactForm?.querySelector('[data-contact-status]');
     const contactResetButton = contactDialog.querySelector('[data-contact-reset]');
     const contactControls = contactForm
       ? Array.from(contactForm.querySelectorAll('input, textarea'))
       : [];
 
     const resetContactExperience = () => {
-      if (contactSubmitTimer) clearTimeout(contactSubmitTimer);
-      contactSubmitTimer = 0;
       contactForm?.reset();
       contactForm?.classList.remove('is-submitting');
       if (contactForm) contactForm.hidden = false;
@@ -535,6 +532,7 @@ document.addEventListener('DOMContentLoaded', () => {
         contactSubmitButton.removeAttribute('aria-busy');
       }
       if (contactSubmitLabel) contactSubmitLabel.textContent = 'SEND THE IDEA';
+      if (contactStatus) contactStatus.textContent = '';
       contactControls.forEach((control) => {
         control.removeAttribute('aria-invalid');
         control.closest('label')?.classList.remove('has-error');
@@ -556,8 +554,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeContactDialog = () => {
       if (!contactDialog.open || isDialogClosing) return;
       isDialogClosing = true;
-      if (contactSubmitTimer) clearTimeout(contactSubmitTimer);
-      contactSubmitTimer = 0;
       if (contactDialogBackdropFrame) cancelAnimationFrame(contactDialogBackdropFrame);
       contactDialogBackdropFrame = 0;
 
@@ -660,7 +656,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    const showPreparedEmailState = (mailtoUrl) => {
+    const showSentState = () => {
       if (!contactForm || !contactFeedback) return;
       contactForm.classList.remove('is-submitting');
       contactForm.hidden = true;
@@ -670,7 +666,6 @@ document.addEventListener('DOMContentLoaded', () => {
         contactSubmitButton.removeAttribute('aria-busy');
       }
       if (contactSubmitLabel) contactSubmitLabel.textContent = 'SEND THE IDEA';
-      if (contactMailLink) contactMailLink.href = mailtoUrl;
 
       if (!reducedMotion && window.gsap) {
         gsap.fromTo(contactFeedback, {
@@ -704,28 +699,48 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(() => contactControls[0]?.focus({preventScroll: true}));
     });
 
-    contactForm?.addEventListener('submit', (event) => {
+    contactForm?.addEventListener('submit', async (event) => {
       event.preventDefault();
       const formData = new FormData(contactForm);
-      const name = String(formData.get('name') || '').trim();
-      const email = String(formData.get('email') || '').trim();
-      const message = String(formData.get('message') || '').trim();
-      const subject = `Project inquiry — ${name || 'PSINE website'}`;
-      const body = [`Name: ${name}`, `Email: ${email}`, '', message].join('\n');
-      const mailtoUrl = `mailto:patricio.sine@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      formData.set('source', window.location.href);
 
       contactForm.classList.add('is-submitting');
+      if (contactStatus) contactStatus.textContent = '';
       if (contactSubmitButton) {
         contactSubmitButton.disabled = true;
         contactSubmitButton.setAttribute('aria-busy', 'true');
       }
-      if (contactSubmitLabel) contactSubmitLabel.textContent = 'PREPARING EMAIL';
+      if (contactSubmitLabel) contactSubmitLabel.textContent = 'SENDING';
 
-      contactSubmitTimer = window.setTimeout(() => {
-        contactSubmitTimer = 0;
-        showPreparedEmailState(mailtoUrl);
-        window.location.href = mailtoUrl;
-      }, reducedMotion ? 0 : 180);
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            Accept: 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+          }
+        });
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || 'The message could not be sent. Please try again.');
+        }
+
+        showSentState();
+      } catch (error) {
+        contactForm.classList.remove('is-submitting');
+        if (contactSubmitButton) {
+          contactSubmitButton.disabled = false;
+          contactSubmitButton.removeAttribute('aria-busy');
+        }
+        if (contactSubmitLabel) contactSubmitLabel.textContent = 'SEND THE IDEA';
+        if (contactStatus) {
+          contactStatus.textContent = error instanceof Error
+            ? error.message
+            : 'The message could not be sent. Please try again.';
+        }
+      }
     });
   }
 
