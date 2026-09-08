@@ -1049,7 +1049,7 @@ body.is-menu-open .site-scrollbar {
 	right: var(--page-gutter);
 	bottom: calc(57px + var(--section-index-height));
 	z-index: 5;
-	width: min(340px, 26vw);
+	width: min(390px, 29vw);
 	text-align: right;
 	color: var(--text);
 }
@@ -2326,7 +2326,7 @@ body.is-menu-open .site-scrollbar {
 	}
 
 	.about-panel {
-		width: 320px;
+		width: 360px;
 	}
 
 	.services-sticky {
@@ -2415,7 +2415,7 @@ body.is-menu-open .site-scrollbar {
 	.about-panel {
 		right: 18px;
 		bottom: calc(96px + var(--section-index-height));
-		width: min(290px, calc(100vw - 36px));
+		width: min(340px, calc(100vw - 36px));
 	}
 
 	.about-panel h2 {
