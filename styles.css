@@ -355,6 +355,19 @@ img {
 	background: transparent;
 	color: var(--text);
 	cursor: pointer;
+	transition: background-color 220ms ease, border-color 220ms ease, color 220ms ease;
+}
+
+.btn-menu:hover,
+.btn-menu:focus-visible,
+.btn-menu[aria-expanded="true"] {
+	border-color: #ffd21f;
+	background: #ffd21f;
+	color: #202020;
+}
+
+.btn-menu:active {
+	transform: scale(0.98);
 }
 
 .menu-icon {
@@ -372,6 +385,13 @@ img {
 	top: 3px;
 	width: 16px;
 	border-top: 2px solid currentColor;
+	transition: transform 220ms ease;
+}
+
+.btn-menu:hover .menu-icon::after,
+.btn-menu:focus-visible .menu-icon::after,
+.btn-menu[aria-expanded="true"] .menu-icon::after {
+	transform: translateX(3px);
 }
 
 body.is-menu-open {
@@ -1551,12 +1571,12 @@ body.is-menu-open .site-scrollbar {
 .service-card h3 {
 	margin: 0;
 	max-width: 100%;
-	font-size: clamp(34px, 3.65vw, 50px);
+	font-size: clamp(31px, 3.25vw, 46px);
 	font-weight: 900;
-	line-height: 0.92;
+	line-height: 0.9;
 	letter-spacing: 0;
 	text-transform: uppercase;
-	overflow-wrap: anywhere;
+	overflow-wrap: normal;
 }
 
 .service-card p {
@@ -2564,7 +2584,7 @@ body.is-menu-open .site-scrollbar {
 	}
 
 	.service-card h3 {
-		font-size: clamp(24px, 7.5vw, 34px);
+		font-size: clamp(22px, 6.7vw, 31px);
 	}
 
 	.service-card p {
