@@ -259,8 +259,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setupTalkLabelMorph();
 
-    magneticButton?.addEventListener('pointerenter', () => contactTitleMorph?.showAlternate());
-    magneticButton?.addEventListener('pointerleave', () => contactTitleMorph?.showDefault());
+    contactButtonScene?.addEventListener('pointerenter', () => contactTitleMorph?.showAlternate());
+    contactButtonScene?.addEventListener('pointerleave', () => contactTitleMorph?.showDefault());
     magneticButton?.addEventListener('focus', () => contactTitleMorph?.showAlternate());
     magneticButton?.addEventListener('blur', () => contactTitleMorph?.showDefault());
   }
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearProps: 'transform,opacity',
             onComplete: () => {
               contactTitleMorph?.enable();
-              if (magneticButton?.matches(':hover')) contactTitleMorph?.showAlternate();
+              if (contactButtonScene?.matches(':hover')) contactTitleMorph?.showAlternate();
             }
           });
         }

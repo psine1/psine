@@ -126,7 +126,7 @@
 			.bc-library {
 				--cs2-section-number: "03";
 				position: relative;
-				padding: clamp(108px, 10vw, 170px) 0 calc(var(--cs2-index-height) + clamp(84px, 8vw, 130px));
+				padding: clamp(72px, 6.5vw, 112px) 0 calc(var(--cs2-index-height) + clamp(84px, 8vw, 130px));
 				background: var(--cs2-dark);
 				color: var(--cs2-white);
 			}
@@ -165,7 +165,7 @@
 
 			.bc-filter-panel {
 				display: grid;
-				grid-template-columns: minmax(150px, 0.32fr) minmax(0, 1.68fr);
+				grid-template-columns: minmax(150px, 1fr) auto minmax(150px, 1fr);
 				gap: clamp(24px, 4vw, 70px);
 				align-items: start;
 				margin-top: clamp(62px, 7vw, 110px);
@@ -202,6 +202,7 @@
 			.bc-format-filters {
 				display: flex;
 				flex-wrap: wrap;
+				justify-content: center;
 				gap: 8px;
 			}
 
@@ -780,17 +781,9 @@
 					<div class="bc-filter-panel bc-reveal" aria-labelledby="bc-filter-label">
 						<p class="bc-filter-label" id="bc-filter-label">Filter by format</p>
 						<div class="bc-format-filters" role="group" aria-label="Campaign format filters">
-							<button class="bc-format-filter is-active" type="button" data-format-filter="all" aria-pressed="true">All</button>
-							<button class="bc-format-filter" type="button" data-format-filter="300x250" aria-pressed="false">300 × 250</button>
-							<button class="bc-format-filter" type="button" data-format-filter="300x600" aria-pressed="false">300 × 600</button>
-							<button class="bc-format-filter" type="button" data-format-filter="160x600" aria-pressed="false">160 × 600</button>
-							<button class="bc-format-filter" type="button" data-format-filter="320x50" aria-pressed="false">320 × 50</button>
-							<button class="bc-format-filter" type="button" data-format-filter="320x100" aria-pressed="false">320 × 100</button>
-							<button class="bc-format-filter" type="button" data-format-filter="728x90" aria-pressed="false">728 × 90</button>
-							<button class="bc-format-filter" type="button" data-format-filter="970x66" aria-pressed="false">970 × 66</button>
-							<button class="bc-format-filter" type="button" data-format-filter="970x250" aria-pressed="false">970 × 250</button>
-							<button class="bc-format-filter" type="button" data-format-filter="800x600" aria-pressed="false">800 × 600</button>
-							<button class="bc-format-filter" type="button" data-format-filter="interactive" aria-pressed="false">Interactive</button>
+								<button class="bc-format-filter" type="button" data-format-filter="display" aria-pressed="false">Display</button>
+								<button class="bc-format-filter is-active" type="button" data-format-filter="all" aria-pressed="true">All</button>
+								<button class="bc-format-filter" type="button" data-format-filter="interactive" aria-pressed="false">Interactive</button>
 						</div>
 					</div>
 
@@ -1458,7 +1451,9 @@
 
 						campaignCards.forEach((card) => {
 							const formats = card.dataset.formats.split(' ');
-							const isVisible = activeFormat === 'all' || formats.includes(activeFormat);
+							const isVisible = activeFormat === 'all'
+								|| (activeFormat === 'interactive' && formats.includes('interactive'))
+								|| (activeFormat === 'display' && !formats.includes('interactive'));
 							card.hidden = !isVisible;
 							if (isVisible) visibleCount += 1;
 						});

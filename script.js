@@ -402,6 +402,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (bindHover) {
       trigger.addEventListener('pointerenter', requestAlternate);
       trigger.addEventListener('pointerleave', requestDefault);
+      trigger.addEventListener('focus', requestAlternate);
+      trigger.addEventListener('blur', requestDefault);
     }
 
     return {
@@ -460,9 +462,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    if (contactButtonScene) {
+      contactButtonScene.addEventListener('pointerenter', () => contactTitleMorph?.showAlternate());
+      contactButtonScene.addEventListener('pointerleave', () => contactTitleMorph?.showDefault());
+    }
+
     if (magneticButton) {
-      magneticButton.addEventListener('pointerenter', () => contactTitleMorph?.showAlternate());
-      magneticButton.addEventListener('pointerleave', () => contactTitleMorph?.showDefault());
       magneticButton.addEventListener('focus', () => contactTitleMorph?.showAlternate());
       magneticButton.addEventListener('blur', () => contactTitleMorph?.showDefault());
     }
@@ -496,7 +501,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearProps: 'transform,opacity',
             onComplete: () => {
               contactTitleMorph?.enable();
-              if (magneticButton?.matches(':hover')) contactTitleMorph?.showAlternate();
+              if (contactButtonScene?.matches(':hover')) contactTitleMorph?.showAlternate();
             }
           });
         }
