@@ -3721,11 +3721,12 @@ body.is-menu-open .site-scrollbar {
 .work-banner-cover h3 {
 	position: relative;
 	z-index: 2;
+	max-width: 78%;
 	margin: auto 0 20px;
-	font-size: clamp(48px, 4.6vw, 84px);
+	font-size: clamp(43px, 3.95vw, 74px);
 	font-weight: 900;
 	line-height: 0.82;
-	letter-spacing: -0.06em;
+	letter-spacing: -0.045em;
 }
 
 .work-banner-cover > strong {
@@ -3741,10 +3742,11 @@ body.is-menu-open .site-scrollbar {
 
 .banner-cover-stack {
 	position: absolute;
-	top: 13%;
-	right: 8%;
-	width: 45%;
-	height: 44%;
+	top: 10%;
+	right: 7%;
+	z-index: 1;
+	width: 40%;
+	height: 36%;
 }
 
 .banner-cover-stack span {
@@ -3755,24 +3757,42 @@ body.is-menu-open .site-scrollbar {
 	background: #ff5ca7;
 	box-shadow: 7px 7px 0 #111;
 	transform: rotate(7deg);
+	transition: transform 520ms cubic-bezier(.22, 1, .36, 1);
 }
 
 .banner-cover-stack span:nth-child(2) {
 	background: #2daef5;
-	transform: translate(-20%, 18%) rotate(-5deg);
+	transform: translate(-12%, 14%) rotate(-5deg);
+	transition-delay: 35ms;
 }
 
 .banner-cover-stack span:nth-child(3) {
 	display: grid;
 	place-items: center;
 	background: #7544df;
-	transform: translate(-42%, 38%) rotate(4deg);
+	transform: translate(-23%, 28%) rotate(4deg);
+	transition-delay: 70ms;
 }
 
 .banner-cover-stack span:nth-child(3)::after {
 	content: "▶";
 	font-size: clamp(24px, 3vw, 54px);
 	color: #fff;
+}
+
+.work-card-inner:hover .banner-cover-stack span:first-child,
+.work-card-inner:focus-visible .banner-cover-stack span:first-child {
+	transform: translate(4px, -5px) rotate(9deg);
+}
+
+.work-card-inner:hover .banner-cover-stack span:nth-child(2),
+.work-card-inner:focus-visible .banner-cover-stack span:nth-child(2) {
+	transform: translate(-8%, 10%) rotate(-7deg);
+}
+
+.work-card-inner:hover .banner-cover-stack span:nth-child(3),
+.work-card-inner:focus-visible .banner-cover-stack span:nth-child(3) {
+	transform: translate(-18%, 23%) rotate(6deg);
 }
 
 .work-card footer {
@@ -3963,6 +3983,7 @@ body.is-menu-open .site-scrollbar {
 	}
 
 	.work-banner-cover h3 {
+		max-width: 82%;
 		font-size: clamp(46px, 14vw, 66px);
 	}
 
