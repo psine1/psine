@@ -2,3 +2,7 @@
 *.[pP][sS][dD]
 *.[aA][iI]
 *.[zZ][iI][pP]
+
+# Local secrets
+.env*
+!.env.example
